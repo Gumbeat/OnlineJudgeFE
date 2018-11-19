@@ -50,7 +50,7 @@ export const m = {
   Judge_Server_Token: 'Токен тестового сервера',
   Judge_Server_Info: 'Тестовый сервер',
   IP: 'IP',
-  Judger_Version: 'Версия системы',
+  Judger_Version: 'Версия системы тестирования',
   Service_URL: 'URL Службы',
   Last_Heartbeat: 'Время последнего ответа',
   Create_Time: 'Время создания',
