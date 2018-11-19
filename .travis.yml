@@ -29,7 +29,7 @@ before_deploy:
 deploy:
   provider: releases
   skip_cleanup: true
-  github-token: $GITHUB_TOKEN
+  api_key: $GITHUB_TOKEN
   file: dist.zip
   on:
     repo: Gumbeat/OnlineJudgeFE
