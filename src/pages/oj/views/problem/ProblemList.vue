@@ -2,7 +2,7 @@
   <Row type="flex" :gutter="18">
     <Col :span=19>
     <Panel shadow>
-      <div slot="title">Problem List</div>
+      <div slot="title">Список задач</div>
       <div slot="extra">
         <ul class="filter">
           <li>
@@ -11,17 +11,17 @@
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
-                <Dropdown-item name="">All</Dropdown-item>
-                <Dropdown-item name="Low">Low</Dropdown-item>
-                <Dropdown-item name="Mid">Mid</Dropdown-item>
-                <Dropdown-item name="High">High</Dropdown-item>
+                <Dropdown-item name="">Все</Dropdown-item>
+                <Dropdown-item name="Low">Низкие</Dropdown-item>
+                <Dropdown-item name="Mid">Средние</Dropdown-item>
+                <Dropdown-item name="High">Высокие</Dropdown-item>
               </Dropdown-menu>
             </Dropdown>
           </li>
           <li>
             <i-switch size="large" @on-change="handleTagsVisible">
-              <span slot="open">Tags</span>
-              <span slot="close">Tags</span>
+              <span slot="open">Теги</span>
+              <span slot="close">Теги</span>
             </i-switch>
           </li>
           <li>
@@ -63,7 +63,7 @@
 
       <Button long id="pick-one" @click="pickone">
         <Icon type="shuffle"></Icon>
-        Pick one
+        ВЫбери
       </Button>
     </Panel>
     <Spin v-if="loadings.tag" fix size="large"></Spin>

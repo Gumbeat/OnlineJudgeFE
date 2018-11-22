@@ -11,7 +11,7 @@
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
-                <Dropdown-item name="">All</Dropdown-item>
+                <Dropdown-item name="">Все</Dropdown-item>
                 <Dropdown-item name="OI">OI</Dropdown-item>
                 <Dropdown-item name="ACM">ACM</Dropdown-item>
               </Dropdown-menu>
@@ -23,20 +23,20 @@
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
-                <Dropdown-item name="">All</Dropdown-item>
-                <Dropdown-item name="0">UnderWay</Dropdown-item>
-                <Dropdown-item name="1">Not Started</Dropdown-item>
-                <Dropdown-item name="-1">Ended</Dropdown-item>
+                <Dropdown-item name="">Все</Dropdown-item>
+                <Dropdown-item name="0">Проводится</Dropdown-item>
+                <Dropdown-item name="1">Не началось</Dropdown-item>
+                <Dropdown-item name="-1">Закончилось</Dropdown-item>
               </Dropdown-menu>
             </Dropdown>
           </li>
           <li>
             <Input id="keyword" @on-enter="changeRoute" @on-click="changeRoute" v-model="query.keyword"
-                   icon="ios-search-strong" placeholder="Keyword"/>
+                   icon="ios-search-strong" placeholder="Ключевые слова"/>
           </li>
         </ul>
       </div>
-      <p id="no-contest" v-if="contests.length == 0">No contest</p>
+      <p id="no-contest" v-if="contests.length == 0">Нет сорвевнований</p>
       <ol id="contest-list">
         <li v-for="contest in contests" :key="contest.title">
           <Row type="flex" justify="space-between" align="middle">

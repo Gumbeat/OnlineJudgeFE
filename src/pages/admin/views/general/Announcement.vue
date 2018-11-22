@@ -15,30 +15,30 @@
           </el-table-column>
           <el-table-column
             prop="title"
-            label="Title">
+            label="Название">
           </el-table-column>
           <el-table-column
             prop="create_time"
-            label="CreateTime">
+            label="СоздатьВремя">
             <template slot-scope="scope">
               {{ scope.row.create_time | localtime }}
             </template>
           </el-table-column>
           <el-table-column
             prop="last_update_time"
-            label="LastUpdateTime">
+            label="ВремяПоследнегоОбновления">
             <template slot-scope="scope">
               {{scope.row.last_update_time | localtime }}
             </template>
           </el-table-column>
           <el-table-column
             prop="created_by.username"
-            label="Author">
+            label="Автор">
           </el-table-column>
           <el-table-column
             width="100"
             prop="visible"
-            label="Visible">
+            label="Видимый">
             <template slot-scope="scope">
               <el-switch v-model="scope.row.visible"
                          active-text=""
@@ -49,7 +49,7 @@
           </el-table-column>
           <el-table-column
             fixed="right"
-            label="Option"
+            label="Действие"
             width="200">
             <div slot-scope="scope">
               <icon-btn name="Edit" icon="edit" @click.native="openAnnouncementDialog(scope.row.id)"></icon-btn>

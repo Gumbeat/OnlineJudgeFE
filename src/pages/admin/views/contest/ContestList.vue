@@ -5,7 +5,7 @@
         <el-input
           v-model="keyword"
           prefix-icon="el-icon-search"
-          placeholder="Keywords">
+          placeholder="Ключевые слова">
         </el-input>
       </div>
       <el-table
@@ -29,17 +29,17 @@
         </el-table-column>
         <el-table-column
           prop="title"
-          label="Title">
+          label="Название">
         </el-table-column>
         <el-table-column
-          label="Rule Type"
+          label="Режим"
           width="130">
           <template slot-scope="scope">
             <el-tag type="gray">{{scope.row.rule_type}}</el-tag>
           </template>
         </el-table-column>
         <el-table-column
-          label="Contest Type"
+          label="Тип соревнования"
           width="180">
           <template slot-scope="scope">
             <el-tag :type="scope.row.contest_type === 'Public' ? 'success' : 'primary'">
@@ -48,7 +48,7 @@
           </template>
         </el-table-column>
         <el-table-column
-          label="Status"
+          label="Состояние"
           width="130">
           <template slot-scope="scope">
             <el-tag
@@ -59,7 +59,7 @@
         </el-table-column>
         <el-table-column
           width="100"
-          label="Visible">
+          label="Видимое">
           <template slot-scope="scope">
             <el-switch v-model="scope.row.visible"
                        active-text=""
@@ -71,7 +71,7 @@
         <el-table-column
           fixed="right"
           width="250"
-          label="Operation">
+          label="Действие">
           <div slot-scope="scope">
             <icon-btn name="Edit" icon="edit" @click.native="goEdit(scope.row.id)"></icon-btn>
             <icon-btn name="Problem" icon="list-ol" @click.native="goContestProblemList(scope.row.id)"></icon-btn>

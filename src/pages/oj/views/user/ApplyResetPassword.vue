@@ -31,8 +31,8 @@
     </template>
     <template v-else>
       <Alert type="success" show-icon>
-        Success
-        <span slot="desc">Password reset mail has been sent to your email.</span>
+        Успешно
+        <span slot="desc">Письмо для сброса пароля было отправлено.</span>
       </Alert>
     </template>
   </Panel>

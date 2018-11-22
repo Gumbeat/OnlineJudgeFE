@@ -5,7 +5,7 @@
         <el-input
           v-model="keyword"
           prefix-icon="el-icon-search"
-          placeholder="Keywords">
+          placeholder="Ключевые слова">
         </el-input>
       </div>
       <el-table
@@ -22,7 +22,7 @@
         </el-table-column>
         <el-table-column
           width="150"
-          label="Display ID">
+          label="Отображаемый ID">
           <template slot-scope="{row}">
             <span v-show="!row.isEditing">{{row._id}}</span>
             <el-input v-show="row.isEditing" v-model="row._id"
@@ -33,7 +33,7 @@
         </el-table-column>
         <el-table-column
           prop="title"
-          label="Title">
+          label="Название">
           <template slot-scope="{row}">
             <span v-show="!row.isEditing">{{row.title}}</span>
             <el-input v-show="row.isEditing" v-model="row.title"
@@ -43,12 +43,12 @@
         </el-table-column>
         <el-table-column
           prop="created_by.username"
-          label="Author">
+          label="Автор">
         </el-table-column>
         <el-table-column
           width="200"
           prop="create_time"
-          label="Create Time">
+          label="Время создания">
           <template slot-scope="scope">
             {{scope.row.create_time | localtime }}
           </template>
@@ -56,7 +56,7 @@
         <el-table-column
           width="100"
           prop="visible"
-          label="Visible">
+          label="Видимый">
           <template slot-scope="scope">
             <el-switch v-model="scope.row.visible"
                        active-text=""
@@ -67,7 +67,7 @@
         </el-table-column>
         <el-table-column
           fixed="right"
-          label="Operation"
+          label="Действие"
           width="250">
           <div slot-scope="scope">
             <icon-btn name="Edit" icon="edit" @click.native="goEdit(scope.row.id)"></icon-btn>

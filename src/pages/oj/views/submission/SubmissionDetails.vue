@@ -8,10 +8,10 @@
             <pre>{{submission.statistic_info.err_info}}</pre>
           </template>
           <template v-else>
-            <span>Time: {{submission.statistic_info.time_cost | submissionTime}}</span>
-            <span>Memory: {{submission.statistic_info.memory_cost | submissionMemory}}</span>
-            <span>Lang: {{submission.language}}</span>
-            <span>Author: {{submission.username}}</span>
+            <span>Время: {{submission.statistic_info.time_cost | submissionTime}}</span>
+            <span>Память: {{submission.statistic_info.memory_cost | submissionMemory}}</span>
+            <span>Язык: {{submission.language}}</span>
+            <span>Автор: {{submission.username}}</span>
           </template>
         </div>
       </Alert>

@@ -31,12 +31,12 @@
     <Button type="primary"
             @click="resetPassword"
             class="btn" long
-            :loading="btnLoading">Reset Password
+            :loading="btnLoading">Сбросить пароль
     </Button>
     </template>
 
     <template v-else>
-      <Alert type="success">Your password has been reset.</Alert>
+      <Alert type="success">Ваш пароль был сброшен.</Alert>
     </template>
   </Panel>
 </template>

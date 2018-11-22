@@ -9,17 +9,17 @@
       </span>
       <el-table :data="data">
         <el-table-column
-          label="Last Modified">
+          label="Последнее изменение">
           <template slot-scope="{row}">
             {{row.create_time | timestampFormat }}
           </template>
         </el-table-column>
         <el-table-column
           prop="id"
-          label="Test Case ID">
+          label="ID теста">
         </el-table-column>
         <el-table-column
-          label="Option"
+          label="Действие"
           fixed="right"
           width="200">
           <template slot-scope="{row}">

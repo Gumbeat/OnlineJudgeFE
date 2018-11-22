@@ -7,27 +7,27 @@
         <Icon type="android-settings" size="20"></Icon>
         <div slot="content" id="switches">
           <p>
-            <span>Menu</span>
+            <span>Меню</span>
             <i-switch v-model="showMenu"></i-switch>
-            <span>Chart</span>
+            <span>График</span>
             <i-switch v-model="showChart"></i-switch>
           </p>
           <p>
-            <span>Auto Refresh(10s)</span>
+            <span>Автообновление(10с)</span>
             <i-switch :disabled="refreshDisabled" @on-change="handleAutoRefresh"></i-switch>
           </p>
           <template v-if="isContestAdmin">
             <p>
-              <span>RealName</span>
+              <span>Настоящее имя</span>
               <i-switch v-model="showRealName"></i-switch>
             </p>
             <p>
-              <span>Force Update</span>
+              <span>Принуждённое обновление</span>
               <i-switch :disabled="refreshDisabled" v-model="forceUpdate"></i-switch>
             </p>
           </template>
           <template>
-            <Button type="primary" size="small" @click="downloadRankCSV">download csv</Button>
+            <Button type="primary" size="small" @click="downloadRankCSV">скачать csv</Button>
           </template>
         </div>
       </Poptip>
