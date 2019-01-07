@@ -105,7 +105,7 @@
         dataRank: [],
         options: {
           title: {
-            text: 'Top 10 Teams',
+            text: 'Топ 10 команд',
             left: 'center'
           },
           tooltip: {

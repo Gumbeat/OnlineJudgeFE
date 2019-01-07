@@ -34,7 +34,7 @@
         try {
           this.text = this.renderTex(this.input)
         } catch (e) {
-          this.text = '<p style="text-align: center"><span style="color:red">Error Input</span></p>'
+          this.text = '<p style="text-align: center"><span style="color:red">Ошибка ввода</span></p>'
         }
       }
     }

@@ -42,7 +42,7 @@
             }
           },
           {
-            title: 'user',
+            title: 'пользователь',
             align: 'center',
             render: (h, params) => {
               return h('a', {
@@ -63,7 +63,7 @@
             }
           },
           {
-            title: 'mood',
+            title: 'настроение',
             align: 'center',
             key: 'mood'
           },
@@ -73,12 +73,12 @@
             key: 'accepted_number'
           },
           {
-            title: 'Total',
+            title: 'Всего',
             align: 'center',
             key: 'submission_number'
           },
           {
-            title: 'Rating',
+            title: 'Рейтинг',
             align: 'center',
             render: (h, params) => {
               return h('span', utils.getACRate(params.row.accepted_number, params.row.submission_number))

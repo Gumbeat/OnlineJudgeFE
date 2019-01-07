@@ -27,7 +27,7 @@
       }
     },
     mounted () {
-      Simditor.locale = 'en-US'
+      Simditor.locale = 'ru-Ru'
       this.editor = new Simditor({
         textarea: this.$refs.editor,
         toolbar: this.toolbar,
@@ -38,7 +38,7 @@
           params: null,
           fileKey: 'image',
           connectionCount: 3,
-          leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+          leaveConfirm: 'Идёт загрузка, вы уверены, что хотите покинуть эту страницу?'
         }
       })
       this.editor.on('valuechanged', (e, src) => {

@@ -103,7 +103,7 @@
     computed: {
       title () {
         if (this.listVisible) {
-          return this.isContest ? 'Contest Announcements' : 'Announcements'
+          return this.isContest ? 'Анонс соревнований' : 'Соревнования'
         } else {
           return this.announcement.title
         }

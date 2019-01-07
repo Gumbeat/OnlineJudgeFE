@@ -33,15 +33,15 @@
             width: 150
           },
           {
-            title: 'Title',
+            title: 'Название',
             key: 'title'
           },
           {
-            title: 'Total',
+            title: 'Всего',
             key: 'submission_number'
           },
           {
-            title: 'AC Rate',
+            title: 'Оценка AC',
             render: (h, params) => {
               return h('span', this.getACRate(params.row.accepted_number, params.row.submission_number))
             }
@@ -54,7 +54,7 @@
             width: 150
           },
           {
-            title: 'Title',
+            title: 'Название',
             key: 'title'
           }
         ]

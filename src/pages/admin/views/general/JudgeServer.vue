@@ -23,46 +23,46 @@
         </el-table-column>
         <el-table-column
           prop="status"
-          label="Status">
+          label="Статус">
           <template slot-scope="scope">
             <el-tag
               :type="scope.row.status === 'normal' ? 'success' : 'danger'">
-              {{ scope.row.status === 'normal' ? 'Normal' : 'Abnormal' }}
+              {{ scope.row.status === 'normal' ? 'Нормальный' : 'Ненормальный' }}
             </el-tag>
           </template>
         </el-table-column>
         <el-table-column
           prop="hostname"
-          label="Hostname">
+          label="Хост">
         </el-table-column>
         <el-table-column
           prop="task_number"
-          label="Task Number">
+          label="Количество задач">
         </el-table-column>
         <el-table-column
           prop="cpu_core"
-          label="CPU Core">
+          label="Ядро CPU">
         </el-table-column>
         <el-table-column
           prop="cpu_usage"
-          label="CPU Usage">
+          label="Использование CPU">
           <template slot-scope="scope">{{ scope.row.cpu_usage }}%</template>
         </el-table-column>
         <el-table-column
           prop="memory_usage"
-          label="Memory Usage">
+          label="Использование памяти">
           <template slot-scope="scope">{{ scope.row.memory_usage }}%</template>
         </el-table-column>
-        <el-table-column label="Disabled">
+        <el-table-column label="Отключено">
           <template slot-scope="{row}">
             <el-switch v-model="row.is_disabled" @change="handleDisabledSwitch(row.id, row.is_disabled)"></el-switch>
           </template>
         </el-table-column>
         <el-table-column
           fixed="right"
-          label="Options">
+          label="Действия">
           <template slot-scope="scope">
-            <icon-btn name="Delete" icon="trash" @click.native="deleteJudgeServer(scope.row.hostname)"></icon-btn>
+            <icon-btn name="Удалить" icon="trash" @click.native="deleteJudgeServer(scope.row.hostname)"></icon-btn>
           </template>
         </el-table-column>
       </el-table>
@@ -96,9 +96,9 @@
         })
       },
       deleteJudgeServer (hostname) {
-        this.$confirm('If you delete this judge server, it can\'t be used until next heartbeat', 'Warning', {
-          confirmButtonText: 'Delete',
-          cancelButtonText: 'Cancel',
+        this.$confirm('Если вы удалите сервер, будет плохо', 'Предупреждение', {
+          confirmButtonText: 'Удалить',
+          cancelButtonText: 'Отмена',
           type: 'warning'
         }).then(() => {
           api.deleteJudgeServer(hostname).then(res =>

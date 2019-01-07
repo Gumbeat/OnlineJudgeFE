@@ -62,12 +62,12 @@
             }
           },
           {
-            title: 'mood',
+            title: 'настроение',
             align: 'center',
             key: 'mood'
           },
           {
-            title: 'Score',
+            title: 'Счёт',
             align: 'center',
             key: 'total_score'
           },
@@ -77,12 +77,12 @@
             key: 'accepted_number'
           },
           {
-            title: 'Total',
+            title: 'Всего',
             align: 'center',
             key: 'submission_number'
           },
           {
-            title: 'Rating',
+            title: 'Рейтинг',
             align: 'center',
             render: (h, params) => {
               return h('span', utils.getACRate(params.row.accepted_number, params.row.submission_number))

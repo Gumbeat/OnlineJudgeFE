@@ -49,9 +49,9 @@
           <el-col :span="8">
             <el-form-item :label="$t('m.Difficulty')">
               <el-select class="difficulty-select" size="small" :placeholder="$t('m.Difficulty')" v-model="problem.difficulty">
-                <el-option label="Low" value="Low"></el-option>
-                <el-option label="Mid" value="Mid"></el-option>
-                <el-option label="High" value="High"></el-option>
+                <el-option label="Низкая" value="Low"></el-option>
+                <el-option label="Средняя" value="Mid"></el-option>
+                <el-option label="Высокая" value="High"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -89,7 +89,7 @@
                 @select="addTag"
                 :fetch-suggestions="querySearch">
               </el-autocomplete>
-              <el-button class="button-new-tag" v-else size="small" @click="inputVisible = true">+ New Tag</el-button>
+              <el-button class="button-new-tag" v-else size="small" @click="inputVisible = true">+ Новый тег</el-button>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -105,9 +105,9 @@
         </el-row>
         <div>
           <el-form-item v-for="(sample, index) in problem.samples" :key="'sample'+index">
-            <Accordion :title="'Sample' + (index + 1)">
+            <Accordion :title="'Пример' + (index + 1)">
               <el-button type="warning" size="small" icon="el-icon-delete" slot="header" @click="deleteSample(index)">
-                Delete
+                Удалить
               </el-button>
               <el-row :gutter="20">
                 <el-col :span="12">
@@ -252,10 +252,10 @@
     data () {
       return {
         rules: {
-          _id: {required: true, message: 'Display ID is required', trigger: 'blur'},
-          title: {required: true, message: 'Title is required', trigger: 'blur'},
-          input_description: {required: true, message: 'Input Description is required', trigger: 'blur'},
-          output_description: {required: true, message: 'Output Description is required', trigger: 'blur'}
+          _id: {required: true, message: 'Введите отображаемый ID', trigger: 'blur'},
+          title: {required: true, message: 'Введите название', trigger: 'blur'},
+          input_description: {required: true, message: 'Введите описание ввода', trigger: 'blur'},
+          output_description: {required: true, message: 'Введите описание вывода', trigger: 'blur'}
         },
         loadingCompile: false,
         mode: '',
@@ -299,7 +299,7 @@
           output_description: '',
           time_limit: 1000,
           memory_limit: 256,
-          difficulty: 'Low',
+          difficulty: 'Низкая',
           visible: true,
           tags: [],
           languages: [],
@@ -332,7 +332,7 @@
 
         // get problem after getting languages list to avoid find undefined value in `watch problem.languages`
         if (this.mode === 'edit') {
-          this.title = 'Edit Problem'
+          this.title = 'Изменить задачу'
           let funcName = {'edit-problem': 'getProblem', 'edit-contest-problem': 'getContestProblem'}[this.routeName]
           api[funcName](this.$route.params.problemId).then(problemRes => {
             let data = problemRes.data.data
@@ -344,7 +344,7 @@
             this.testCaseUploaded = true
           })
         } else {
-          this.title = 'Add Problem'
+          this.title = 'Добавить задачу'
           for (let item of allLanguage.languages) {
             this.problem.languages.push(item.name)
           }
@@ -385,9 +385,9 @@
     methods: {
       switchSpj () {
         if (this.testCaseUploaded) {
-          this.$confirm('If you change problem judge method, you need to re-upload test cases', 'Warning', {
-            confirmButtonText: 'Yes',
-            cancelButtonText: 'Cancel',
+          this.$confirm('Если вы измените метод оценки задачи, вам необходимо повторно загрузить тесты', 'Предупреждение', {
+            confirmButtonText: 'Хорошо',
+            cancelButtonText: 'Отмена',
             type: 'warning'
           }).then(() => {
             this.problem.spj = !this.problem.spj
@@ -447,7 +447,7 @@
         this.problem.test_case_id = response.data.id
       },
       uploadFailed () {
-        this.$error('Upload failed')
+        this.$error('Ошибка загрузки')
       },
       compileSPJ () {
         let data = {
@@ -465,7 +465,7 @@
           this.problem.spj_compile_ok = false
           const h = this.$createElement
           this.$msgbox({
-            title: 'Compile Error',
+            title: 'Ошибка компиляции',
             type: 'error',
             message: h('pre', err.data.data),
             showCancelButton: false,
@@ -476,26 +476,26 @@
       },
       submit () {
         if (!this.problem.samples.length) {
-          this.$error('Sample is required')
+          this.$error('Необходим образец')
           return
         }
         for (let sample of this.problem.samples) {
           if (!sample.input || !sample.output) {
-            this.$error('Sample input and output is required')
+            this.$error('Примеры ввода и вывода обязательны')
             return
           }
         }
         if (!this.problem.tags.length) {
-          this.error.tags = 'Please add at least one tag'
+          this.error.tags = 'Добавьте хотя бы один тег'
           this.$error(this.error.tags)
           return
         }
         if (this.problem.spj) {
           if (!this.problem.spj_code) {
-            this.error.spj = 'Spj code is required'
+            this.error.spj = 'Spj код обязателен'
             this.$error(this.error.spj)
           } else if (!this.problem.spj_compile_ok) {
-            this.error.spj = 'SPJ code has not been successfully compiled'
+            this.error.spj = 'SPJ код не удалось скомпилировать'
           }
           if (this.error.spj) {
             this.$error(this.error.spj)
@@ -503,12 +503,12 @@
           }
         }
         if (!this.problem.languages.length) {
-          this.error.languages = 'Please choose at least one language for problem'
+          this.error.languages = 'Укажите хотя бы один язык для решения задачи'
           this.$error(this.error.languages)
           return
         }
         if (!this.testCaseUploaded) {
-          this.error.testCase = 'Test case is not uploaded yet'
+          this.error.testCase = 'Тесты еще не загружены'
           this.$error(this.error.testCase)
           return
         }
@@ -516,11 +516,11 @@
           for (let item of this.problem.test_case_score) {
             try {
               if (parseInt(item.score) <= 0) {
-                this.$error('Invalid test case score')
+                this.$error('Некорректный результат теста')
                 return
               }
             } catch (e) {
-              this.$error('Test case score must be an integer')
+              this.$error('Результат теста должен быть числом')
               return
             }
           }

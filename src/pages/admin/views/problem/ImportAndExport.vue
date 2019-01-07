@@ -2,12 +2,12 @@
   <div>
     <div style="padding-bottom: 10px;">
     </div>
-    <panel title="Export Problems (beta)">
+    <panel title="Экспорт задач (Бета)">
       <div slot="header">
         <el-input
           v-model="keyword"
           prefix-icon="el-icon-search"
-          placeholder="Keywords">
+          placeholder="Ключевые слова">
         </el-input>
       </div>
       <el-table :data="problems"
@@ -22,21 +22,21 @@
           prop="id">
         </el-table-column>
         <el-table-column
-          label="DisplayID"
+          label="Отображаемый ID"
           width="200"
           prop="_id">
         </el-table-column>
         <el-table-column
-          label="Title"
+          label="Название"
           prop="title">
         </el-table-column>
         <el-table-column
           prop="created_by.username"
-          label="Author">
+          label="Автор">
         </el-table-column>
         <el-table-column
           prop="create_time"
-          label="Create Time">
+          label="Время создания">
           <template slot-scope="scope">
             {{scope.row.create_time | localtime }}
           </template>
@@ -45,7 +45,7 @@
 
       <div class="panel-options">
         <el-button type="primary" size="small" v-show="selected_problems.length"
-                   @click="exportProblems" icon="el-icon-fa-arrow-down">Export
+                   @click="exportProblems" icon="el-icon-fa-arrow-down">Экспорт
         </el-button>
         <el-pagination
           class="page"
@@ -56,7 +56,7 @@
         </el-pagination>
       </div>
     </panel>
-    <panel title="Import QDUOJ Problems (beta)">
+    <panel title="Импорт задач (Бета)">
       <el-upload
         ref="QDU"
         action="/api/admin/import_problem"
@@ -69,12 +69,12 @@
         :auto-upload="false"
         :on-success="uploadSucceeded"
         :on-error="uploadFailed">
-        <el-button size="small" type="primary" icon="el-icon-fa-upload" slot="trigger">Choose File</el-button>
-        <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload('QDU')">Upload</el-button>
+        <el-button size="small" type="primary" icon="el-icon-fa-upload" slot="trigger">Выберите файл</el-button>
+        <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload('QDU')">Загрузить</el-button>
       </el-upload>
     </panel>
 
-    <panel title="Import FPS Problems (beta)">
+    <panel title="Импорт FPS задач (Бета)">
       <el-upload
         ref="FPS"
         action="/api/admin/import_fps"
@@ -87,8 +87,8 @@
         :auto-upload="false"
         :on-success="uploadSucceeded"
         :on-error="uploadFailed">
-        <el-button size="small" type="primary" icon="el-icon-fa-upload" slot="trigger">Choose File</el-button>
-        <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload('FPS')">Upload</el-button>
+        <el-button size="small" type="primary" icon="el-icon-fa-upload" slot="trigger">Выбрать файл</el-button>
+        <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload('FPS')">Загрузить</el-button>
       </el-upload>
     </panel>
   </div>
@@ -154,12 +154,12 @@
         if (response.error) {
           this.$error(response.data)
         } else {
-          this.$success('Successfully imported ' + response.data.import_count + ' problems')
+          this.$success('Успешно импортированы ' + response.data.import_count + ' задачи')
           this.getProblems()
         }
       },
       uploadFailed () {
-        this.$error('Upload failed')
+        this.$error('Ошибка загрузки')
       }
     },
     watch: {

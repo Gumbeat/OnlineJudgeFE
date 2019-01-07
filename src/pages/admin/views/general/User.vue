@@ -6,11 +6,11 @@
           <el-col :span="8">
             <el-button v-show="selectedUsers.length"
                        type="warning" icon="el-icon-fa-trash"
-                       @click="deleteUsers(selectedUserIDs)">Delete
+                       @click="deleteUsers(selectedUserIDs)">Удалить
             </el-button>
           </el-col>
           <el-col :span="selectedUsers.length ? 16: 24">
-            <el-input v-model="keyword" prefix-icon="el-icon-search" placeholder="Keywords"></el-input>
+            <el-input v-model="keyword" prefix-icon="el-icon-search" placeholder="Ключевые слова"></el-input>
           </el-col>
         </el-row>
       </div>
@@ -25,34 +25,34 @@
 
         <el-table-column prop="id" label="ID"></el-table-column>
 
-        <el-table-column prop="username" label="Username"></el-table-column>
+        <el-table-column prop="username" label="Имя пользователя"></el-table-column>
 
-        <el-table-column prop="create_time" label="Create Time">
+        <el-table-column prop="create_time" label="Время создания">
           <template slot-scope="scope">
             {{scope.row.create_time | localtime }}
           </template>
         </el-table-column>
 
-        <el-table-column prop="last_login" label="Last Login">
+        <el-table-column prop="last_login" label="Последний вход">
           <template slot-scope="scope">
             {{scope.row.last_login | localtime }}
           </template>
         </el-table-column>
 
-        <el-table-column prop="real_name" label="Real Name"></el-table-column>
+        <el-table-column prop="real_name" label="Настоящее имя"></el-table-column>
 
         <el-table-column prop="email" label="Email"></el-table-column>
 
-        <el-table-column prop="admin_type" label="User Type">
+        <el-table-column prop="admin_type" label="Тип пользователя">
           <template slot-scope="scope">
             {{ scope.row.admin_type }}
           </template>
         </el-table-column>
 
-        <el-table-column fixed="right" label="Option" width="200">
+        <el-table-column fixed="right" label="Действия" width="200">
           <template slot-scope="{row}">
-            <icon-btn name="Edit" icon="edit" @click.native="openUserDialog(row.id)"></icon-btn>
-            <icon-btn name="Delete" icon="trash" @click.native="deleteUsers([row.id])"></icon-btn>
+            <icon-btn name="Изменить" icon="edit" @click.native="openUserDialog(row.id)"></icon-btn>
+            <icon-btn name="Удалить" icon="trash" @click.native="deleteUsers([row.id])"></icon-btn>
           </template>
         </el-table-column>
       </el-table>
@@ -70,8 +70,8 @@
     <Panel>
       <span slot="title">{{$t('m.Import_User')}}
         <el-popover placement="right" trigger="hover">
-          <p>Only support csv file without headers, check the <a
-            href="http://docs.onlinejudge.me/#/onlinejudge/guide/import_users">link</a> for details</p>
+          <p>Поддержка csv формата без заголовков, перейдите по <a
+            href="http://docs.onlinejudge.me/#/onlinejudge/guide/import_users">ссылке</a> для подробностей</p>
           <i slot="reference" class="el-icon-fa-question-circle import-user-icon"></i>
         </el-popover>
       </span>
@@ -80,16 +80,16 @@
                  :show-file-list="false"
                  accept=".csv"
                  :before-upload="handleUsersCSV">
-        <el-button size="small" icon="el-icon-fa-upload" type="primary">Choose File</el-button>
+        <el-button size="small" icon="el-icon-fa-upload" type="primary">Выбрать файл</el-button>
       </el-upload>
       <template v-else>
         <el-table :data="uploadUsersPage">
-          <el-table-column label="Username">
+          <el-table-column label="Имя пользователя">
             <template slot-scope="{row}">
               {{row[0]}}
             </template>
           </el-table-column>
-          <el-table-column label="Password">
+          <el-table-column label="Пароль">
             <template slot-scope="{row}">
               {{row[1]}}
             </template>
@@ -103,11 +103,11 @@
         <div class="panel-options">
           <el-button type="primary" size="small"
                      icon="el-icon-fa-upload"
-                     @click="handleUsersUpload">Import All
+                     @click="handleUsersUpload">Импортировать всё
           </el-button>
           <el-button type="warning" size="small"
                      icon="el-icon-fa-undo"
-                     @click="handleResetData">Reset Data
+                     @click="handleResetData">Сбросить данные
           </el-button>
           <el-pagination
             class="page"
@@ -124,39 +124,39 @@
       <el-form :model="formGenerateUser" ref="formGenerateUser">
         <el-row type="flex" justify="space-between">
           <el-col :span="4">
-            <el-form-item label="Prefix" prop="prefix">
-              <el-input v-model="formGenerateUser.prefix" placeholder="Prefix"></el-input>
+            <el-form-item label="Префикс" prop="prefix">
+              <el-input v-model="formGenerateUser.prefix" placeholder="Префикс"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="4">
-            <el-form-item label="Suffix" prop="suffix">
-              <el-input v-model="formGenerateUser.suffix" placeholder="Suffix"></el-input>
+            <el-form-item label="Суффикс" prop="suffix">
+              <el-input v-model="formGenerateUser.suffix" placeholder="Суффикс"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="4">
-            <el-form-item label="Start Number" prop="number_from" required>
+            <el-form-item label="Начальный номер" prop="number_from" required>
               <el-input-number v-model="formGenerateUser.number_from" style="width: 100%"></el-input-number>
             </el-form-item>
           </el-col>
           <el-col :span="4">
-            <el-form-item label="End Number" prop="number_to" required>
+            <el-form-item label="Конечный номер" prop="number_to" required>
               <el-input-number v-model="formGenerateUser.number_to" style="width: 100%"></el-input-number>
             </el-form-item>
           </el-col>
           <el-col :span="4">
-            <el-form-item label="Password Length" prop="password_length" required>
+            <el-form-item label="Длина пароля" prop="password_length" required>
               <el-input v-model="formGenerateUser.password_length"
-                        placeholder="Password Length"></el-input>
+                        placeholder="Длина пароля"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
 
         <el-form-item>
-          <el-button type="primary" @click="generateUser" icon="el-icon-fa-users" :loading="loadingGenerate">Generate & Export
+          <el-button type="primary" @click="generateUser" icon="el-icon-fa-users" :loading="loadingGenerate">Создать и экспортировать
           </el-button>
           <span class="userPreview" v-if="formGenerateUser.number_from && formGenerateUser.number_to &&
                                           formGenerateUser.number_from <= formGenerateUser.number_to">
-            The usernames will be {{formGenerateUser.prefix + formGenerateUser.number_from + formGenerateUser.suffix}},
+            Имена пользователей будут {{formGenerateUser.prefix + formGenerateUser.number_from + formGenerateUser.suffix}},
             <span v-if="formGenerateUser.number_from + 1 < formGenerateUser.number_to">
               {{formGenerateUser.prefix + (formGenerateUser.number_from + 1) + formGenerateUser.suffix + '...'}}
             </span>
@@ -194,18 +194,18 @@
           <el-col :span="12">
             <el-form-item :label="$t('m.User_Type')">
               <el-select v-model="user.admin_type">
-                <el-option label="Regular User" value="Regular User"></el-option>
-                <el-option label="Admin" value="Admin"></el-option>
-                <el-option label="Super Admin" value="Super Admin"></el-option>
+                <el-option label="Обычный пользователь" value="Regular User"></el-option>
+                <el-option label="Админ" value="Admin"></el-option>
+                <el-option label="Супер админ" value="Super Admin"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item :label="$t('m.Problem_Permission')">
               <el-select v-model="user.problem_permission" :disabled="user.admin_type!=='Admin'">
-                <el-option label="None" value="None"></el-option>
-                <el-option label="Own" value="Own"></el-option>
-                <el-option label="All" value="All"></el-option>
+                <el-option label="Нет" value="None"></el-option>
+                <el-option label="Владелец" value="Own"></el-option>
+                <el-option label="Все" value="All"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -220,7 +220,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="Open Api">
+            <el-form-item label="Открыть Api">
               <el-switch
                 v-model="user.open_api"
                 active-color="#13ce66"
@@ -240,7 +240,7 @@
         </el-row>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <cancel @click.native="showUserDialog = false">Cancel</cancel>
+        <cancel @click.native="showUserDialog = false">Отмена</cancel>
         <save @click.native="saveUser()"></save>
       </span>
     </el-dialog>
@@ -326,7 +326,7 @@
         })
       },
       deleteUsers (ids) {
-        this.$confirm('Sure to delete the user?', 'confirm', {
+        this.$confirm('Вы уверены, что хотите удалить пользователя?', 'Подтвердить', {
           type: 'warning'
         }).then(() => {
           api.deleteUsers(ids.join(',')).then(res => {
@@ -343,7 +343,7 @@
       generateUser () {
         this.$refs['formGenerateUser'].validate((valid) => {
           if (!valid) {
-            this.$error('Please validate the error fields')
+            this.$error('Проверьте правильность полей')
             return
           }
           this.loadingGenerate = true
@@ -352,7 +352,7 @@
             this.loadingGenerate = false
             let url = '/admin/generate_user?file_id=' + res.data.data.file_id
             utils.downloadFile(url).then(() => {
-              this.$alert('All users created successfully, the users sheets have downloaded to your disk.', 'Notice')
+              this.$alert('Все пользователи созданы успешно. Таблица загружена на локальный диск.', 'Уведомление')
             })
             this.getUserList(1)
           }).catch(() => {
@@ -368,7 +368,7 @@
             })
             let delta = results.data.length - data.length
             if (delta > 0) {
-              this.$warning(delta + ' users have been filtered due to empty value')
+              this.$warning(delta + ' пользователи были отфильтрованы из-за пустого значения')
             }
             this.uploadUsersCurrentPage = 1
             this.uploadUsers = data
