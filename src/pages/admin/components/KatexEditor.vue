@@ -1,6 +1,6 @@
 <template>
   <el-form>
-    <el-form-item label="Input">
+    <el-form-item label="Ввод">
       <el-input type="textarea" v-model="input" @change="changeInput" @keyup.enter.native="changeInput"></el-input>
     </el-form-item>
 

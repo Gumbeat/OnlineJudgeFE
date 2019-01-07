@@ -1,6 +1,6 @@
 <template>
   <panel shadow>
-    <div slot="title">ACM Helper</div>
+    <div slot="title">ACM помощник</div>
     <div slot="extra">
       <ul class="filter">
         <li>
@@ -8,7 +8,7 @@
           <i-switch style="margin-left: 5px;" @on-change="handleAutoRefresh"></i-switch>
         </li>
         <li>
-          <Button type="info" @click="getACInfo">Refresh</Button>
+          <Button type="info" @click="getACInfo">Обновить</Button>
         </li>
       </ul>
     </div>

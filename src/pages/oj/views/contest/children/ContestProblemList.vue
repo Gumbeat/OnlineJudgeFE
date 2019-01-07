@@ -6,12 +6,12 @@
              :columns="ACMTableColumns"
              :data="problems"
              @on-row-click="goContestProblem"
-             no-data-text="No Problems"></Table>
+             no-data-text="Нет задач"></Table>
       <Table v-else
              :data="problems"
              :columns="OITableColumns"
              @on-row-click="goContestProblem"
-             no-data-text="No Problems"></Table>
+             no-data-text="Нет задач"></Table>
     </Panel>
   </div>
 </template>
