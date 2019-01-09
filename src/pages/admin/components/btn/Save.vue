@@ -1,5 +1,5 @@
 <template>
-  <el-button type="primary">Сохранить</el-button>
+  <el-button type="primary">Save</el-button>
 </template>
 <script>
   export default{

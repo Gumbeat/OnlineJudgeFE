@@ -3,10 +3,10 @@
 </template>
 
 <script>
-  import Simditor from 'simditor'
-  import 'simditor/styles/simditor.css'
-  import 'simditor-markdown'
-  import 'simditor-markdown/styles/simditor-markdown.css'
+  import Simditor from 'tar-simditor'
+  import 'tar-simditor/styles/simditor.css'
+  import 'tar-simditor-markdown'
+  import 'tar-simditor-markdown/styles/simditor-markdown.css'
 
   export default {
     name: 'Simditor',
@@ -27,7 +27,7 @@
       }
     },
     mounted () {
-      Simditor.locale = 'ru-Ru'
+      Simditor.locale = 'en-US'
       this.editor = new Simditor({
         textarea: this.$refs.editor,
         toolbar: this.toolbar,
@@ -38,7 +38,7 @@
           params: null,
           fileKey: 'image',
           connectionCount: 3,
-          leaveConfirm: 'Идёт загрузка, вы уверены, что хотите покинуть эту страницу?'
+          leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
         }
       })
       this.editor.on('valuechanged', (e, src) => {

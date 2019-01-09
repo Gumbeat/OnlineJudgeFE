@@ -15,16 +15,16 @@
         <div class="last-info">
           <p class="last-info-title">{{$t('m.Last_Login')}}</p>
           <el-form label-width="80px" class="last-info-body">
-            <el-form-item label="Время:">
+            <el-form-item label="Time:">
               <span>{{session.last_activity | localtime}}</span>
             </el-form-item>
             <el-form-item label="IP:">
               <span>{{session.ip}}</span>
             </el-form-item>
-            <el-form-item label="ОС">
+            <el-form-item label="OS">
               <span>{{os}}</span>
             </el-form-item>
-            <el-form-item label="Броузер:">
+            <el-form-item label="Browser:">
               <span>{{browser}}</span>
             </el-form-item>
           </el-form>
@@ -52,19 +52,19 @@
 
     <el-col :md="14" :lg="16" v-if="isSuperAdmin">
       <div class="info-container">
-        <info-card color="#909399" icon="el-icon-fa-users" message="Количество пользователей" iconSize="30px" class="info-item"
+        <info-card color="#909399" icon="el-icon-fa-users" message="Total Users" iconSize="30px" class="info-item"
                    :value="infoData.user_count"></info-card>
-        <info-card color="#67C23A" icon="el-icon-fa-list" message="Решений за сегодня" class="info-item"
+        <info-card color="#67C23A" icon="el-icon-fa-list" message="Today Submissions" class="info-item"
                    :value="infoData.today_submission_count"></info-card>
-        <info-card color="#409EFF" icon="el-icon-fa-trophy" message="Недавние соревнования" class="info-item"
+        <info-card color="#409EFF" icon="el-icon-fa-trophy" message="Recent Contests" class="info-item"
                    :value="infoData.recent_contest_count"></info-card>
       </div>
       <panel style="margin-top: 5px">
-        <span slot="title" v-loading="loadingReleases">Список нововведений
+        <span slot="title" v-loading="loadingReleases">Release Notes
         <el-popover placement="right" trigger="hover">
           <i slot="reference" class="el-icon-fa-question-circle import-user-icon"></i>
-          <p>Пожалуйста, обновитесь до последней версии, чтобы пользоваться новыми фичами. </p>
-          <p>Ссылка: <a href="http://docs.onlinejudge.me/#/onlinejudge/guide/upgrade" target="_blank">
+          <p>Please upgrade to the latest version to enjoy the new features. </p>
+          <p>Reference: <a href="http://docs.onlinejudge.me/#/onlinejudge/guide/upgrade" target="_blank">
           http://docs.onlinejudge.me/#/onlinejudge/guide/upgrade</a>
           </p>
         </el-popover>
@@ -74,12 +74,12 @@
           <el-collapse-item :name="index+1">
             <template slot="title">
               <div v-if="release.new_version">{{release.title}}
-                <el-tag size="mini" type="success">Новая версия</el-tag>
+                <el-tag size="mini" type="success">New Version</el-tag>
               </div>
               <span v-else>{{release.title}}</span>
             </template>
-            <p>Уровень: {{release.level}}</p>
-            <p>Подробности: </p>
+            <p>Level: {{release.level}}</p>
+            <p>Details: </p>
             <div class="release-body">
               <ul v-for="detail in release.details" :key="detail">
                 <li v-html="detail"></li>
@@ -172,12 +172,12 @@
         if (b.name && b.version) {
           return b.name + ' ' + b.version
         } else {
-          return 'Неизвестно'
+          return 'Unknown'
         }
       },
       os () {
         let b = browserDetector(this.session.user_agent)
-        return b.os ? b.os : 'Неизвестно'
+        return b.os ? b.os : 'Unknown'
       }
     }
   }

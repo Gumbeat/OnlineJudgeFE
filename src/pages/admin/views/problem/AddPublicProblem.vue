@@ -12,21 +12,21 @@
         prop="id">
       </el-table-column>
       <el-table-column
-        label="Отображаемый ID"
+        label="DisplayID"
         width="200"
         prop="_id">
       </el-table-column>
       <el-table-column
-        label="Название"
+        label="Title"
         prop="title">
       </el-table-column>
       <el-table-column
-        label="Действия"
+        label="option"
         align="center"
         width="100"
         fixed="right">
         <template slot-scope="{row}">
-          <icon-btn icon="plus" name="Добавить задачу"
+          <icon-btn icon="plus" name="Add the problem"
                     @click.native="handleAddProblem(row.id)"></icon-btn>
         </template>
       </el-table-column>
@@ -82,7 +82,7 @@
         })
       },
       handleAddProblem (problemID) {
-        this.$prompt('Пожалуйста, введите отображаемый ID для задачи', 'Подтвердить').then(({value}) => {
+        this.$prompt('Please input display id for the contest problem', 'confirm').then(({value}) => {
           let data = {
             problem_id: problemID,
             contest_id: this.contestID,

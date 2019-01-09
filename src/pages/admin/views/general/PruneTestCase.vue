@@ -3,27 +3,27 @@
     <panel>
       <span slot="title">{{$t('m.Test_Case_Prune_Test_Case')}}
         <el-popover placement="right" trigger="hover">
-          Эти тесты не относятся ни к одной задаче. Вы можете их удалить.
+          These test cases are not owned by any problem, you can clean them safely.
           <i slot="reference" class="el-icon-fa-question-circle import-user-icon"></i>
         </el-popover>
       </span>
       <el-table :data="data">
         <el-table-column
-          label="Время последнего изменения">
+          label="Last Modified">
           <template slot-scope="{row}">
             {{row.create_time | timestampFormat }}
           </template>
         </el-table-column>
         <el-table-column
           prop="id"
-          label="Тест ID">
+          label="Test Case ID">
         </el-table-column>
         <el-table-column
-          label="Действия"
+          label="Option"
           fixed="right"
           width="200">
           <template slot-scope="{row}">
-            <icon-btn name="Удалить" icon="trash" @click.native="deleteTestCase(row.id)"></icon-btn>
+            <icon-btn name="Delete" icon="trash" @click.native="deleteTestCase(row.id)"></icon-btn>
           </template>
         </el-table-column>
       </el-table>
@@ -31,7 +31,7 @@
         <el-button type="warning" size="small"
                    :loading="loading"
                    icon="el-icon-fa-trash"
-                   @click="deleteTestCase()">Удалить всё
+                   @click="deleteTestCase()">Delete All
         </el-button>
       </div>
     </panel>

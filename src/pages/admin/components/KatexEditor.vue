@@ -1,6 +1,6 @@
 <template>
   <el-form>
-    <el-form-item label="Ввод">
+    <el-form-item label="Input">
       <el-input type="textarea" v-model="input" @change="changeInput" @keyup.enter.native="changeInput"></el-input>
     </el-form-item>
 
@@ -34,7 +34,7 @@
         try {
           this.text = this.renderTex(this.input)
         } catch (e) {
-          this.text = '<p style="text-align: center"><span style="color:red">Ошибка ввода</span></p>'
+          this.text = '<p style="text-align: center"><span style="color:red">Error Input</span></p>'
         }
       }
     }

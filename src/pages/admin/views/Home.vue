@@ -9,7 +9,7 @@
       <el-dropdown @command="handleCommand">
         <span>{{user.username}}<i class="el-icon-caret-bottom el-icon--right"></i></span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="logout">Выйти</el-dropdown-item>
+          <el-dropdown-item command="logout">Logout</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -18,11 +18,11 @@
         <router-view></router-view>
       </transition>
       <div class="footer">
-        Версия сборки: {{ version }}
+        Build Version: {{ version }}
       </div>
     </div>
 
-    <el-dialog title="Редактор Latex" :visible.sync="katexVisible">
+    <el-dialog title="Latex Editor" :visible.sync="katexVisible">
       <KatexEditor></KatexEditor>
     </el-dialog>
   </div>

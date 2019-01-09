@@ -4,7 +4,7 @@
       <div class="list">
         <el-table
           v-loading="loading"
-          element-loading-text="Загрузка"
+          element-loading-text="loading"
           ref="table"
           :data="announcementList"
           style="width: 100%">
@@ -15,30 +15,30 @@
           </el-table-column>
           <el-table-column
             prop="title"
-            label="Название">
+            label="Title">
           </el-table-column>
           <el-table-column
             prop="create_time"
-            label="Время создания">
+            label="CreateTime">
             <template slot-scope="scope">
               {{ scope.row.create_time | localtime }}
             </template>
           </el-table-column>
           <el-table-column
             prop="last_update_time"
-            label="Время последнего изменения">
+            label="LastUpdateTime">
             <template slot-scope="scope">
               {{scope.row.last_update_time | localtime }}
             </template>
           </el-table-column>
           <el-table-column
             prop="created_by.username"
-            label="Автор">
+            label="Author">
           </el-table-column>
           <el-table-column
             width="100"
             prop="visible"
-            label="Видимое">
+            label="Visible">
             <template slot-scope="scope">
               <el-switch v-model="scope.row.visible"
                          active-text=""
@@ -49,16 +49,16 @@
           </el-table-column>
           <el-table-column
             fixed="right"
-            label="Действия"
+            label="Option"
             width="200">
             <div slot-scope="scope">
-              <icon-btn name="Изменить" icon="edit" @click.native="openAnnouncementDialog(scope.row.id)"></icon-btn>
-              <icon-btn name="Удалить" icon="trash" @click.native="deleteAnnouncement(scope.row.id)"></icon-btn>
+              <icon-btn name="Edit" icon="edit" @click.native="openAnnouncementDialog(scope.row.id)"></icon-btn>
+              <icon-btn name="Delete" icon="trash" @click.native="deleteAnnouncement(scope.row.id)"></icon-btn>
             </div>
           </el-table-column>
         </el-table>
         <div class="panel-options">
-          <el-button type="primary" size="small" @click="openAnnouncementDialog(null)" icon="el-icon-plus">Создать</el-button>
+          <el-button type="primary" size="small" @click="openAnnouncementDialog(null)" icon="el-icon-plus">Create</el-button>
           <el-pagination
             v-if="!contestID"
             class="page"
@@ -130,7 +130,7 @@
           content: ''
         },
         // 对话框标题
-        announcementDialogTitle: 'Изменить объявление',
+        announcementDialogTitle: 'Edit Announcement',
         // 是否显示loading
         loading: true,
         // 当前页码
@@ -212,9 +212,9 @@
       },
       // 删除公告
       deleteAnnouncement (announcementId) {
-        this.$confirm('Вы уверены, что хотите удалить это объявление?', 'Предупреждение', {
-          confirmButtonText: 'Удалить',
-          cancelButtonText: 'Отмена',
+        this.$confirm('Are you sure you want to delete this announcement?', 'Warning', {
+          confirmButtonText: 'Delete',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           this.loading = true
@@ -231,7 +231,7 @@
         this.showEditAnnouncementDialog = true
         if (id !== null) {
           this.currentAnnouncementId = id
-          this.announcementDialogTitle = 'Изменить объявление'
+          this.announcementDialogTitle = 'Edit Announcement'
           this.announcementList.find(item => {
             if (item.id === this.currentAnnouncementId) {
               this.announcement.title = item.title
@@ -241,7 +241,7 @@
             }
           })
         } else {
-          this.announcementDialogTitle = 'Создать объявление'
+          this.announcementDialogTitle = 'Create Announcement'
           this.announcement.title = ''
           this.announcement.visible = true
           this.announcement.content = ''

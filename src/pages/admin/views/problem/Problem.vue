@@ -37,21 +37,21 @@
         </el-row>
         <el-row :gutter="20">
           <el-col :span="8">
-            <el-form-item :label="$t('m.Time_Limit')" required>
+            <el-form-item :label="$t('m.Time_Limit') + ' (ms)' " required>
               <el-input type="Number" :placeholder="$t('m.Time_Limit')" v-model="problem.time_limit"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item :label="$t('m.Memory_limit')" required>
+            <el-form-item :label="$t('m.Memory_limit') + ' (MB)' " required>
               <el-input type="Number" :placeholder="$t('m.Memory_limit')" v-model="problem.memory_limit"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item :label="$t('m.Difficulty')">
               <el-select class="difficulty-select" size="small" :placeholder="$t('m.Difficulty')" v-model="problem.difficulty">
-                <el-option label="Низкая" value="Low"></el-option>
-                <el-option label="Средняя" value="Mid"></el-option>
-                <el-option label="Высокая" value="High"></el-option>
+                <el-option label="Low" value="Low"></el-option>
+                <el-option label="Mid" value="Mid"></el-option>
+                <el-option label="High" value="High"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -89,7 +89,7 @@
                 @select="addTag"
                 :fetch-suggestions="querySearch">
               </el-autocomplete>
-              <el-button class="button-new-tag" v-else size="small" @click="inputVisible = true">+ Новый тег</el-button>
+              <el-button class="button-new-tag" v-else size="small" @click="inputVisible = true">+ New Tag</el-button>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -105,9 +105,9 @@
         </el-row>
         <div>
           <el-form-item v-for="(sample, index) in problem.samples" :key="'sample'+index">
-            <Accordion :title="'Пример' + (index + 1)">
+            <Accordion :title="'Sample' + (index + 1)">
               <el-button type="warning" size="small" icon="el-icon-delete" slot="header" @click="deleteSample(index)">
-                Удалить
+                Delete
               </el-button>
               <el-row :gutter="20">
                 <el-col :span="12">
@@ -134,13 +134,13 @@
             </Accordion>
           </el-form-item>
         </div>
-        <el-form-item style="margin-top: 20px" :label="$t('m.Hint')">
-          <Simditor v-model="problem.hint" placeholder=""></Simditor>
-        </el-form-item>
         <div class="add-sample-btn">
           <button type="button" class="add-samples" @click="addSample()"><i class="el-icon-plus"></i>{{$t('m.Add_Sample')}}
           </button>
         </div>
+        <el-form-item style="margin-top: 20px" :label="$t('m.Hint')">
+          <Simditor v-model="problem.hint" placeholder=""></Simditor>
+        </el-form-item>
         <el-form-item :label="$t('m.Code_Template')">
           <el-row>
             <el-col :span="24" v-for="(v, k) in template" :key="'template'+k">
@@ -252,10 +252,10 @@
     data () {
       return {
         rules: {
-          _id: {required: true, message: 'Введите отображаемый ID', trigger: 'blur'},
-          title: {required: true, message: 'Введите название', trigger: 'blur'},
-          input_description: {required: true, message: 'Введите описание ввода', trigger: 'blur'},
-          output_description: {required: true, message: 'Введите описание вывода', trigger: 'blur'}
+          _id: {required: true, message: 'Display ID is required', trigger: 'blur'},
+          title: {required: true, message: 'Title is required', trigger: 'blur'},
+          input_description: {required: true, message: 'Input Description is required', trigger: 'blur'},
+          output_description: {required: true, message: 'Output Description is required', trigger: 'blur'}
         },
         loadingCompile: false,
         mode: '',
@@ -299,7 +299,7 @@
           output_description: '',
           time_limit: 1000,
           memory_limit: 256,
-          difficulty: 'Низкая',
+          difficulty: 'Low',
           visible: true,
           tags: [],
           languages: [],
@@ -332,7 +332,7 @@
 
         // get problem after getting languages list to avoid find undefined value in `watch problem.languages`
         if (this.mode === 'edit') {
-          this.title = 'Изменить задачу'
+          this.title = 'Edit Problem'
           let funcName = {'edit-problem': 'getProblem', 'edit-contest-problem': 'getContestProblem'}[this.routeName]
           api[funcName](this.$route.params.problemId).then(problemRes => {
             let data = problemRes.data.data
@@ -344,7 +344,7 @@
             this.testCaseUploaded = true
           })
         } else {
-          this.title = 'Добавить задачу'
+          this.title = 'Add Problem'
           for (let item of allLanguage.languages) {
             this.problem.languages.push(item.name)
           }
@@ -385,9 +385,9 @@
     methods: {
       switchSpj () {
         if (this.testCaseUploaded) {
-          this.$confirm('Если вы измените метод оценки задачи, вам необходимо повторно загрузить тесты', 'Предупреждение', {
-            confirmButtonText: 'Хорошо',
-            cancelButtonText: 'Отмена',
+          this.$confirm('If you change problem judge method, you need to re-upload test cases', 'Warning', {
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'Cancel',
             type: 'warning'
           }).then(() => {
             this.problem.spj = !this.problem.spj
@@ -447,7 +447,7 @@
         this.problem.test_case_id = response.data.id
       },
       uploadFailed () {
-        this.$error('Ошибка загрузки')
+        this.$error('Upload failed')
       },
       compileSPJ () {
         let data = {
@@ -465,7 +465,7 @@
           this.problem.spj_compile_ok = false
           const h = this.$createElement
           this.$msgbox({
-            title: 'Ошибка компиляции',
+            title: 'Compile Error',
             type: 'error',
             message: h('pre', err.data.data),
             showCancelButton: false,
@@ -476,26 +476,26 @@
       },
       submit () {
         if (!this.problem.samples.length) {
-          this.$error('Необходим образец')
+          this.$error('Sample is required')
           return
         }
         for (let sample of this.problem.samples) {
           if (!sample.input || !sample.output) {
-            this.$error('Примеры ввода и вывода обязательны')
+            this.$error('Sample input and output is required')
             return
           }
         }
         if (!this.problem.tags.length) {
-          this.error.tags = 'Добавьте хотя бы один тег'
+          this.error.tags = 'Please add at least one tag'
           this.$error(this.error.tags)
           return
         }
         if (this.problem.spj) {
           if (!this.problem.spj_code) {
-            this.error.spj = 'Spj код обязателен'
+            this.error.spj = 'Spj code is required'
             this.$error(this.error.spj)
           } else if (!this.problem.spj_compile_ok) {
-            this.error.spj = 'SPJ код не удалось скомпилировать'
+            this.error.spj = 'SPJ code has not been successfully compiled'
           }
           if (this.error.spj) {
             this.$error(this.error.spj)
@@ -503,12 +503,12 @@
           }
         }
         if (!this.problem.languages.length) {
-          this.error.languages = 'Укажите хотя бы один язык для решения задачи'
+          this.error.languages = 'Please choose at least one language for problem'
           this.$error(this.error.languages)
           return
         }
         if (!this.testCaseUploaded) {
-          this.error.testCase = 'Тесты еще не загружены'
+          this.error.testCase = 'Test case is not uploaded yet'
           this.$error(this.error.testCase)
           return
         }
@@ -516,11 +516,11 @@
           for (let item of this.problem.test_case_score) {
             try {
               if (parseInt(item.score) <= 0) {
-                this.$error('Некорректный результат теста')
+                this.$error('Invalid test case score')
                 return
               }
             } catch (e) {
-              this.$error('Результат теста должен быть числом')
+              this.$error('Test case score must be an integer')
               return
             }
           }
