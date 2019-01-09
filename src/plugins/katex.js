@@ -23,7 +23,6 @@ function render (el, binding) {
   }
   Object.assign(options, defaultOptions)
   renderMathInElement(el, options)
-
 }
 
 export default {

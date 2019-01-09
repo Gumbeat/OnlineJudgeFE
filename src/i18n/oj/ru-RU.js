@@ -102,4 +102,4 @@ export const m = {
   UserHomeScore: 'Счёт',
   List_Solved_Problems: 'Список решенных задач',
   UserHomeIntro: 'Лень переборола желание участвовать в олимпиаде.'
-};
+}
