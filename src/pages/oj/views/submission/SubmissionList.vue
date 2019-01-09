@@ -27,7 +27,7 @@
               </i-switch>
             </li>
             <li>
-              <Input v-model="formFilter.username" placeholder="Search Author" @on-enter="handleQueryChange"/>
+              <Input v-model="formFilter.username" placeholder="Поиск автора" @on-enter="handleQueryChange"/>
             </li>
 
             <li>

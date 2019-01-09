@@ -11,7 +11,7 @@
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
-                <Dropdown-item name="">All</Dropdown-item>
+                <Dropdown-item name="">Все</Dropdown-item>
                 <Dropdown-item name="OI">OI</Dropdown-item>
                 <Dropdown-item name="ACM">ACM</Dropdown-item>
               </Dropdown-menu>

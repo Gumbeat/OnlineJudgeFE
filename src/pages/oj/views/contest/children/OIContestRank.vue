@@ -86,7 +86,7 @@
             }
           },
           {
-            title: 'Total Score',
+            title: 'Общий счёт',
             align: 'center',
             render: (h, params) => {
               return h('a', {

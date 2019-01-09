@@ -2,7 +2,7 @@
   <Row type="flex" :gutter="18">
     <Col :span=19>
     <Panel shadow>
-      <div slot="title">Problem List</div>
+      <div slot="title">Список задач</div>
       <div slot="extra">
         <ul class="filter">
           <li>
@@ -34,7 +34,7 @@
           <li>
             <Button type="info" @click="onReset">
               <Icon type="refresh"></Icon>
-              Reset
+              Обновить
             </Button>
           </li>
         </ul>
@@ -51,7 +51,7 @@
 
     <Col :span="5">
     <Panel :padding="10">
-      <div slot="title" class="taglist-title">Tags</div>
+      <div slot="title" class="taglist-title">Теги</div>
       <Button v-for="tag in tagList"
               :key="tag.name"
               @click="filterByTag(tag.name)"

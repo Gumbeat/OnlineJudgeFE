@@ -81,7 +81,7 @@
             </Select>
           </FormItem>
           <Form-item>
-            <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">Save All</Button>
+            <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">Сохранить всё</Button>
           </Form-item>
         </Col>
 
