@@ -33,7 +33,7 @@
             <Poptip v-if="refreshVisible" trigger="hover" placement="right-start">
               <Icon type="ios-help-outline"></Icon>
               <div slot="content">
-                <p> Если вы обнаружите, что ID следующей задачи не найдено, <br> попробуйте нажать на эту кнопку.</p>
+                <p>If you find the following problem id does not exist,<br> try to click the button.</p>
                 <Button type="info" @click="freshProblemDisplayID">regenerate</Button>
               </div>
             </Poptip>

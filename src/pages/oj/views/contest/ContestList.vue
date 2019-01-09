@@ -11,7 +11,7 @@
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
-                <Dropdown-item name="">Все</Dropdown-item>
+                <Dropdown-item name="">All</Dropdown-item>
                 <Dropdown-item name="OI">OI</Dropdown-item>
                 <Dropdown-item name="ACM">ACM</Dropdown-item>
               </Dropdown-menu>
@@ -32,7 +32,7 @@
           </li>
           <li>
             <Input id="keyword" @on-enter="changeRoute" @on-click="changeRoute" v-model="query.keyword"
-                   icon="ios-search-strong" placeholder="Ключевое слово"/>
+                   icon="ios-search-strong" placeholder="Keyword"/>
           </li>
         </ul>
       </div>

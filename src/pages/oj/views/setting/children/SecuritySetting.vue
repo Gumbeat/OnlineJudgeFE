@@ -14,13 +14,13 @@
             </Button>
           </div>
           <Form :label-width="100">
-            <FormItem label="ОС :" class="item">
+            <FormItem label="OS :" class="item">
               {{session.user_agent | platform}}
             </FormItem>
-            <FormItem label="Браузер :" class="item">
+            <FormItem label="Browser :" class="item">
               {{session.user_agent | browser}}
             </FormItem>
-            <FormItem label="Последнее действие :" class="item">
+            <FormItem label="Last Activity :" class="item">
               {{session.last_activity | localtime }}
             </FormItem>
           </Form>

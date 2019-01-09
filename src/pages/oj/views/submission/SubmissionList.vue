@@ -22,12 +22,12 @@
 
             <li>
               <i-switch size="large" v-model="formFilter.myself" @on-change="handleQueryChange">
-                <span slot="open">Моё</span>
-                <span slot="close">Всё</span>
+                <span slot="open">Mine</span>
+                <span slot="close">All</span>
               </i-switch>
             </li>
             <li>
-              <Input v-model="formFilter.username" placeholder="Поиск автора" @on-enter="handleQueryChange"/>
+              <Input v-model="formFilter.username" placeholder="Search Author" @on-enter="handleQueryChange"/>
             </li>
 
             <li>
@@ -64,7 +64,7 @@
         },
         columns: [
           {
-            title: 'Когда',
+            title: 'When',
             align: 'center',
             render: (h, params) => {
               return h('span', time.utcToLocal(params.row.create_time))
@@ -92,7 +92,7 @@
             }
           },
           {
-            title: 'Состояние',
+            title: 'Status',
             align: 'center',
             render: (h, params) => {
               return h('Tag', {
@@ -103,7 +103,7 @@
             }
           },
           {
-            title: 'Задача',
+            title: 'Problem',
             align: 'center',
             render: (h, params) => {
               return h('span',
@@ -130,21 +130,21 @@
             }
           },
           {
-            title: 'Время',
+            title: 'Time',
             align: 'center',
             render: (h, params) => {
               return h('span', utils.submissionTimeFormat(params.row.statistic_info.time_cost))
             }
           },
           {
-            title: 'Память',
+            title: 'Memory',
             align: 'center',
             render: (h, params) => {
               return h('span', utils.submissionMemoryFormat(params.row.statistic_info.memory_cost))
             }
           },
           {
-            title: 'Язык',
+            title: 'Language',
             align: 'center',
             key: 'language'
           },
@@ -251,7 +251,7 @@
           return
         }
         const judgeColumn = {
-          title: 'Действие',
+          title: 'Option',
           fixed: 'right',
           align: 'center',
           width: 90,
@@ -297,15 +297,15 @@
       ...mapGetters(['isAuthenticated', 'user']),
       title () {
         if (!this.contestID) {
-          return 'Состояние'
+          return 'Status'
         } else if (this.problemID) {
-          return 'Решения задачи'
+          return 'Problem Submissions'
         } else {
-          return 'Решения'
+          return 'Submissions'
         }
       },
       status () {
-        return this.formFilter.result === '' ? 'Состояние' : JUDGE_STATUS[this.formFilter.result].name
+        return this.formFilter.result === '' ? 'Status' : JUDGE_STATUS[this.formFilter.result].name
       },
       rejudgeColumnVisible () {
         return !this.contestID && this.user.admin_type === USER_TYPE.SUPER_ADMIN

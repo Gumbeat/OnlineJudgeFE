@@ -9,7 +9,7 @@
               :before-upload="handleSelectFile">
         <div style="padding: 30px 0">
           <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-          <p>Перетащите файл, или нажмите для выбора вручную</p>
+          <p>Drop here, or click to select manually</p>
         </div>
       </Upload>
     </template>
@@ -54,11 +54,11 @@
     <Modal v-model="uploadModalVisible"
            title="Upload the avatar">
       <div class="upload-modal">
-        <p class="notice">Ваш аватар станет таким:</p>
+        <p class="notice">Your avatar will be set to:</p>
         <img :src="uploadImgSrc"/>
       </div>
       <div slot="footer">
-        <Button @click="uploadAvatar" :loading="loadingUploadBtn">загрузить</Button>
+        <Button @click="uploadAvatar" :loading="loadingUploadBtn">upload</Button>
       </div>
     </Modal>
 
@@ -66,30 +66,30 @@
     <Form ref="formProfile" :model="formProfile">
       <Row type="flex" :gutter="30" justify="space-around">
         <Col :span="11">
-          <FormItem label="Настоящее имя">
+          <FormItem label="Real Name">
             <Input v-model="formProfile.real_name"/>
           </FormItem>
-          <Form-item label="Школа">
+          <Form-item label="School">
             <Input v-model="formProfile.school"/>
           </Form-item>
-          <Form-item label="Университет">
+          <Form-item label="Major">
             <Input v-model="formProfile.major"/>
           </Form-item>
-          <FormItem label="Язык">
+          <FormItem label="Language">
             <Select v-model="formProfile.language">
               <Option v-for="lang in languages" :key="lang.value" :value="lang.value">{{lang.label}}</Option>
             </Select>
           </FormItem>
           <Form-item>
-            <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">Сохранить всё</Button>
+            <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">Save All</Button>
           </Form-item>
         </Col>
 
         <Col :span="11">
-          <Form-item label="Настроение">
+          <Form-item label="Mood">
             <Input v-model="formProfile.mood"/>
           </Form-item>
-          <Form-item label="Блог">
+          <Form-item label="Blog">
             <Input v-model="formProfile.blog"/>
           </Form-item>
           <Form-item label="Github">

@@ -7,21 +7,21 @@
         <Icon type="android-settings" size="20"></Icon>
         <div slot="content" id="switches">
           <p>
-            <span>Меню</span>
+            <span>Menu</span>
             <i-switch v-model="showMenu"></i-switch>
-            <span>График</span>
+            <span>Chart</span>
             <i-switch v-model="showChart"></i-switch>
           </p>
           <p>
-            <span>Автообнобление(10с)</span>
+            <span>Auto Refresh(10s)</span>
             <i-switch :disabled="refreshDisabled" @on-change="handleAutoRefresh"></i-switch>
           </p>
           <p v-if="isContestAdmin">
-            <span>Настоящее имя</span>
+            <span>RealName</span>
             <i-switch v-model="showRealName"></i-switch>
           </p>
           <p>
-            <Button type="primary" size="small" @click="downloadRankCSV">скачать csv</Button>
+            <Button type="primary" size="small" @click="downloadRankCSV">download csv</Button>
           </p>
         </div>
       </Poptip>
@@ -86,7 +86,7 @@
             }
           },
           {
-            title: 'Общий счёт',
+            title: 'Total Score',
             align: 'center',
             render: (h, params) => {
               return h('a', {
@@ -105,7 +105,7 @@
         dataRank: [],
         options: {
           title: {
-            text: 'Топ 10 команд',
+            text: 'Top 10 Teams',
             left: 'center'
           },
           tooltip: {

@@ -5,7 +5,6 @@ Vue.use(VueI18n)
 
 const languages = [
   {value: 'en-US', label: 'English'},
-  {value: 'ru-RU', label: 'Русский'},
   {value: 'zh-CN', label: '简体中文'},
   {value: 'zh-TW', label: '繁體中文'}
 ]
@@ -18,7 +17,7 @@ for (let lang of languages) {
   Object.assign(m, require(`./admin/${locale}`).m)
   messages[locale] = {m: m}
 }
-// load language packages!
+// load language packages
 export default new VueI18n({
   locale: 'en-US',
   messages: messages

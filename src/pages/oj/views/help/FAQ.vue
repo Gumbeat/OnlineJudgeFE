@@ -4,7 +4,7 @@
     <div class="content markdown-body">
       <ul>
         <li>Where is the input and the output?
-          <p>Ваша программа считает данные с <code>stdin</code>('Standard Input') and write output to <code>stdout</code>('Standard Output').
+          <p>Your program shall read input from <code>stdin</code>('Standard Input') and write output to <code>stdout</code>('Standard Output').
             For example,you can use <code>scanf</code> in C or <code>cin</code> in C++ to read from stdin,and use <code>printf</code> in C or <code>cout</code> in C++ to write to stdout.
             User programs are not allowed to read or write files, or you will get a <code>Runtime Error</code>.
           </p>

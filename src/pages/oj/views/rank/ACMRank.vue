@@ -2,7 +2,7 @@
   <Row type="flex" justify="space-around">
     <Col :span="22">
     <Panel :padding="10">
-      <div slot="title">Позиции в ACM</div>
+      <div slot="title">ACM Ranklist</div>
       <div class="echarts">
         <ECharts :options="options" ref="chart" auto-resize></ECharts>
       </div>
@@ -42,7 +42,7 @@
             }
           },
           {
-            title: 'пользователь',
+            title: 'user',
             align: 'center',
             render: (h, params) => {
               return h('a', {
@@ -63,7 +63,7 @@
             }
           },
           {
-            title: 'настроение',
+            title: 'mood',
             align: 'center',
             key: 'mood'
           },
@@ -73,12 +73,12 @@
             key: 'accepted_number'
           },
           {
-            title: 'Всего',
+            title: 'Total',
             align: 'center',
             key: 'submission_number'
           },
           {
-            title: 'Рейтинг',
+            title: 'Rating',
             align: 'center',
             render: (h, params) => {
               return h('span', utils.getACRate(params.row.accepted_number, params.row.submission_number))

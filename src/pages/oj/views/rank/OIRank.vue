@@ -2,7 +2,7 @@
   <Row type="flex" justify="space-around">
     <Col :span="22">
     <Panel :padding="10">
-      <div slot="title">Позиции в OI</div>
+      <div slot="title">OI Ranklist</div>
       <div class="echarts">
         <ECharts :options="options" ref="chart" auto-resize></ECharts>
       </div>
@@ -62,12 +62,12 @@
             }
           },
           {
-            title: 'настроение',
+            title: 'mood',
             align: 'center',
             key: 'mood'
           },
           {
-            title: 'Счёт',
+            title: 'Score',
             align: 'center',
             key: 'total_score'
           },
@@ -77,12 +77,12 @@
             key: 'accepted_number'
           },
           {
-            title: 'Всего',
+            title: 'Total',
             align: 'center',
             key: 'submission_number'
           },
           {
-            title: 'Рейтинг',
+            title: 'Rating',
             align: 'center',
             render: (h, params) => {
               return h('span', utils.getACRate(params.row.accepted_number, params.row.submission_number))

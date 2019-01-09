@@ -2,7 +2,7 @@
   <Row type="flex" :gutter="18">
     <Col :span=19>
     <Panel shadow>
-      <div slot="title">Список задач</div>
+      <div slot="title">Problem List</div>
       <div slot="extra">
         <ul class="filter">
           <li>
@@ -11,30 +11,30 @@
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
-                <Dropdown-item name="">Все</Dropdown-item>
-                <Dropdown-item name="Low">Низкая</Dropdown-item>
-                <Dropdown-item name="Mid">Средняя</Dropdown-item>
-                <Dropdown-item name="High">Высокая</Dropdown-item>
+                <Dropdown-item name="">All</Dropdown-item>
+                <Dropdown-item name="Low">Low</Dropdown-item>
+                <Dropdown-item name="Mid">Mid</Dropdown-item>
+                <Dropdown-item name="High">High</Dropdown-item>
               </Dropdown-menu>
             </Dropdown>
           </li>
           <li>
             <i-switch size="large" @on-change="handleTagsVisible">
-              <span slot="open">Теги</span>
-              <span slot="close">Теги</span>
+              <span slot="open">Tags</span>
+              <span slot="close">Tags</span>
             </i-switch>
           </li>
           <li>
             <Input v-model="query.keyword"
                    @on-enter="filterByKeyword"
                    @on-click="filterByKeyword"
-                   placeholder="Ключевое слово"
+                   placeholder="keyword"
                    icon="ios-search-strong"/>
           </li>
           <li>
             <Button type="info" @click="onReset">
               <Icon type="refresh"></Icon>
-              Обновить
+              Reset
             </Button>
           </li>
         </ul>
@@ -51,7 +51,7 @@
 
     <Col :span="5">
     <Panel :padding="10">
-      <div slot="title" class="taglist-title">Теги</div>
+      <div slot="title" class="taglist-title">Tags</div>
       <Button v-for="tag in tagList"
               :key="tag.name"
               @click="filterByTag(tag.name)"
@@ -63,7 +63,7 @@
 
       <Button long id="pick-one" @click="pickone">
         <Icon type="shuffle"></Icon>
-        Выберите один
+        Pick one
       </Button>
     </Panel>
     <Spin v-if="loadings.tag" fix size="large"></Spin>
@@ -110,7 +110,7 @@
             }
           },
           {
-            title: 'Название',
+            title: 'Title',
             width: 400,
             render: (h, params) => {
               return h('Button', {
@@ -133,7 +133,7 @@
             }
           },
           {
-            title: 'Уровень',
+            title: 'Level',
             render: (h, params) => {
               let t = params.row.difficulty
               let color = 'blue'
@@ -147,7 +147,7 @@
             }
           },
           {
-            title: 'Всего',
+            title: 'Total',
             key: 'submission_number'
           },
           {

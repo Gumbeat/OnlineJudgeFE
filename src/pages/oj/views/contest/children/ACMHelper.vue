@@ -1,6 +1,6 @@
 <template>
   <panel shadow>
-    <div slot="title">ACM помощник</div>
+    <div slot="title">ACM Helper</div>
     <div slot="extra">
       <ul class="filter">
         <li>
@@ -8,7 +8,7 @@
           <i-switch style="margin-left: 5px;" @on-change="handleAutoRefresh"></i-switch>
         </li>
         <li>
-          <Button type="info" @click="getACInfo">Обновить</Button>
+          <Button type="info" @click="getACInfo">Refresh</Button>
         </li>
       </ul>
     </div>
@@ -40,7 +40,7 @@
         loadingTable: false,
         columns: [
           {
-            title: 'Время AC',
+            title: 'AC Time',
             key: 'ac_time'
           },
           {
@@ -49,7 +49,7 @@
             key: 'problem_display_id'
           },
           {
-            title: 'Первая кровь',
+            title: 'First Blood',
             align: 'center',
             render: (h, {row}) => {
               if (row.ac_info.is_first_ac) {
@@ -64,7 +64,7 @@
             }
           },
           {
-            title: 'Имя пользователя',
+            title: 'Username',
             align: 'center',
             render: (h, {row}) => {
               return h('a', {
@@ -84,7 +84,7 @@
             }
           },
           {
-            title: 'Настоящее имя',
+            title: 'RealName',
             align: 'center',
             render: (h, {row}) => {
               return h('span', {
@@ -96,18 +96,18 @@
             }
           },
           {
-            title: 'Состояние',
+            title: 'Status',
             align: 'center',
             render: (h, {row}) => {
               return h('Tag', {
                 props: {
                   color: row.checked ? 'green' : 'yellow'
                 }
-              }, row.checked ? 'Отмечено' : 'Не отмечено')
+              }, row.checked ? 'Checked' : 'Not Checked')
             }
           },
           {
-            title: 'Действие',
+            title: 'Option',
             fixed: 'right',
             align: 'center',
             width: 100,

@@ -95,27 +95,27 @@
         contestPassword: '',
         columns: [
           {
-            title: 'Начать в',
+            title: 'StartAt',
             render: (h, params) => {
               return h('span', time.utcToLocal(params.row.start_time))
             }
           },
           {
-            title: 'Закончить в',
+            title: 'EndAt',
             render: (h, params) => {
               return h('span', time.utcToLocal(params.row.end_time))
             }
           },
           {
-            title: 'Тип соревнования',
+            title: 'ContestType',
             key: 'contest_type'
           },
           {
-            title: 'Правило',
+            title: 'Rule',
             key: 'rule_type'
           },
           {
-            title: 'Создатель',
+            title: 'Creator',
             render: (h, data) => {
               return h('span', data.row.created_by.username)
             }

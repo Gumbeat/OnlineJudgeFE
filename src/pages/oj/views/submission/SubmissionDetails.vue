@@ -8,10 +8,10 @@
             <pre>{{submission.statistic_info.err_info}}</pre>
           </template>
           <template v-else>
-            <span>Время: {{submission.statistic_info.time_cost | submissionTime}}</span>
-            <span>Память: {{submission.statistic_info.memory_cost | submissionMemory}}</span>
-            <span>Язык: {{submission.language}}</span>
-            <span>Автор: {{submission.username}}</span>
+            <span>Time: {{submission.statistic_info.time_cost | submissionTime}}</span>
+            <span>Memory: {{submission.statistic_info.memory_cost | submissionMemory}}</span>
+            <span>Lang: {{submission.language}}</span>
+            <span>Author: {{submission.username}}</span>
           </template>
         </div>
       </Alert>
@@ -29,11 +29,11 @@
       <div id="share-btn">
         <Button v-if="submission.shared"
                 type="warning" size="large" @click="shareSubmission(false)">
-          Не делиться
+          UnShare
         </Button>
         <Button v-else
                 type="primary" size="large" @click="shareSubmission(true)">
-          Поделиться
+          Share
         </Button>
       </div>
     </Col>
@@ -54,7 +54,7 @@
       type: 'index'
     },
     {
-      title: 'Состояние',
+      title: 'Status',
       align: 'center',
       render: (h, params) => {
         return h('Tag', {
@@ -65,14 +65,14 @@
       }
     },
     {
-      title: 'Память',
+      title: 'Memory',
       align: 'center',
       render: (h, params) => {
         return h('span', utils.submissionMemoryFormat(params.row.memory))
       }
     },
     {
-      title: 'Время',
+      title: 'Time',
       align: 'center',
       render: (h, params) => {
         return h('span', utils.submissionTimeFormat(params.row.cpu_time))
@@ -80,20 +80,20 @@
     }
   ]
   const scoreColumn = [{
-    title: 'Счёт',
+    title: 'Score',
     align: 'center',
     key: 'score'
   }]
   const adminColumn = [
     {
-      title: 'Реальное время',
+      title: 'Real Time',
       align: 'center',
       render: (h, params) => {
         return h('span', utils.submissionTimeFormat(params.row.real_time))
       }
     },
     {
-      title: 'Сигнал',
+      title: 'Singal',
       align: 'center',
       key: 'signal'
     }

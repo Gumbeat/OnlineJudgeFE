@@ -67,17 +67,17 @@
                 </Tag>
               </template>
               <template v-else-if="this.contestID && !OIContestRealTimePermission">
-                <Alert type="success" show-icon>Отправлено успешно</Alert>
+                <Alert type="success" show-icon>Submitted successfully</Alert>
               </template>
             </div>
             <div v-else-if="problem.my_status === 0">
-              <Alert type="success" show-icon>Вы решили задачу</Alert>
+              <Alert type="success" show-icon>You have solved the problem</Alert>
             </div>
             <div v-else-if="this.contestID && !OIContestRealTimePermission && submissionExists">
-              <Alert type="success" show-icon>Вы отправили решение.</Alert>
+              <Alert type="success" show-icon>You have submitted a solution.</Alert>
             </div>
             <div v-if="contestEnded">
-              <Alert type="warning" show-icon>Соревнование завершено</Alert>
+              <Alert type="warning" show-icon>Contest has ended</Alert>
             </div>
           </Col>
 
@@ -93,8 +93,8 @@
             <Button type="warning" icon="edit" :loading="submitting" @click="submitCode"
                     :disabled="problemSubmitDisabled || submitted"
                     class="fl-right">
-              <span v-if="submitting">Отправление</span>
-              <span v-else>Отправлено</span>
+              <span v-if="submitting">Submitting</span>
+              <span v-else>Submit</span>
             </Button>
           </Col>
         </Row>
@@ -106,29 +106,29 @@
         <template v-if="this.contestID">
           <VerticalMenu-item :route="{name: 'contest-problem-list', params: {contestID: contestID}}">
             <Icon type="ios-photos"></Icon>
-            Задачи
+            Problems
           </VerticalMenu-item>
 
           <VerticalMenu-item :route="{name: 'contest-announcement-list', params: {contestID: contestID}}">
             <Icon type="chatbubble-working"></Icon>
-            Анонсы
+            Announcements
           </VerticalMenu-item>
         </template>
 
         <VerticalMenu-item v-if="!this.contestID || OIContestRealTimePermission" :route="submissionRoute">
           <Icon type="navicon-round"></Icon>
-          Решения
+          Submissions
         </VerticalMenu-item>
 
         <template v-if="this.contestID">
           <VerticalMenu-item v-if="!this.contestID || OIContestRealTimePermission"
                              :route="{name: 'contest-rank', params: {contestID: contestID}}">
             <Icon type="stats-bars"></Icon>
-            Рейтинг
+            Rankings
           </VerticalMenu-item>
           <VerticalMenu-item :route="{name: 'contest-details', params: {contestID: contestID}}">
             <Icon type="home"></Icon>
-            Посмотреть результаты
+            View Contest
           </VerticalMenu-item>
         </template>
       </VerticalMenu>
@@ -389,7 +389,7 @@
       },
       submitCode () {
         if (this.code.trim() === '') {
-          this.$error('Код не может быть пустым')
+          this.$error('Code can not be empty')
           return
         }
         this.submissionId = ''
@@ -413,8 +413,8 @@
             this.submissionExists = true
             if (!detailsVisible) {
               this.$Modal.success({
-                title: 'Успех',
-                content: 'Код отправлен успешно'
+                title: 'Success',
+                content: 'Submit code successfully'
               })
               return
             }
@@ -422,7 +422,7 @@
             this.checkSubmissionStatus()
           }, res => {
             this.getCaptchaSrc()
-            if (res.data.data.startsWith('Необходима капча')) {
+            if (res.data.data.startsWith('Captcha is required')) {
               this.captchaRequired = true
             }
             this.submitting = false
@@ -453,10 +453,10 @@
         }
       },
       onCopy (event) {
-        this.$success('Код скопирован')
+        this.$success('Code copied')
       },
       onCopyError (e) {
-        this.$error('Не удалось скопировать  код')
+        this.$error('Failed to copy code')
       }
     },
     computed: {
