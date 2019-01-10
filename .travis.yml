@@ -2,22 +2,17 @@ language: node_js
 node_js:
   - 8.12.0
 sudo: required
-services:
-  - docker
 env:
   global:
     - CXX=g++-4.8
   matrix:
-    - USE_SENTRY=1
-#    - USE_SENTRY=0
+    - USE_SENTRY=0
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-before_install:
-  - docker pull getsentry/sentry-cli
 
 script:
   - npm install
@@ -25,7 +20,6 @@ script:
   - npm run build
 
 before_deploy:
-  - bash deploy/sentry_release.sh
   - find dist/ -type f -name "*.map" -delete
   - zip -r dist.zip dist
   - git config --local user.name "Gumbeat"
