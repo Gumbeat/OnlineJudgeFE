@@ -5,8 +5,6 @@ Vue.use(VueI18n)
 
 const languages = [
   {value: 'en-US', label: 'English'},
-  {value: 'zh-CN', label: '简体中文'},
-  {value: 'zh-TW', label: '繁體中文'},
   {value: 'ru-RU', label: 'Русский'}
 ]
 const messages = {}

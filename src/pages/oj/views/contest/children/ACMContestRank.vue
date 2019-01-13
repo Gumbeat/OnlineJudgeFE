@@ -7,9 +7,9 @@
         <Icon type="android-settings" size="20"></Icon>
         <div slot="content" id="switches">
           <p>
-            <span>Menu</span>
+            <span>Меню</span>
             <i-switch v-model="showMenu"></i-switch>
-            <span>Chart</span>
+            <span>График</span>
             <i-switch v-model="showChart"></i-switch>
           </p>
           <p>
@@ -18,16 +18,16 @@
           </p>
           <template v-if="isContestAdmin">
             <p>
-              <span>RealName</span>
+              <span>Настоящее Имя</span>
               <i-switch v-model="showRealName"></i-switch>
             </p>
             <p>
-              <span>Force Update</span>
+              <span>Принудительное обновление</span>
               <i-switch :disabled="refreshDisabled" v-model="forceUpdate"></i-switch>
             </p>
           </template>
           <template>
-            <Button type="primary" size="small" @click="downloadRankCSV">download csv</Button>
+            <Button type="primary" size="small" @click="downloadRankCSV">скачать csv</Button>
           </template>
         </div>
       </Poptip>
@@ -73,7 +73,7 @@
             }
           },
           {
-            title: 'User',
+            title: 'Пользователь',
             align: 'center',
             render: (h, params) => {
               return h('a', {
@@ -94,7 +94,7 @@
             }
           },
           {
-            title: 'AC / Total',
+            title: 'AC / Всего',
             align: 'center',
             width: 100,
             render: (h, params) => {
@@ -114,7 +114,7 @@
             }
           },
           {
-            title: 'TotalTime',
+            title: 'Общее время',
             align: 'center',
             render: (h, params) => {
               return h('span', this.parseTotalTime(params.row.total_time))
@@ -124,7 +124,7 @@
         dataRank: [],
         options: {
           title: {
-            text: 'Top 10 Teams',
+            text: 'Топ 10 Команд',
             left: 'center'
           },
           dataZoom: [
@@ -139,7 +139,7 @@
           toolbox: {
             show: true,
             feature: {
-              saveAsImage: {show: true, title: 'save as image'}
+              saveAsImage: {show: true, title: 'сохранить как изображение'}
             },
             right: '5%'
           },

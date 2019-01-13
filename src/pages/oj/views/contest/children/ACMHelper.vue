@@ -8,7 +8,7 @@
           <i-switch style="margin-left: 5px;" @on-change="handleAutoRefresh"></i-switch>
         </li>
         <li>
-          <Button type="info" @click="getACInfo">Refresh</Button>
+          <Button type="info" @click="getACInfo">Обновить</Button>
         </li>
       </ul>
     </div>
@@ -40,7 +40,7 @@
         loadingTable: false,
         columns: [
           {
-            title: 'AC Time',
+            title: 'Время AC',
             key: 'ac_time'
           },
           {
@@ -49,7 +49,7 @@
             key: 'problem_display_id'
           },
           {
-            title: 'First Blood',
+            title: 'Первая кровь',
             align: 'center',
             render: (h, {row}) => {
               if (row.ac_info.is_first_ac) {
@@ -64,7 +64,7 @@
             }
           },
           {
-            title: 'Username',
+            title: 'Имя пользователя',
             align: 'center',
             render: (h, {row}) => {
               return h('a', {
@@ -84,7 +84,7 @@
             }
           },
           {
-            title: 'RealName',
+            title: 'Настоящее имя',
             align: 'center',
             render: (h, {row}) => {
               return h('span', {
@@ -96,18 +96,18 @@
             }
           },
           {
-            title: 'Status',
+            title: 'Состояние',
             align: 'center',
             render: (h, {row}) => {
               return h('Tag', {
                 props: {
                   color: row.checked ? 'green' : 'yellow'
                 }
-              }, row.checked ? 'Checked' : 'Not Checked')
+              }, row.checked ? 'Отмечено' : 'Не отмечено')
             }
           },
           {
-            title: 'Option',
+            title: 'Действие',
             fixed: 'right',
             align: 'center',
             width: 100,
