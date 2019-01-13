@@ -35,4 +35,4 @@ deploy:
   on:
     repo: Gumbeat/OnlineJudgeFE
     all_branches: true
-    tags: false
+    tags: true
