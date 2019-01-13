@@ -97,26 +97,26 @@ export const RULE_TYPE = {
 }
 
 export const CONTEST_TYPE = {
-  PUBLIC: 'Public',
-  PRIVATE: 'Password Protected'
+  PUBLIC: 'Публичное',
+  PRIVATE: 'Пароль защищён'
 }
 
 export const USER_TYPE = {
-  REGULAR_USER: 'Regular User',
-  ADMIN: 'Admin',
-  SUPER_ADMIN: 'Super Admin'
+  REGULAR_USER: 'Обычный пользователь',
+  ADMIN: 'Админ',
+  SUPER_ADMIN: 'Супер админ'
 }
 
 export const PROBLEM_PERMISSION = {
-  NONE: 'None',
-  OWN: 'Own',
-  ALL: 'All'
+  NONE: 'Отсутствуют',
+  OWN: 'Владелец',
+  ALL: 'Все'
 }
 
 export const STORAGE_KEY = {
   AUTHED: 'authed',
-  PROBLEM_CODE: 'problemCode',
-  languages: 'languages'
+  PROBLEM_CODE: 'код ошибки',
+  languages: 'языки'
 }
 
 export function buildProblemCodeKey (problemID, contestID = null) {

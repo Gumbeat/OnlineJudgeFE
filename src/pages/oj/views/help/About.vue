@@ -1,7 +1,7 @@
 <template>
   <div>
     <panel class="container">
-      <div slot="title">Compiler & Judger</div>
+      <div slot="title">Компилятор и Оценщик</div>
       <div class="content markdown-body">
         <ul>
           <li v-for="lang in languages">{{lang.name}} ( {{lang.description}} )
@@ -15,20 +15,20 @@
       <div slot="title">Объяснение результата</div>
       <div class="content">
         <ul>
-          <li><b>Pending & Juding</b> : {{$t('m.Pending_Juding')}}</li>
-          <li><b>Compile Error</b> :	{{$t('m.Compile_Error')}}
+          <li><b>Ожидание и оценивание</b> : {{$t('m.Pending_Juding')}}</li>
+          <li><b>Ошибка компиляции</b> :	{{$t('m.Compile_Error')}}
       </li>
-          <li><b>Accepted</b> :	{{$t('m.Accepted')}}</li>
-          <li><b>Wrong Answer</b> :	{{$t('m.Wrong_Answer')}}</li>
+          <li><b>Принято</b> :	{{$t('m.Accepted')}}</li>
+          <li><b>Неправильный ответ</b> :	{{$t('m.Wrong_Answer')}}</li>
           <li>
-            <b>Runtime Error</b>
+            <b>Ошибка выполнения</b>
             :	{{$t('m.Runtime_Error')}}
           </li>
-          <li><b>Time Limit Exceeded</b>
+          <li><b>Превышение временного ограничения</b>
             :	{{$t('m.Time_Limit_Exceeded')}}
           </li>
-          <li><b>Memory Limit Exceeded</b> :	{{$t('m.Memory_Limit_Exceeded')}}</li>
-          <li><b>System Error</b> :	{{$t('m.System_Error')}}
+          <li><b>Превышение ограничения по памяти</b> :	{{$t('m.Memory_Limit_Exceeded')}}</li>
+          <li><b>Системная ошибка</b> :	{{$t('m.System_Error')}}
           </li>
         </ul>
       </div>

@@ -149,7 +149,7 @@
             key: 'language'
           },
           {
-            title: 'Author',
+            title: 'Автор',
             align: 'center',
             render: (h, params) => {
               return h('a', {

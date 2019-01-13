@@ -81,7 +81,7 @@
             </Select>
           </FormItem>
           <Form-item>
-            <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">Save All</Button>
+            <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">Сохранить всё</Button>
           </Form-item>
         </Col>
 
@@ -148,8 +148,8 @@
       checkFileType (file) {
         if (!/\.(gif|jpg|jpeg|png|bmp|GIF|JPG|PNG)$/.test(file.name)) {
           this.$Notice.warning({
-            title: 'File type not support',
-            desc: 'The format of ' + file.name + ' is incorrect ，please choose image only.'
+            title: 'Тип файла не поддерживается',
+            desc: 'Формат ' + file.name + ' не корректный，пожалуйста выберете изображение.'
           })
           return false
         }
@@ -159,8 +159,8 @@
         // max size is 2MB
         if (file.size > 2 * 1024 * 1024) {
           this.$Notice.warning({
-            title: 'Exceed max size limit',
-            desc: 'File ' + file.name + ' is too big, you can upload a image up to 2MB in size'
+            title: 'Превышено ограничение по размеру',
+            desc: 'Файл ' + file.name + ' слишком большой, вы можете загружать изображения не больше 2MB'
           })
           return false
         }
@@ -190,7 +190,7 @@
       },
       reselect () {
         this.$Modal.confirm({
-          content: 'Are you sure to disgard the changes?',
+          content: 'Вы точно хотите отменить изменения?',
           onOk: () => {
             this.avatarOption.imgSrc = ''
           }

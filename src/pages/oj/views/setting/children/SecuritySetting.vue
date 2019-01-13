@@ -34,7 +34,7 @@
         <Alert v-if="TFAOpened"
                type="success"
                class="notice"
-               showIcon>You have enabled two-factor authentication.
+               showIcon>Вы активировали двухфакторную аутентификацию.
         </Alert>
         <FormItem v-if="!TFAOpened">
           <div class="oj-relative">
@@ -44,17 +44,17 @@
         </FormItem>
         <template v-if="!loadingQRcode">
           <FormItem style="width: 250px">
-            <Input v-model="formTwoFactor.code" placeholder="Enter the code from your application"/>
+            <Input v-model="formTwoFactor.code" placeholder="Введите код с вашего приложения"/>
           </FormItem>
           <Button type="primary"
                   :loading="loadingBtn"
                   @click="updateTFA(false)"
-                  v-if="!TFAOpened">Open TFA
+                  v-if="!TFAOpened">Открыть TFA
           </Button>
           <Button type="error"
                   :loading="loadingBtn"
                   @click="closeTFA"
-                  v-else>Close TFA
+                  v-else>Закрыть TFA
           </Button>
         </template>
       </Form>
@@ -123,8 +123,8 @@
       },
       deleteSession (sessionKey) {
         this.$Modal.confirm({
-          title: 'Confirm',
-          content: 'Are you sure to revoke the session?',
+          title: 'Подтверждение',
+          content: 'Вы точно хотите перезапустить сеанс?',
           onOk: () => {
             api.deleteSession(sessionKey).then(res => {
               this.getSessions()
@@ -135,8 +135,8 @@
       },
       closeTFA () {
         this.$Modal.confirm({
-          title: 'Confirm',
-          content: 'Two-factor Authentication is a powerful tool to protect your account, are you sure to close it?',
+          title: 'Подтверждение',
+          content: 'Вы уверены, что хотите отказаться от двухфакторной аутентификации?',
           onOk: () => {
             this.updateTFA(true)
           }

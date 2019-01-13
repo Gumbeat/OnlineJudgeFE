@@ -16,7 +16,7 @@
               </Input>
             </div>
             <div class="oj-captcha-img">
-              <Tooltip content="Click to refresh" placement="top">
+              <Tooltip content="Нажмите, чтобы обновить" placement="top">
                 <img :src="captchaSrc" @click="getCaptchaSrc"/>
               </Tooltip>
             </div>

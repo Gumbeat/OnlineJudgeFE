@@ -41,7 +41,7 @@
             }
           },
           {
-            title: 'user',
+            title: 'пользователь',
             align: 'center',
             render: (h, params) => {
               return h('a', {

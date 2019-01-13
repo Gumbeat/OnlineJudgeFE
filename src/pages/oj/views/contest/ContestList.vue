@@ -23,10 +23,10 @@
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
-                <Dropdown-item name="">All</Dropdown-item>
-                <Dropdown-item name="0">UnderWay</Dropdown-item>
-                <Dropdown-item name="1">Not Started</Dropdown-item>
-                <Dropdown-item name="-1">Ended</Dropdown-item>
+                <Dropdown-item name="">Все</Dropdown-item>
+                <Dropdown-item name="0">Проходящие</Dropdown-item>
+                <Dropdown-item name="1">Не начавшиеся</Dropdown-item>
+                <Dropdown-item name="-1">Завершённые</Dropdown-item>
               </Dropdown-menu>
             </Dropdown>
           </li>
