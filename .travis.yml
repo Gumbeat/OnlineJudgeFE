@@ -24,7 +24,7 @@ before_deploy:
   - zip -r dist.zip dist
   - git config --local user.name "Gumbeat"
   - git config --local user.email "leo2598@yandex.ua"
-  - git tag latest --force
+  - git tag --force latest
 
 deploy:
   provider: releases
