@@ -21,7 +21,7 @@
               <div v-html="contest.description" class="markdown-body"></div>
               <div v-if="passwordFormVisible" class="contest-password">
                 <Input v-model="contestPassword" type="password"
-                       placeholder="contest password" class="contest-password-input"
+                       placeholder="пароль соревнования" class="contest-password-input"
                        @on-enter="checkPassword"/>
                 <Button type="info" @click="checkPassword">Enter</Button>
               </div>

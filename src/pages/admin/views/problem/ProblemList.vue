@@ -5,7 +5,7 @@
         <el-input
           v-model="keyword"
           prefix-icon="el-icon-search"
-          placeholder="Keywords">
+          placeholder="Ключевые слова">
         </el-input>
       </div>
       <el-table

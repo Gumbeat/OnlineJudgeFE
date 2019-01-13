@@ -7,7 +7,7 @@
         <el-input
           v-model="keyword"
           prefix-icon="el-icon-search"
-          placeholder="Keywords">
+          placeholder="Ключевые слова">
         </el-input>
       </div>
       <el-table :data="problems"
@@ -22,21 +22,21 @@
           prop="id">
         </el-table-column>
         <el-table-column
-          label="DisplayID"
+          label="Отображаемый ID"
           width="200"
           prop="_id">
         </el-table-column>
         <el-table-column
-          label="Title"
+          label="Название"
           prop="title">
         </el-table-column>
         <el-table-column
           prop="created_by.username"
-          label="Author">
+          label="Автор">
         </el-table-column>
         <el-table-column
           prop="create_time"
-          label="Create Time">
+          label="Время создания">
           <template slot-scope="scope">
             {{scope.row.create_time | localtime }}
           </template>

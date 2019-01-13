@@ -10,7 +10,7 @@
             </el-button>
           </el-col>
           <el-col :span="selectedUsers.length ? 16: 24">
-            <el-input v-model="keyword" prefix-icon="el-icon-search" placeholder="Keywords"></el-input>
+            <el-input v-model="keyword" prefix-icon="el-icon-search" placeholder="Ключевые слова"></el-input>
           </el-col>
         </el-row>
       </div>
@@ -25,31 +25,31 @@
 
         <el-table-column prop="id" label="ID"></el-table-column>
 
-        <el-table-column prop="username" label="Username"></el-table-column>
+        <el-table-column prop="username" label="Имя пользователя"></el-table-column>
 
-        <el-table-column prop="create_time" label="Create Time">
+        <el-table-column prop="create_time" label="Время создания">
           <template slot-scope="scope">
             {{scope.row.create_time | localtime }}
           </template>
         </el-table-column>
 
-        <el-table-column prop="last_login" label="Last Login">
+        <el-table-column prop="last_login" label="Паследняя авторизация">
           <template slot-scope="scope">
             {{scope.row.last_login | localtime }}
           </template>
         </el-table-column>
 
-        <el-table-column prop="real_name" label="Real Name"></el-table-column>
+        <el-table-column prop="real_name" label="Настоящее имя"></el-table-column>
 
         <el-table-column prop="email" label="Email"></el-table-column>
 
-        <el-table-column prop="admin_type" label="User Type">
+        <el-table-column prop="admin_type" label="Тип пользователя">
           <template slot-scope="scope">
             {{ scope.row.admin_type }}
           </template>
         </el-table-column>
 
-        <el-table-column fixed="right" label="Option" width="200">
+        <el-table-column fixed="right" label="Действие" width="200">
           <template slot-scope="{row}">
             <icon-btn name="Edit" icon="edit" @click.native="openUserDialog(row.id)"></icon-btn>
             <icon-btn name="Delete" icon="trash" @click.native="deleteUsers([row.id])"></icon-btn>
@@ -124,29 +124,29 @@
       <el-form :model="formGenerateUser" ref="formGenerateUser">
         <el-row type="flex" justify="space-between">
           <el-col :span="4">
-            <el-form-item label="Prefix" prop="prefix">
-              <el-input v-model="formGenerateUser.prefix" placeholder="Prefix"></el-input>
+            <el-form-item label="Префикс" prop="prefix">
+              <el-input v-model="formGenerateUser.prefix" placeholder="Префикс"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="4">
-            <el-form-item label="Suffix" prop="suffix">
-              <el-input v-model="formGenerateUser.suffix" placeholder="Suffix"></el-input>
+            <el-form-item label="Суффикс" prop="suffix">
+              <el-input v-model="formGenerateUser.suffix" placeholder="Суффикс"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="4">
-            <el-form-item label="Start Number" prop="number_from" required>
+            <el-form-item label="Начальный номер" prop="number_from" required>
               <el-input-number v-model="formGenerateUser.number_from" style="width: 100%"></el-input-number>
             </el-form-item>
           </el-col>
           <el-col :span="4">
-            <el-form-item label="End Number" prop="number_to" required>
+            <el-form-item label="Конечный номер" prop="number_to" required>
               <el-input-number v-model="formGenerateUser.number_to" style="width: 100%"></el-input-number>
             </el-form-item>
           </el-col>
           <el-col :span="4">
-            <el-form-item label="Password Length" prop="password_length" required>
+            <el-form-item label="Длина пароля" prop="password_length" required>
               <el-input v-model="formGenerateUser.password_length"
-                        placeholder="Password Length"></el-input>
+                        placeholder="Длина пароля"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -194,18 +194,18 @@
           <el-col :span="12">
             <el-form-item :label="$t('m.User_Type')">
               <el-select v-model="user.admin_type">
-                <el-option label="Regular User" value="Regular User"></el-option>
-                <el-option label="Admin" value="Admin"></el-option>
-                <el-option label="Super Admin" value="Super Admin"></el-option>
+                <el-option label="Обычный пользователя" value="Regular User"></el-option>
+                <el-option label="Админ" value="Admin"></el-option>
+                <el-option label="Супер админ" value="Super Admin"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item :label="$t('m.Problem_Permission')">
               <el-select v-model="user.problem_permission" :disabled="user.admin_type!=='Admin'">
-                <el-option label="None" value="None"></el-option>
-                <el-option label="Own" value="Own"></el-option>
-                <el-option label="All" value="All"></el-option>
+                <el-option label="Отсутствуют" value="None"></el-option>
+                <el-option label="Владелец" value="Own"></el-option>
+                <el-option label="Все" value="All"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -220,7 +220,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="Open Api">
+            <el-form-item label="Открытый Api">
               <el-switch
                 v-model="user.open_api"
                 active-color="#13ce66"
