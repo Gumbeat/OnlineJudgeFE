@@ -52,7 +52,7 @@
       </div>
     </template>
     <Modal v-model="uploadModalVisible"
-           title="Upload the avatar">
+           title="Загрузить фотография">
       <div class="upload-modal">
         <p class="notice">Ваш аватар станет таким:</p>
         <img :src="uploadImgSrc"/>
@@ -86,10 +86,10 @@
         </Col>
 
         <Col :span="11">
-          <Form-item label="Mood">
+          <Form-item label="Настроение">
             <Input v-model="formProfile.mood"/>
           </Form-item>
-          <Form-item label="Blog">
+          <Form-item label="Блог">
             <Input v-model="formProfile.blog"/>
           </Form-item>
           <Form-item label="Github">

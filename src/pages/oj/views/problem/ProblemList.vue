@@ -238,7 +238,7 @@
         if (value) {
           this.problemTableColumns.push(
             {
-              title: 'Tags',
+              title: 'Теги',
               align: 'center',
               render: (h, params) => {
                 let tags = []

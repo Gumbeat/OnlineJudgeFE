@@ -84,12 +84,12 @@
       </el-upload>
       <template v-else>
         <el-table :data="uploadUsersPage">
-          <el-table-column label="Username">
+          <el-table-column label="Имя пользователя">
             <template slot-scope="{row}">
               {{row[0]}}
             </template>
           </el-table-column>
-          <el-table-column label="Password">
+          <el-table-column label="Пароль">
             <template slot-scope="{row}">
               {{row[1]}}
             </template>

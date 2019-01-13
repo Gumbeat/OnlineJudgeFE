@@ -16,19 +16,19 @@
       <div class="content">
         <ul>
           <li><b>Ожидание и оценивание</b> : {{$t('m.Pending_Juding')}}</li>
-          <li><b>Ошибка компиляции</b> :	{{$t('m.Compile_Error')}}
+          <li><b>Compile error</b> :	{{$t('m.Compile_Error')}}
       </li>
           <li><b>Принято</b> :	{{$t('m.Accepted')}}</li>
           <li><b>Неправильный ответ</b> :	{{$t('m.Wrong_Answer')}}</li>
           <li>
-            <b>Ошибка выполнения</b>
+            <b>Runtime Error</b>
             :	{{$t('m.Runtime_Error')}}
           </li>
-          <li><b>Превышение временного ограничения</b>
+          <li><b>Time Limit Exceeded</b>
             :	{{$t('m.Time_Limit_Exceeded')}}
           </li>
-          <li><b>Превышение ограничения по памяти</b> :	{{$t('m.Memory_Limit_Exceeded')}}</li>
-          <li><b>Системная ошибка</b> :	{{$t('m.System_Error')}}
+          <li><b>Memory Limit Exceeded</b> :	{{$t('m.Memory_Limit_Exceeded')}}</li>
+          <li><b>System Error</b> :	{{$t('m.System_Error')}}
           </li>
         </ul>
       </div>

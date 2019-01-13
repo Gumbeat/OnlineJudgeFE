@@ -29,17 +29,17 @@
         </el-table-column>
         <el-table-column
           prop="title"
-          label="Title">
+          label="Название">
         </el-table-column>
         <el-table-column
-          label="Rule Type"
+          label="Правило соревнования"
           width="130">
           <template slot-scope="scope">
             <el-tag type="gray">{{scope.row.rule_type}}</el-tag>
           </template>
         </el-table-column>
         <el-table-column
-          label="Contest Type"
+          label="Тип соревнования"
           width="180">
           <template slot-scope="scope">
             <el-tag :type="scope.row.contest_type === 'Public' ? 'success' : 'primary'">

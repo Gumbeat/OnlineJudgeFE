@@ -1,7 +1,7 @@
 <template>
   <div class="problem">
 
-    <Panel :title="title">
+    <Panel :title="название">
       <el-form ref="form" :model="problem" :rules="rules" label-position="top" label-width="70px">
         <el-row :gutter="20">
           <el-col :span="6">
@@ -49,9 +49,9 @@
           <el-col :span="8">
             <el-form-item :label="$t('m.Difficulty')">
               <el-select class="difficulty-select" size="small" :placeholder="$t('m.Difficulty')" v-model="problem.difficulty">
-                <el-option label="Low" value="Low"></el-option>
-                <el-option label="Mid" value="Mid"></el-option>
-                <el-option label="High" value="High"></el-option>
+                <el-option label="Низкая" value="Low"></el-option>
+                <el-option label="Средняя" value="Mid"></el-option>
+                <el-option label="Высокая" value="High"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -67,7 +67,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="Tag" :error="error.tags" required>
+            <el-form-item label="Тег" :error="error.tags" required>
               <span class="tags">
                 <el-tag
                   v-for="tag in problem.tags"
