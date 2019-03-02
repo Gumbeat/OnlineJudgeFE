@@ -32,7 +32,7 @@ export const m = {
   General_Announcement: 'Объявление',
   Announcement_Title: 'Название',
   Announcement_Content: 'Содержимое',
-  Announcement_Status: 'Состояние',
+  Announcement_Status: 'Статус',
   // Conf.vue
   SMTP_Config: 'Конфигурация SMTP',
   Server: 'Сервер',
@@ -91,7 +91,7 @@ export const m = {
   Contest_Password: 'Пароль',
   Contest_Rule_Type: 'Режим соревнования',
   Real_Time_Rank: 'Позициии в реальном времени',
-  Contest_Status: 'Состояние',
+  Contest_Status: 'Соревнование общедоступно',
   Allowed_IP_Ranges: 'Разрешённый диапазон IP',
   CIDR_Network: 'Сеть CIDR',
   // Dashboard.vue

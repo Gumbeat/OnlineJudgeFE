@@ -80,7 +80,7 @@ export const m = {
   TFA_Code: 'Код из приложения двухфакторной аутентификации',
   No_Account: 'Нет учетной записи? Зарегистрируйтесь!',
   Forget_Password: 'Забыли пароль?',
-  UserLogin: 'Имя пользователя',
+  UserLogin: 'Войти',
   // Register.vue
   RegisterUsername: 'Имя пользователя',
   Email_Address: 'Email',

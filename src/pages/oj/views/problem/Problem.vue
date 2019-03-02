@@ -94,7 +94,7 @@
                     :disabled="problemSubmitDisabled || submitted"
                     class="fl-right">
               <span v-if="submitting">Отправление</span>
-              <span v-else>Отправлено</span>
+              <span v-else>Отправить</span>
             </Button>
           </Col>
         </Row>
