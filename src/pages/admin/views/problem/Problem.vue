@@ -1,7 +1,7 @@
 <template>
   <div class="problem">
 
-    <Panel :title="название">
+    <Panel :title="Название">
       <el-form ref="form" :model="problem" :rules="rules" label-position="top" label-width="70px">
         <el-row :gutter="20">
           <el-col :span="6">
@@ -105,9 +105,9 @@
         </el-row>
         <div>
           <el-form-item v-for="(sample, index) in problem.samples" :key="'sample'+index">
-            <Accordion :title="'Sample' + (index + 1)">
+            <Accordion :title="'Образец ' + (index + 1)">
               <el-button type="warning" size="small" icon="el-icon-delete" slot="header" @click="deleteSample(index)">
-                Delete
+                Удалить
               </el-button>
               <el-row :gutter="20">
                 <el-col :span="12">
@@ -153,11 +153,11 @@
             </el-col>
           </el-row>
         </el-form-item>
-        <el-form-item :label="$t('m.Special_Judge')" :error="error.spj">
-          <el-col :span="24">
-            <el-checkbox v-model="problem.spj" @click.native.prevent="switchSpj()">{{$t('m.Use_Special_Judge')}}</el-checkbox>
-          </el-col>
-        </el-form-item>
+        <!--<el-form-item :label="$t('m.Special_Judge')" :error="error.spj">-->
+          <!--<el-col :span="24">-->
+            <!--<el-checkbox v-model="problem.spj" @click.native.prevent="switchSpj()">{{$t('m.Use_Special_Judge')}}</el-checkbox>-->
+          <!--</el-col>-->
+        <!--</el-form-item>-->
         <el-form-item v-if="problem.spj">
           <Accordion :title="$t('m.Special_Judge_Code')">
             <template slot="header">
@@ -177,15 +177,15 @@
           </Accordion>
         </el-form-item>
         <el-row :gutter="20">
-          <el-col :span="6">
-            <el-form-item :label="$t('m.Type')">
-              <el-radio-group v-model="problem.rule_type" :disabled="disableRuleType">
-                <el-radio label="ACM">ACM</el-radio>
-                <el-radio label="OI">OI</el-radio>
-              </el-radio-group>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
+          <!--<el-col :span="6">-->
+            <!--<el-form-item :label="$t('m.Type')">-->
+              <!--<el-radio-group v-model="problem.rule_type" :disabled="disableRuleType">-->
+                <!--<el-radio label="ACM">ACM</el-radio>-->
+                <!--<el-radio label="OI">OI</el-radio>-->
+              <!--</el-radio-group>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
+          <el-col :span="18">
             <el-form-item :label="$t('m.TestCase')" :error="error.testcase">
               <el-upload
                 action="/api/admin/test_case"
@@ -194,7 +194,7 @@
                 :show-file-list="true"
                 :on-success="uploadSucceeded"
                 :on-error="uploadFailed">
-                <el-button size="small" type="primary" icon="el-icon-fa-upload">Choose File</el-button>
+                <el-button size="small" type="primary" icon="el-icon-fa-upload">Выберите файл</el-button>
               </el-upload>
             </el-form-item>
           </el-col>
@@ -227,9 +227,9 @@
           </el-col>
         </el-row>
 
-        <el-form-item :label="$t('m.Source')">
-          <el-input :placeholder="$t('m.Source')" v-model="problem.source"></el-input>
-        </el-form-item>
+        <!--<el-form-item :label="$t('m.Source')">-->
+          <!--<el-input :placeholder="$t('m.Source')" v-model="problem.source"></el-input>-->
+        <!--</el-form-item>-->
         <save @click.native="submit()">Save</save>
       </el-form>
     </Panel>
@@ -252,10 +252,10 @@
     data () {
       return {
         rules: {
-          _id: {required: true, message: 'Display ID is required', trigger: 'blur'},
-          title: {required: true, message: 'Title is required', trigger: 'blur'},
-          input_description: {required: true, message: 'Input Description is required', trigger: 'blur'},
-          output_description: {required: true, message: 'Output Description is required', trigger: 'blur'}
+          _id: {required: true, message: 'Необходимо ввести отображаемый ID', trigger: 'blur'},
+          title: {required: true, message: 'Необходимо ввести название задачи', trigger: 'blur'},
+          input_description: {required: true, message: 'Необходимо ввести описание инструкцию по вводу', trigger: 'blur'},
+          output_description: {required: true, message: 'Необходимо ввести описание инструкцию по выводу', trigger: 'blur'}
         },
         loadingCompile: false,
         mode: '',
@@ -387,7 +387,7 @@
         if (this.testCaseUploaded) {
           this.$confirm('If you change problem judge method, you need to re-upload test cases', 'Warning', {
             confirmButtonText: 'Yes',
-            cancelButtonText: 'Cancel',
+            cancelButtonText: 'Отменить',
             type: 'warning'
           }).then(() => {
             this.problem.spj = !this.problem.spj
@@ -476,17 +476,17 @@
       },
       submit () {
         if (!this.problem.samples.length) {
-          this.$error('Sample is required')
+          this.$error('Необходим хотя бы один образец')
           return
         }
         for (let sample of this.problem.samples) {
           if (!sample.input || !sample.output) {
-            this.$error('Sample input and output is required')
+            this.$error('Необходимо ввести примеры входных и выходных данных')
             return
           }
         }
         if (!this.problem.tags.length) {
-          this.error.tags = 'Please add at least one tag'
+          this.error.tags = 'Добавьте хотя бы один тэг'
           this.$error(this.error.tags)
           return
         }
@@ -503,12 +503,12 @@
           }
         }
         if (!this.problem.languages.length) {
-          this.error.languages = 'Please choose at least one language for problem'
+          this.error.languages = 'Выберите хотя бы один язык для задачи'
           this.$error(this.error.languages)
           return
         }
         if (!this.testCaseUploaded) {
-          this.error.testCase = 'Test case is not uploaded yet'
+          this.error.testCase = 'Тесты ещё не загружены'
           this.$error(this.error.testCase)
           return
         }

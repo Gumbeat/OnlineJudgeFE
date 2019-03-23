@@ -1,6 +1,6 @@
 <template>
   <Row type="flex" justify="space-around">
-    <Col :span="22">
+    <Col :span="24">
     <panel shadow v-if="contests.length" class="contest">
       <div slot="title">
         <Button type="text"  class="contest-title" @click="goContest">{{contests[index].title}}</Button>
@@ -26,7 +26,17 @@
         </CarouselItem>
       </Carousel>
     </panel>
-    <Announcements class="announcement"></Announcements>
+    <div class="dcp_class">
+      <h1>Добро пожаловать на олимпиаду по программированию!</h1>
+      <div class="wrapper">
+        <p>Олимпиада проводится кафедрой «Программная инженерия» факультета компьютерных наук и технологий ГОУВПО «Донецкий национальный технический университет» (ДонНТУ), г. Донецк, Донецкая Народная Республика.</p>
+        <br>
+        <p>Более подробно с условиями проведения олимпиады можно ознакомиться <a href="http://pi.olymp.donntu.org" target="_blank">на нашем сайте</a></p>
+        <br>
+        <p>Прежде, чем приступить к решению задач, ознакомьтесь с <a href="/FAQ" target="_blank">основными правилами олимпиадной системы</a></p>
+
+      </div>
+       </div>
     </Col>
   </Row>
 </template>
@@ -69,6 +79,23 @@
 </script>
 
 <style lang="less" scoped>
+
+  .dcp_class {
+    padding: 30px;
+    background-color: white;
+    font-size: 15px;
+    border-radius: 3px;
+
+    > p {
+      word-break: break-word;
+    }
+
+  }
+
+  .wrapper {
+    margin-top: 30px;
+  }
+
   .contest {
     &-title {
       font-style: italic;

@@ -7,7 +7,7 @@
         <ul class="filter">
           <li>
             <Dropdown @on-click="filterByDifficulty">
-              <span>{{query.difficulty === '' ? 'Difficulty' : query.difficulty}}
+              <span>{{query.difficulty === '' ? 'Сложность' : query.difficulty}}
                 <Icon type="arrow-down-b"></Icon>
               </span>
               <Dropdown-menu slot="list">
@@ -151,7 +151,7 @@
             key: 'submission_number'
           },
           {
-            title: 'AC Rate',
+            title: 'Успешность решений ',
             render: (h, params) => {
               return h('span', this.getACRate(params.row.accepted_number, params.row.submission_number))
             }
@@ -261,7 +261,7 @@
       },
       pickone () {
         api.pickone().then(res => {
-          this.$success('Good Luck')
+          this.$success('Удачи!')
           this.$router.push({name: 'problem-details', params: {problemID: res.data.data}})
         })
       }

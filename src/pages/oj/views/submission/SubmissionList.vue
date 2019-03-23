@@ -11,7 +11,7 @@
                   <Icon type="arrow-down-b"></Icon>
                 </span>
                 <Dropdown-menu slot="list">
-                  <Dropdown-item name="">All</Dropdown-item>
+                  <Dropdown-item name="">Все</Dropdown-item>
                   <Dropdown-item v-for="status in Object.keys(JUDGE_STATUS)" :key="status" :name="status">
                     {{JUDGE_STATUS[status].name}}
                   </Dropdown-item>
@@ -82,8 +82,13 @@
                   },
                   on: {
                     click: () => {
-                      this.$router.push('/status/' + params.row.id)
+                      this.$router.push({name: 'submission-details',
+                        params: {id: params.row.id,
+                          problemId: params.row.problem}})
                     }
+                  },
+                  props: {
+                    problemId: params.row.problem
                   }
                 }, params.row.id.slice(0, 12))
               } else {
@@ -305,7 +310,7 @@
         }
       },
       status () {
-        return this.formFilter.result === '' ? 'Status' : JUDGE_STATUS[this.formFilter.result].name
+        return this.formFilter.result === '' ? 'Состояние' : JUDGE_STATUS[this.formFilter.result].name
       },
       rejudgeColumnVisible () {
         return !this.contestID && this.user.admin_type === USER_TYPE.SUPER_ADMIN

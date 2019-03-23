@@ -23,7 +23,7 @@
                 <Input v-model="contestPassword" type="password"
                        placeholder="пароль соревнования" class="contest-password-input"
                        @on-enter="checkPassword"/>
-                <Button type="info" @click="checkPassword">Enter</Button>
+                <Button type="info" @click="checkPassword">Подтвердить</Button>
               </div>
             </Panel>
             <Table :columns="columns" :data="contest_table" disabled-hover style="margin-bottom: 40px;"></Table>
@@ -39,11 +39,11 @@
           {{$t('m.Overview')}}
         </VerticalMenu-item>
 
-        <VerticalMenu-item :disabled="contestMenuDisabled"
-                           :route="{name: 'contest-announcement-list', params: {contestID: contestID}}">
-          <Icon type="chatbubble-working"></Icon>
-          {{$t('m.Announcements')}}
-        </VerticalMenu-item>
+        <!--<VerticalMenu-item :disabled="contestMenuDisabled"-->
+                           <!--:route="{name: 'contest-announcement-list', params: {contestID: contestID}}">-->
+          <!--<Icon type="chatbubble-working"></Icon>-->
+          <!--{{$t('m.Announcements')}}-->
+        <!--</VerticalMenu-item>-->
 
         <VerticalMenu-item :disabled="contestMenuDisabled"
                            :route="{name: 'contest-problem-list', params: {contestID: contestID}}">
@@ -65,11 +65,11 @@
           {{$t('m.Rankings')}}
         </VerticalMenu-item>
 
-        <VerticalMenu-item v-if="showAdminHelper"
-                           :route="{name: 'acm-helper', params: {contestID: contestID}}">
-          <Icon type="ios-paw"></Icon>
-          {{$t('m.Admin_Helper')}}
-        </VerticalMenu-item>
+        <!--<VerticalMenu-item v-if="showAdminHelper"-->
+                           <!--:route="{name: 'acm-helper', params: {contestID: contestID}}">-->
+          <!--<Icon type="ios-paw"></Icon>-->
+          <!--{{$t('m.Admin_Helper')}}-->
+        <!--</VerticalMenu-item>-->
       </VerticalMenu>
     </div>
   </div>
@@ -106,14 +106,14 @@
               return h('span', time.utcToLocal(params.row.end_time))
             }
           },
-          {
-            title: 'Тип соревнования',
-            key: 'contest_type'
-          },
-          {
-            title: 'Правило',
-            key: 'rule_type'
-          },
+          // {
+          //   title: 'Тип соревнования',
+          //   key: 'contest_type'
+          // },
+          // {
+          //   title: 'Правило',
+          //   key: 'rule_type'
+          // },
           {
             title: 'Создатель',
             render: (h, data) => {

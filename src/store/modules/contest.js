@@ -21,7 +21,6 @@ const state = {
 }
 
 const getters = {
-  // contest 是否加载完成
   contestLoaded: (state) => {
     return !!state.contest.status
   },

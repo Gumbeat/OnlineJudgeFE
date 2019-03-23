@@ -4,12 +4,12 @@
       <SideMenu></SideMenu>
     </div>
     <div id="header">
-      <i class="el-icon-fa-font katex-editor" @click="katexVisible=true" ></i>
+      <!--<i class="el-icon-fa-font katex-editor" @click="katexVisible=true" ></i>-->
       <screen-full :width="14" :height="14" class="screen-full"></screen-full>
       <el-dropdown @command="handleCommand">
         <span>{{user.username}}<i class="el-icon-caret-bottom el-icon--right"></i></span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="logout">Logout</el-dropdown-item>
+          <el-dropdown-item command="logout">Выйти</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -17,14 +17,14 @@
       <transition name="fadeInUp" mode="out-in">
         <router-view></router-view>
       </transition>
-      <div class="footer">
-        Build Version: {{ version }}
-      </div>
+      <!--<div class="footer">-->
+        <!--Build Version: {{ version }}-->
+      <!--</div>-->
     </div>
 
-    <el-dialog title="Latex Editor" :visible.sync="katexVisible">
-      <KatexEditor></KatexEditor>
-    </el-dialog>
+    <!--<el-dialog title="Latex Editor" :visible.sync="katexVisible">-->
+      <!--<KatexEditor></KatexEditor>-->
+    <!--</el-dialog>-->
   </div>
 </template>
 

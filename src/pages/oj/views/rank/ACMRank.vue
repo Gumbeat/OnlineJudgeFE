@@ -2,10 +2,10 @@
   <Row type="flex" justify="space-around">
     <Col :span="22">
     <Panel :padding="10">
-      <div slot="title">ACM Ranklist</div>
-      <div class="echarts">
-        <ECharts :options="options" ref="chart" auto-resize></ECharts>
-      </div>
+      <div slot="title">Рейтинг</div>
+      <!--<div class="echarts">-->
+        <!--<ECharts :options="options" ref="chart" auto-resize></ECharts>-->
+      <!--</div>-->
     </Panel>
     <Table :data="dataRank" :columns="columns" :loading="loadingTable" size="large"></Table>
     <Pagination :total="total" :page-size.sync="limit" :current.sync="page"
@@ -42,7 +42,7 @@
             }
           },
           {
-            title: 'пользователь',
+            title: 'Пользователь',
             align: 'center',
             render: (h, params) => {
               return h('a', {
@@ -63,12 +63,12 @@
             }
           },
           {
-            title: 'настроение',
+            title: 'Учебное заведение',
             align: 'center',
             key: 'mood'
           },
           {
-            title: 'AC',
+            title: 'Успешность решений',
             align: 'center',
             key: 'accepted_number'
           },

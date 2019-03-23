@@ -48,7 +48,7 @@
         if (value !== '') {
           api.checkUsernameOrEmail(undefined, value).then(res => {
             if (res.data.data.email === false) {
-              callback(new Error('The email doesn\'t exist'))
+              callback(new Error('Такой почты не существует.'))
             } else {
               callback()
             }

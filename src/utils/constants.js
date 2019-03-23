@@ -1,70 +1,70 @@
 export const JUDGE_STATUS = {
   '-2': {
-    name: 'Compile Error',
+    name: 'Ошибка компиляции',
     short: 'CE',
     color: 'yellow',
     type: 'warning'
   },
   '-1': {
-    name: 'Wrong Answer',
+    name: 'Неправильный ответ',
     short: 'WA',
     color: 'red',
     type: 'error'
   },
   '0': {
-    name: 'Accepted',
+    name: 'Принято',
     short: 'AC',
     color: 'green',
     type: 'success'
   },
   '1': {
-    name: 'Time Limit Exceeded',
+    name: 'Превышение лимита времени',
     short: 'TLE',
     color: 'red',
     type: 'error'
   },
   '2': {
-    name: 'Time Limit Exceeded',
+    name: 'Превышение лимита времени',
     short: 'TLE',
     color: 'red',
     type: 'error'
   },
   '3': {
-    name: 'Memory Limit Exceeded',
+    name: 'Превышение лимита памяти',
     short: 'MLE',
     color: 'red',
     type: 'error'
   },
   '4': {
-    name: 'Runtime Error',
+    name: 'Ошибка исполнения',
     short: 'RE',
     color: 'red',
     type: 'error'
   },
   '5': {
-    name: 'System Error',
+    name: 'Системная ошибка',
     short: 'SE',
     color: 'red',
     type: 'error'
   },
   '6': {
-    name: 'Pending',
+    name: 'В ожидании',
     color: 'yellow',
     type: 'warning'
   },
   '7': {
-    name: 'Judging',
+    name: 'Оценивается',
     color: 'blue',
     type: 'info'
   },
   '8': {
-    name: 'Partial Accepted',
+    name: 'Частично принята',
     short: 'PAC',
     color: 'blue',
     type: 'info'
   },
   '9': {
-    name: 'Submitting',
+    name: 'Отправляется',
     color: 'yellow',
     type: 'warning'
   }
@@ -78,22 +78,21 @@ export const CONTEST_STATUS = {
 
 export const CONTEST_STATUS_REVERSE = {
   '1': {
-    name: 'Not Started',
+    name: 'Ещё не началось',
     color: 'yellow'
   },
   '0': {
-    name: 'Underway',
+    name: 'Сейчас идёт',
     color: 'green'
   },
   '-1': {
-    name: 'Ended',
+    name: 'Завершено',
     color: 'red'
   }
 }
 
 export const RULE_TYPE = {
-  ACM: 'ACM',
-  OI: 'OI'
+  ACM: 'ACM'
 }
 
 export const CONTEST_TYPE = {
@@ -103,8 +102,8 @@ export const CONTEST_TYPE = {
 
 export const USER_TYPE = {
   REGULAR_USER: 'Обычный пользователь',
-  ADMIN: 'Админ',
-  SUPER_ADMIN: 'Супер админ'
+  ADMIN: 'Admin',
+  SUPER_ADMIN: 'Super Admin'
 }
 
 export const PROBLEM_PERMISSION = {

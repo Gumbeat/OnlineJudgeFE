@@ -13,14 +13,14 @@
             <i-switch v-model="showChart"></i-switch>
           </p>
           <p>
-            <span>Auto Refresh(10s)</span>
+            <span>Автообновление(10с)</span>
             <i-switch :disabled="refreshDisabled" @on-change="handleAutoRefresh"></i-switch>
           </p>
           <template v-if="isContestAdmin">
-            <p>
-              <span>Настоящее Имя</span>
-              <i-switch v-model="showRealName"></i-switch>
-            </p>
+            <!--<p>-->
+              <!--<span>Настоящее Имя</span>-->
+              <!--<i-switch v-model="showRealName"></i-switch>-->
+            <!--</p>-->
             <p>
               <span>Принудительное обновление</span>
               <i-switch :disabled="refreshDisabled" v-model="forceUpdate"></i-switch>
@@ -94,7 +94,15 @@
             }
           },
           {
-            title: 'AC / Всего',
+            title: 'Учебное заведение',
+            align: 'center',
+            render: (h, params) => {
+              console.log(params.row.user)
+              return h('span', params.row.user.mood)
+            }
+          },
+          {
+            title: 'Решено / Отправлено',
             align: 'center',
             width: 100,
             render: (h, params) => {
@@ -124,7 +132,7 @@
         dataRank: [],
         options: {
           title: {
-            text: 'Топ 10 Команд',
+            text: 'Топ 10',
             left: 'center'
           },
           dataZoom: [
@@ -263,7 +271,6 @@
         this.dataRank = dataRank
       },
       addTableColumns (problems) {
-        // 根据题目添加table column
         problems.forEach(problem => {
           this.columns.push({
             align: 'center',

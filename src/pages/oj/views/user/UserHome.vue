@@ -38,24 +38,24 @@
               </div>
             </Poptip>
           </div>
-          <p v-else>{{$t('m.UserHomeIntro')}}</p>
+          <!--<p v-else>{{$t('m.UserHomeIntro')}}</p>-->
           <div class="btns">
             <div class="problem-btn" v-for="problemID of problems" :key="problemID">
               <Button type="ghost" @click="goProblem(problemID)">{{problemID}}</Button>
             </div>
           </div>
         </div>
-        <div id="icons">
-          <a :href="profile.github">
-            <Icon type="social-github-outline" size="30"></Icon>
-          </a>
-          <a :href="'mailto:'+ profile.user.email">
-            <Icon class="icon" type="ios-email-outline" size="30"></Icon>
-          </a>
-          <a :href="profile.blog">
-            <Icon class="icon" type="ios-world-outline" size="30"></Icon>
-          </a>
-        </div>
+        <!--<div id="icons">-->
+          <!--<a :href="profile.github">-->
+            <!--<Icon type="social-github-outline" size="30"></Icon>-->
+          <!--</a>-->
+          <!--<a :href="'mailto:'+ profile.user.email">-->
+            <!--<Icon class="icon" type="ios-email-outline" size="30"></Icon>-->
+          <!--</a>-->
+          <!--<a :href="profile.blog">-->
+            <!--<Icon class="icon" type="ios-world-outline" size="30"></Icon>-->
+          <!--</a>-->
+        <!--</div>-->
       </div>
     </Card>
   </div>
@@ -108,7 +108,7 @@
       },
       freshProblemDisplayID () {
         api.freshDisplayID().then(res => {
-          this.$success('Update successfully')
+          this.$success('Успешно обновлено')
           this.init()
         })
       }

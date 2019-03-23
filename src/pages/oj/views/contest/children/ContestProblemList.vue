@@ -41,7 +41,7 @@
             key: 'submission_number'
           },
           {
-            title: 'Оценка AC',
+            title: 'Успешность решений',
             render: (h, params) => {
               return h('span', this.getACRate(params.row.accepted_number, params.row.submission_number))
             }

@@ -194,7 +194,7 @@
           <el-col :span="12">
             <el-form-item :label="$t('m.User_Type')">
               <el-select v-model="user.admin_type">
-                <el-option label="Обычный пользователя" value="Regular User"></el-option>
+                <el-option label="Обычный пользователь" value="Regular User"></el-option>
                 <el-option label="Админ" value="Admin"></el-option>
                 <el-option label="Супер админ" value="Super Admin"></el-option>
               </el-select>

@@ -17,7 +17,6 @@
       </Alert>
     </Col>
 
-    <!--后台返info就显示出来， 权限控制放后台 -->
     <Col v-if="submission.info && !isCE" :span="20">
       <Table stripe :loading="loading" :disabled-hover="true" :columns="columns" :data="submission.info.data"></Table>
     </Col>
@@ -25,15 +24,10 @@
     <Col :span="20">
       <Highlight :code="submission.code" :language="submission.language" :border-color="status.color"></Highlight>
     </Col>
-    <Col v-if="submission.can_unshare" :span="20">
+    <Col :span="20">
       <div id="share-btn">
-        <Button v-if="submission.shared"
-                type="warning" size="large" @click="shareSubmission(false)">
-          Не делиться
-        </Button>
-        <Button v-else
-                type="primary" size="large" @click="shareSubmission(true)">
-          Поделиться
+        <Button type="primary" size="large" @click="routeToProblem">
+          Перейти к решению
         </Button>
       </div>
     </Col>
@@ -49,7 +43,7 @@
 
   const baseColumn = [
     {
-      title: 'ID',
+      title: 'Номер теста',
       align: 'center',
       type: 'index'
     },
@@ -101,6 +95,12 @@
 
   export default {
     name: 'submissionDetails',
+    props: {
+      problemId: {
+        required: true,
+        type: String
+      }
+    },
     components: {
       Highlight
     },
@@ -123,6 +123,7 @@
       }
     },
     mounted () {
+      console.log(`ТУТ ПРОБЛЕМА)) -->  ${this.problemId}`)
       this.getSubmission()
     },
     methods: {
@@ -133,7 +134,6 @@
           let data = res.data.data
           let columns = baseColumn
           if (data.info && data.info.data && !this.isConcat) {
-            // score exist means the submission is OI problem submission
             if (data.info.data[0].score) {
               this.isConcat = true
               columns = columns.concat(scoreColumn)
@@ -149,11 +149,14 @@
           this.loading = false
         })
       },
+      routeToProblem () {
+        this.$router.push(`/problem/${this.problemId}`)
+      },
       shareSubmission (shared) {
         let data = {id: this.submission.id, shared: shared}
         api.updateSubmission(data).then(res => {
           this.getSubmission()
-          this.$success('Succeeded')
+          this.$success('Успешно')
         }, () => {
         })
       }
@@ -181,12 +184,15 @@
     .title {
       font-size: 20px;
     }
+
     .content {
       margin-top: 10px;
       font-size: 14px;
+
       span {
         margin-right: 10px;
       }
+
       pre {
         white-space: pre-wrap;
         word-wrap: break-word;
@@ -197,6 +203,7 @@
 
   .admin-info {
     margin: 5px 0;
+
     &-content {
       font-size: 16px;
       padding: 10px;

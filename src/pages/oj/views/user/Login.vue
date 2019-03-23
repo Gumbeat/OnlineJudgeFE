@@ -86,7 +86,7 @@
             this.btnLoginLoading = false
             this.changeModalStatus({visible: false})
             this.getProfile()
-            this.$success('Welcome back to OJ')
+            this.$success('Олимпиадная система приветствует вас!')
           }, _ => {
             this.btnLoginLoading = false
           })

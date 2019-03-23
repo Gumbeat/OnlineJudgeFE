@@ -6,7 +6,8 @@
           @on-page-size-change="onPageSizeChange"
           :show-sizer="showSizer"
           :page-size-opts="[10, 30, 50, 100, 200]"
-          :current="current"></Page>
+          :current="current">
+    </Page>
   </div>
 </template>
 

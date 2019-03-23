@@ -41,10 +41,10 @@
             </Card>
           </div>
 
-          <div v-if="problem.source">
-            <p class="title">{{$t('m.Source')}}</p>
-            <p class="content">{{problem.source}}</p>
-          </div>
+          <!--<div v-if="problem.source">-->
+            <!--<p class="title">{{$t('m.Source')}}</p>-->
+            <!--<p class="content">{{problem.source}}</p>-->
+          <!--</div>-->
 
         </div>
       </Panel>
@@ -62,7 +62,7 @@
             <div class="status" v-if="statusVisible">
               <template v-if="!this.contestID || (this.contestID && OIContestRealTimePermission)">
                 <span>{{$t('m.Status')}}</span>
-                <Tag type="dot" :color="submissionStatus.color" @click.native="handleRoute('/status/'+submissionId)">
+                <Tag type="dot" :color="submissionStatus.color" @click.native="routeToDetails(submissionId)">
                   {{submissionStatus.text}}
                 </Tag>
               </template>
@@ -109,10 +109,10 @@
             Задачи
           </VerticalMenu-item>
 
-          <VerticalMenu-item :route="{name: 'contest-announcement-list', params: {contestID: contestID}}">
-            <Icon type="chatbubble-working"></Icon>
-            Анонсы
-          </VerticalMenu-item>
+          <!--<VerticalMenu-item :route="{name: 'contest-announcement-list', params: {contestID: contestID}}">-->
+            <!--<Icon type="chatbubble-working"></Icon>-->
+            <!--Анонсы-->
+          <!--</VerticalMenu-item>-->
         </template>
 
         <VerticalMenu-item v-if="!this.contestID || OIContestRealTimePermission" :route="submissionRoute">
@@ -161,7 +161,7 @@
             <p>{{$t('m.Tags')}}</p>
             <p>
               <Poptip trigger="hover" placement="left-end">
-                <a>Show</a>
+                <a>Показать</a>
                 <div slot="content">
                   <Tag v-for="tag in problem.tags" :key="tag">{{tag}}</Tag>
                 </div>
@@ -174,8 +174,8 @@
       <Card id="pieChart" :padding="0" v-if="!this.contestID || OIContestRealTimePermission">
         <div slot="title">
           <Icon type="ios-analytics"></Icon>
-          <span class="card-title">Statistic</span>
-          <Button type="ghost" size="small" id="detail" @click="graphVisible = !graphVisible">Details</Button>
+          <span class="card-title">Статистика</span>
+          <Button type="ghost" size="small" id="detail" @click="graphVisible = !graphVisible">Подробнее</Button>
         </div>
         <div class="echarts">
           <ECharts :options="pie"></ECharts>
@@ -188,7 +188,7 @@
         <ECharts :options="largePie" :initOptions="largePieInitOpts"></ECharts>
       </div>
       <div slot="footer">
-        <Button type="ghost" @click="graphVisible=false">Close</Button>
+        <Button type="ghost" @click="graphVisible=false">Закрыть</Button>
       </div>
     </Modal>
   </div>
@@ -204,7 +204,6 @@
   import api from '@oj/api'
   import {pie, largePie} from './chartData'
 
-  // 只显示这些状态的图形占用
   const filtedStatus = ['-1', '-2', '0', '1', '2', '3', '4', '8']
 
   export default {
@@ -246,7 +245,6 @@
         },
         pie: pie,
         largePie: largePie,
-        // echarts 无法获取隐藏dom的大小，需手动指定
         largePieInitOpts: {
           width: '500',
           height: '480'
@@ -326,7 +324,6 @@
         }
         this.largePie.legend.data = legend
 
-        // 把ac的数据提取出来放在最后
         let acCount = problemData.statistic_info['0']
         delete problemData.statistic_info['0']
 
@@ -336,6 +333,9 @@
         })
         largePieData.push({name: 'AC', value: acCount})
         this.largePie.series[0].data = largePieData
+      },
+      routeToDetails (id) {
+        this.$router.push({name: 'submission-details', params: {id, problemId: this.problemID}})
       },
       handleRoute (route) {
         this.$router.push(route)
@@ -353,7 +353,7 @@
       },
       onResetToTemplate () {
         this.$Modal.confirm({
-          content: 'Are you sure you want to reset your code?',
+          content: 'Вы уверены, что хотите сбросить данные формы?',
           onOk: () => {
             let template = this.problem.template
             if (template && template[this.language]) {
@@ -389,7 +389,7 @@
       },
       submitCode () {
         if (this.code.trim() === '') {
-          this.$error('Code can not be empty')
+          this.$error('Код отсутствует!')
           return
         }
         this.submissionId = ''
@@ -526,12 +526,14 @@
       color: #3091f2;
       .copy {
         padding-left: 8px;
+        color: black;
       }
     }
     p.content {
       margin-left: 25px;
       margin-right: 20px;
-      font-size: 15px
+      font-size: 15px;
+      word-break: break-word;
     }
     .sample {
       align-items: stretch;

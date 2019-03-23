@@ -68,7 +68,7 @@
       const CheckUsernameNotExist = (rule, value, callback) => {
         api.checkUsernameOrEmail(value, undefined).then(res => {
           if (res.data.data.username === true) {
-            callback(new Error('The username already exists.'))
+            callback(new Error('Такой пользователь уже существует.'))
           } else {
             callback()
           }
@@ -77,7 +77,7 @@
       const CheckEmailNotExist = (rule, value, callback) => {
         api.checkUsernameOrEmail(undefined, value).then(res => {
           if (res.data.data.email === true) {
-            callback(new Error('The email already exists'))
+            callback(new Error('Email уже используется.'))
           } else {
             callback()
           }
@@ -85,7 +85,6 @@
       }
       const CheckPassword = (rule, value, callback) => {
         if (this.formRegister.password !== '') {
-          // 对第二个密码框再次验证
           this.$refs.formRegister.validateField('passwordAgain')
         }
         callback()
@@ -93,7 +92,7 @@
 
       const CheckAgainPassword = (rule, value, callback) => {
         if (value !== this.formRegister.password) {
-          callback(new Error('password does not match'))
+          callback(new Error('Пароли не совпадают.'))
         }
         callback()
       }
@@ -143,7 +142,7 @@
           delete formData['passwordAgain']
           this.btnRegisterLoading = true
           api.register(formData).then(res => {
-            this.$success('Thanks for your registering, you can login now')
+            this.$success('Спасибо за регистрацию! Теперь вы можете войти в систему.')
             this.switchMode('login')
             this.btnRegisterLoading = false
           }, _ => {

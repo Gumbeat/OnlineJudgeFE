@@ -6,7 +6,7 @@
         <router-view></router-view>
       </transition>
       <div class="footer">
-        <p v-html="website.website_footer"></p>
+        <a href="https://vk.com/art9.studio" target="_blank">Создано при поддержке art9</a>
       </div>
     </div>
     <BackTop></BackTop>

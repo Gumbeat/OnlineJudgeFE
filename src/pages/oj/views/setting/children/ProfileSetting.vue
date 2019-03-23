@@ -69,32 +69,32 @@
           <FormItem label="Настоящее имя">
             <Input v-model="formProfile.real_name"/>
           </FormItem>
-          <Form-item label="Школа">
-            <Input v-model="formProfile.school"/>
-          </Form-item>
-          <Form-item label="Университет">
-            <Input v-model="formProfile.major"/>
-          </Form-item>
-          <FormItem label="Язык">
-            <Select v-model="formProfile.language">
-              <Option v-for="lang in languages" :key="lang.value" :value="lang.value">{{lang.label}}</Option>
-            </Select>
-          </FormItem>
+          <!--<Form-item label="Школа">-->
+            <!--<Input v-model="formProfile.school"/>-->
+          <!--</Form-item>-->
+          <!--<Form-item label="Университет">-->
+            <!--<Input v-model="formProfile.major"/>-->
+          <!--</Form-item>-->
+          <!--<FormItem label="Язык">-->
+            <!--<Select v-model="formProfile.language">-->
+              <!--<Option v-for="lang in languages" :key="lang.value" :value="lang.value">{{lang.label}}</Option>-->
+            <!--</Select>-->
+          <!--</FormItem>-->
           <Form-item>
             <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">Сохранить всё</Button>
           </Form-item>
         </Col>
 
         <Col :span="11">
-          <Form-item label="Настроение">
+          <Form-item label="Учебное заведение">
             <Input v-model="formProfile.mood"/>
           </Form-item>
-          <Form-item label="Блог">
-            <Input v-model="formProfile.blog"/>
-          </Form-item>
-          <Form-item label="Github">
-            <Input v-model="formProfile.github"/>
-          </Form-item>
+          <!--<Form-item label="Блог">-->
+            <!--<Input v-model="formProfile.blog"/>-->
+          <!--</Form-item>-->
+          <!--<Form-item label="Github">-->
+            <!--<Input v-model="formProfile.github"/>-->
+          <!--</Form-item>-->
         </Col>
       </Row>
     </Form>

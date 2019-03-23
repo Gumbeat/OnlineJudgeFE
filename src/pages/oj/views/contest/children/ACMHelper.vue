@@ -1,10 +1,10 @@
 <template>
   <panel shadow>
-    <div slot="title">ACM Helper</div>
+    <div slot="title">Помощник</div>
     <div slot="extra">
       <ul class="filter">
         <li>
-          Auto Refresh(10s)
+          Автообновление(10с)
           <i-switch style="margin-left: 5px;" @on-change="handleAutoRefresh"></i-switch>
         </li>
         <li>

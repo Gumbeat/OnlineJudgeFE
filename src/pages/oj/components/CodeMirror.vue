@@ -1,10 +1,10 @@
 <template>
   <div style="margin: 0px 0px 15px 0px">
     <Row type="flex" justify="space-between" class="header">
-      <Col :span=12>
+      <Col :span=8>
       <div>
         <span>Язык:</span>
-        <Select :value="language" @on-change="onLangChange" class="adjust">
+        <Select :value="language"  @on-change="onLangChange" class="adjust">
           <Option v-for="item in languages" :key="item" :value="item">{{item}}
           </Option>
         </Select>
@@ -15,9 +15,14 @@
 
       </div>
       </Col>
-      <Col :span=12>
+      <Col v-if="restriction" :span="10">
+        <div class="restriction">
+          <span>Примечание: {{restriction}}</span>
+        </div>
+      </Col>
+      <Col :span=6>
       <div class="fl-right">
-        <span>Theme:</span>
+        <span>Тема:</span>
         <Select :value="theme" @on-change="onThemeChange" class="adjust">
           <Option v-for="item in themes" :key="item.label" :value="item.value">{{item.label}}
           </Option>
@@ -81,14 +86,13 @@
         options: {
           // codemirror options
           tabSize: 4,
+          restriction: '',
           mode: 'text/x-csrc',
           theme: 'solarized',
           lineNumbers: true,
           line: true,
-          // 代码折叠
           foldGutter: true,
           gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-          // 选中文本自动高亮，及高亮方式
           styleSelectedText: true,
           lineWrapping: false,
           highlightSelectionMatches: {showToken: /\w/, annotateScrollbar: true}
@@ -119,6 +123,16 @@
         this.$emit('update:value', newCode)
       },
       onLangChange (newVal) {
+        const langRestrictions = {
+          'C++': 'Не использовать stdafx.h и тип данных Int64',
+          'C#': 'Не использовать namespace в коде',
+          'Java': 'Не использовать public классы. Главный класс должен называться Main. Убрать package, если он есть.'
+        }
+        if (newVal in langRestrictions) {
+          this.restriction = langRestrictions[newVal]
+        } else {
+          this.restriction = ''
+        }
         this.editor.setOption('mode', this.mode[newVal])
         this.$emit('changeLang', newVal)
       },
@@ -145,6 +159,12 @@
 </script>
 
 <style lang="less" scoped>
+  .restriction {
+    padding: 5px;
+    border: 1px solid orange;
+    border-radius: 3px;
+  }
+
   .header {
     margin: 5px 5px 15px 5px;
     .adjust {

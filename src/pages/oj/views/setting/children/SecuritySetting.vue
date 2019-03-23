@@ -180,7 +180,7 @@
       },
       platform (value) {
         let b = loadBrowser(value)
-        return b.os ? b.os : 'Unknown'
+        return b.os ? b.os : 'Неизвестно'
       }
     }
   }

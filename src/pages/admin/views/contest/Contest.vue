@@ -36,12 +36,12 @@
               <el-input v-model="contest.password" :placeholder="$t('m.Contest_Password')"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="8">
-            <el-form-item :label="$t('m.Contest_Rule_Type')">
-              <el-radio class="radio" v-model="contest.rule_type" label="ACM" :disabled="disableRuleType">ACM</el-radio>
-              <el-radio class="radio" v-model="contest.rule_type" label="OI" :disabled="disableRuleType">OI</el-radio>
-            </el-form-item>
-          </el-col>
+          <!--<el-col :span="8">-->
+            <!--<el-form-item :label="$t('m.Contest_Rule_Type')">-->
+              <!--<el-radio class="radio" v-model="contest.rule_type" label="ACM" :disabled="disableRuleType">ACM</el-radio>-->
+              <!--<el-radio class="radio" v-model="contest.rule_type" label="OI" :disabled="disableRuleType">OI</el-radio>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
           <el-col :span="8">
             <el-form-item :label="$t('m.Real_Time_Rank')">
               <el-switch
@@ -60,21 +60,21 @@
               </el-switch>
             </el-form-item>
           </el-col>
-          <el-col :span="24">
-            <el-form-item :label="$t('m.Allowed_IP_Ranges')">
-              <div v-for="(range, index) in contest.allowed_ip_ranges" :key="index">
-                <el-row :gutter="20" style="margin-bottom: 15px">
-                  <el-col :span="8">
-                    <el-input v-model="range.value" :placeholder="$t('m.CIDR_Network')"></el-input>
-                  </el-col>
-                  <el-col :span="10">
-                    <el-button plain icon="el-icon-fa-plus" @click="addIPRange"></el-button>
-                    <el-button plain icon="el-icon-fa-trash" @click="removeIPRange(range)"></el-button>
-                  </el-col>
-                </el-row>
-              </div>
-            </el-form-item>
-          </el-col>
+          <!--<el-col :span="24">-->
+            <!--<el-form-item :label="$t('m.Allowed_IP_Ranges')">-->
+              <!--<div v-for="(range, index) in contest.allowed_ip_ranges" :key="index">-->
+                <!--<el-row :gutter="20" style="margin-bottom: 15px">-->
+                  <!--<el-col :span="8">-->
+                    <!--<el-input v-model="range.value" :placeholder="$t('m.CIDR_Network')"></el-input>-->
+                  <!--</el-col>-->
+                  <!--<el-col :span="10">-->
+                    <!--<el-button plain icon="el-icon-fa-plus" @click="addIPRange"></el-button>-->
+                    <!--<el-button plain icon="el-icon-fa-trash" @click="removeIPRange(range)"></el-button>-->
+                  <!--</el-col>-->
+                <!--</el-row>-->
+              <!--</div>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
         </el-row>
       </el-form>
       <save @click.native="saveContest"></save>
@@ -93,8 +93,8 @@
     },
     data () {
       return {
-        title: 'Create Contest',
-        disableRuleType: false,
+        title: 'Создать соревнование',
+        disableRuleType: true,
         contest: {
           title: '',
           description: '',
@@ -138,7 +138,7 @@
     },
     mounted () {
       if (this.$route.name === 'edit-contest') {
-        this.title = 'Edit Contest'
+        this.title = 'Редактировать Соревнование'
         this.disableRuleType = true
         api.getContest(this.$route.params.contestId).then(res => {
           let data = res.data.data

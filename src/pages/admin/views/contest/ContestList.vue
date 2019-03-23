@@ -1,6 +1,6 @@
 <template>
   <div class="view">
-    <Panel title="Contest List">
+    <Panel title="Список соревнований">
       <div slot="header">
         <el-input
           v-model="keyword"
@@ -16,28 +16,28 @@
         style="width: 100%">
         <el-table-column type="expand">
           <template slot-scope="props">
-            <p>Start Time: {{props.row.start_time | localtime }}</p>
-            <p>End Time: {{props.row.end_time | localtime }}</p>
-            <p>Create Time: {{props.row.create_time | localtime}}</p>
-            <p>Creator: {{props.row.created_by.username}}</p>
+            <p>Время начала: {{props.row.start_time | localtime }}</p>
+            <p>Время окончания: {{props.row.end_time | localtime }}</p>
+            <p>Время создания: {{props.row.create_time | localtime}}</p>
+            <p>Создатель: {{props.row.created_by.username}}</p>
           </template>
         </el-table-column>
         <el-table-column
           prop="id"
-          width="80"
+          width="50"
           label="ID">
         </el-table-column>
         <el-table-column
           prop="title"
           label="Название">
         </el-table-column>
-        <el-table-column
-          label="Правило соревнования"
-          width="130">
-          <template slot-scope="scope">
-            <el-tag type="gray">{{scope.row.rule_type}}</el-tag>
-          </template>
-        </el-table-column>
+        <!--<el-table-column-->
+          <!--label="Режим"-->
+          <!--width="130">-->
+          <!--<template slot-scope="scope">-->
+            <!--<el-tag type="gray">{{scope.row.rule_type}}</el-tag>-->
+          <!--</template>-->
+        <!--</el-table-column>-->
         <el-table-column
           label="Тип соревнования"
           width="180">
@@ -48,7 +48,7 @@
           </template>
         </el-table-column>
         <el-table-column
-          label="Status"
+          label="Состояние"
           width="130">
           <template slot-scope="scope">
             <el-tag
@@ -58,8 +58,8 @@
           </template>
         </el-table-column>
         <el-table-column
-          width="100"
-          label="Visible">
+          width="120"
+          label="Отображать">
           <template slot-scope="scope">
             <el-switch v-model="scope.row.visible"
                        active-text=""
@@ -71,13 +71,13 @@
         <el-table-column
           fixed="right"
           width="250"
-          label="Operation">
+          label="Действия">
           <div slot-scope="scope">
-            <icon-btn name="Edit" icon="edit" @click.native="goEdit(scope.row.id)"></icon-btn>
-            <icon-btn name="Problem" icon="list-ol" @click.native="goContestProblemList(scope.row.id)"></icon-btn>
-            <icon-btn name="Announcement" icon="info-circle"
-                      @click.native="goContestAnnouncement(scope.row.id)"></icon-btn>
-            <icon-btn icon="download" name="Download Accepted Submissions"
+            <icon-btn name="Редактировать" icon="edit" @click.native="goEdit(scope.row.id)"></icon-btn>
+            <icon-btn name="Задачи" icon="list-ol" @click.native="goContestProblemList(scope.row.id)"></icon-btn>
+            <!--<icon-btn name="Анонс" icon="info-circle"-->
+                      <!--@click.native="goContestAnnouncement(scope.row.id)"></icon-btn>-->
+            <icon-btn icon="download" name="Скачать принятые решения"
                       @click.native="openDownloadOptions(scope.row.id)"></icon-btn>
           </div>
         </el-table-column>
@@ -92,12 +92,12 @@
         </el-pagination>
       </div>
     </Panel>
-    <el-dialog title="Download Contest Submissions"
+    <el-dialog title="Скачать успешные решения"
                width="30%"
                :visible.sync="downloadDialogVisible">
       <el-switch v-model="excludeAdmin" active-text="Exclude admin submissions"></el-switch>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="downloadSubmissions">确 定</el-button>
+        <el-button type="primary" @click="downloadSubmissions">Скачать</el-button>
       </span>
     </el-dialog>
   </div>
