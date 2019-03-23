@@ -12,7 +12,7 @@ export const m = {
   Time_Limit: 'Ограничение по времени',
   Memory_Limit: 'Ограничение по памяти',
   Created: 'Создано',
-  Level: 'Уровень',
+  Level: 'Сложность',
   Score: 'Счёт',
   Tags: 'Теги',
   Show: 'Показать',

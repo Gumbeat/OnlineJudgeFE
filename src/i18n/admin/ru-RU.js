@@ -6,7 +6,7 @@ export const m = {
   Announcement: 'Объявление',
   System_Config: 'Конфигурация системы',
   Judge_Server: 'Сервер тестирования',
-  Prune_Test_Case: 'Удалить тестовые данные',
+  Prune_Test_Case: 'Удалить тесты',
   Problem: 'Задача',
   Problem_List: 'Список задач',
   Create_Problem: 'Создать задачу',
@@ -39,13 +39,13 @@ export const m = {
   Port: 'Порт',
   Email: 'Email',
   Password: 'Пароль',
-  Website_Config: 'Веб конфигурация',
+  Website_Config: 'Настройки системы',
   Base_Url: 'Адрес',
   Name: 'Имя',
   Shortcut: 'Сокращение',
   Footer: 'Футер',
   Allow_Register: 'Разрешить регистрацию',
-  Submission_List_Show_All: 'Список отправлений показать все',
+  Submission_List_Show_All: 'Показывать все решения',
   // JudgeServer.vue
   Judge_Server_Token: 'Токен тестового сервера',
   Judge_Server_Info: 'Тестовый сервер',
@@ -55,7 +55,7 @@ export const m = {
   Last_Heartbeat: 'Время последнего ответа',
   Create_Time: 'Время создания',
   // PruneTestCase
-  Test_Case_Prune_Test_Case: 'Удалить тестовые данные',
+  Test_Case_Prune_Test_Case: 'Удалить тесты',
   // Problem.vue
   Display_ID: 'Отображаемый ID',
   Title: 'Название',

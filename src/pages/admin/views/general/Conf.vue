@@ -42,27 +42,27 @@
     <Panel :title="$t('m.Website_Config')">
       <el-form label-position="left" label-width="100px" ref="form" :model="websiteConfig">
         <el-row :gutter="20">
-          <el-col :span="8">
-            <el-form-item :label="$t('m.Base_Url')" required>
-              <el-input v-model="websiteConfig.website_base_url" placeholder="Url сайта"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="8">
-            <el-form-item :label="$t('m.Name')" required>
-              <el-input v-model="websiteConfig.website_name" placeholder="Имя сайта"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="8">
-            <el-form-item :label="$t('m.Shortcut')" required>
-              <el-input v-model="websiteConfig.website_name_shortcut" placeholder="Краткое имя сайта"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="24">
-            <el-form-item :label="$t('m.Footer')" required>
-              <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" v-model="websiteConfig.website_footer"
-                        placeholder="HTML футера сайта"></el-input>
-            </el-form-item>
-          </el-col>
+          <!--<el-col :span="8">-->
+            <!--<el-form-item :label="$t('m.Base_Url')" required>-->
+              <!--<el-input v-model="websiteConfig.website_base_url" placeholder="Url сайта"></el-input>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
+          <!--<el-col :span="8">-->
+            <!--<el-form-item :label="$t('m.Name')" required>-->
+              <!--<el-input v-model="websiteConfig.website_name" placeholder="Имя сайта"></el-input>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
+          <!--<el-col :span="8">-->
+            <!--<el-form-item :label="$t('m.Shortcut')" required>-->
+              <!--<el-input v-model="websiteConfig.website_name_shortcut" placeholder="Краткое имя сайта"></el-input>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
+          <!--<el-col :span="24">-->
+            <!--<el-form-item :label="$t('m.Footer')" required>-->
+              <!--<el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" v-model="websiteConfig.website_footer"-->
+                        <!--placeholder="HTML футера сайта"></el-input>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
           <el-col :span="24">
             <el-col :span="12">
               <el-form-item :label="$t('m.Allow_Register')" label-width="200px">

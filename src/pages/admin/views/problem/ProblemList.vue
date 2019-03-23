@@ -196,7 +196,7 @@
         })
       },
       deleteProblem (id) {
-        this.$confirm('You can only delete the problem that doesn\'t have submissions, continue?', 'Delete Problem', {
+        this.$confirm('Вы можете удалить только задачу без рещений, продолжить?', 'Удалить задачу', {
           type: 'warning'
         }).then(() => {
           let funcName = this.routeName === 'problem-list' ? 'deleteProblem' : 'deleteContestProblem'

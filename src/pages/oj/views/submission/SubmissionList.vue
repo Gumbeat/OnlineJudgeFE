@@ -31,7 +31,7 @@
             </li>
 
             <li>
-              <Button type="info" icon="refresh" @click="getSubmissions">{{$t('m.Refresh')}}</Button>
+              <Button type="info" icon="search" @click="getSubmissions">{{$t('m.Refresh')}}</Button>
             </li>
           </ul>
         </div>
@@ -259,7 +259,7 @@
           title: 'Действие',
           fixed: 'right',
           align: 'center',
-          width: 90,
+          width: 150,
           render: (h, params) => {
             return h('Button', {
               props: {
@@ -272,7 +272,7 @@
                   this.handleRejudge(params.row.id, params.index)
                 }
               }
-            }, 'Rejudge')
+            }, 'Оценить повторно')
           }
         }
         this.columns.push(judgeColumn)

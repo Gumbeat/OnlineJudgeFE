@@ -98,6 +98,11 @@ export default [
         component: Problem
       },
       {
+        path: 'faq',
+        name: 'contest-faq',
+        component: FAQ
+      },
+      {
         name: 'contest-announcement-list',
         path: 'announcements',
         component: Announcements

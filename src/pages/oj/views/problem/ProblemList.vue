@@ -63,7 +63,7 @@
 
       <Button long id="pick-one" @click="pickone">
         <Icon type="shuffle"></Icon>
-        Выберите один
+        Открыть случайную задачу
       </Button>
     </Panel>
     <Spin v-if="loadings.tag" fix size="large"></Spin>
@@ -147,7 +147,7 @@
             }
           },
           {
-            title: 'Всего',
+            title: 'Всего решений',
             key: 'submission_number'
           },
           {

@@ -6,7 +6,7 @@
           <el-col :span="8">
             <el-button v-show="selectedUsers.length"
                        type="warning" icon="el-icon-fa-trash"
-                       @click="deleteUsers(selectedUserIDs)">Delete
+                       @click="deleteUsers(selectedUserIDs)">Удалить
             </el-button>
           </el-col>
           <el-col :span="selectedUsers.length ? 16: 24">
@@ -70,8 +70,8 @@
     <Panel>
       <span slot="title">{{$t('m.Import_User')}}
         <el-popover placement="right" trigger="hover">
-          <p>Only support csv file without headers, check the <a
-            href="http://docs.onlinejudge.me/#/onlinejudge/guide/import_users">link</a> for details</p>
+          <p>Поддерживает только csv файлы без заголовков <a
+            href="http://docs.onlinejudge.me/#/onlinejudge/guide/import_users">ссылка</a> для подробностей</p>
           <i slot="reference" class="el-icon-fa-question-circle import-user-icon"></i>
         </el-popover>
       </span>
@@ -80,11 +80,11 @@
                  :show-file-list="false"
                  accept=".csv"
                  :before-upload="handleUsersCSV">
-        <el-button size="small" icon="el-icon-fa-upload" type="primary">Choose File</el-button>
+        <el-button size="small" icon="el-icon-fa-upload" type="primary">Выберите файл</el-button>
       </el-upload>
       <template v-else>
         <el-table :data="uploadUsersPage">
-          <el-table-column label="Имя пользователя">
+          <el-table-column label="Логин">
             <template slot-scope="{row}">
               {{row[0]}}
             </template>
@@ -103,11 +103,11 @@
         <div class="panel-options">
           <el-button type="primary" size="small"
                      icon="el-icon-fa-upload"
-                     @click="handleUsersUpload">Import All
+                     @click="handleUsersUpload">Импортировать всё
           </el-button>
           <el-button type="warning" size="small"
                      icon="el-icon-fa-undo"
-                     @click="handleResetData">Reset Data
+                     @click="handleResetData">Сбросить данные
           </el-button>
           <el-pagination
             class="page"
@@ -152,11 +152,11 @@
         </el-row>
 
         <el-form-item>
-          <el-button type="primary" @click="generateUser" icon="el-icon-fa-users" :loading="loadingGenerate">Generate & Export
+          <el-button type="primary" @click="generateUser" icon="el-icon-fa-users" :loading="loadingGenerate">Сгенерировать и скачать
           </el-button>
           <span class="userPreview" v-if="formGenerateUser.number_from && formGenerateUser.number_to &&
                                           formGenerateUser.number_from <= formGenerateUser.number_to">
-            The usernames will be {{formGenerateUser.prefix + formGenerateUser.number_from + formGenerateUser.suffix}},
+            Этот логин будет таким: {{formGenerateUser.prefix + formGenerateUser.number_from + formGenerateUser.suffix}},
             <span v-if="formGenerateUser.number_from + 1 < formGenerateUser.number_to">
               {{formGenerateUser.prefix + (formGenerateUser.number_from + 1) + formGenerateUser.suffix + '...'}}
             </span>
@@ -209,7 +209,7 @@
               </el-select>
             </el-form-item>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="16">
             <el-form-item :label="$t('m.Two_Factor_Auth')">
               <el-switch
                 v-model="user.two_factor_auth"
@@ -219,15 +219,15 @@
               </el-switch>
             </el-form-item>
           </el-col>
-          <el-col :span="8">
-            <el-form-item label="Открытый Api">
-              <el-switch
-                v-model="user.open_api"
-                active-color="#13ce66"
-                inactive-color="#ff4949">
-              </el-switch>
-            </el-form-item>
-          </el-col>
+          <!--<el-col :span="8">-->
+            <!--<el-form-item label="Открытый Api">-->
+              <!--<el-switch-->
+                <!--v-model="user.open_api"-->
+                <!--active-color="#13ce66"-->
+                <!--inactive-color="#ff4949">-->
+              <!--</el-switch>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
           <el-col :span="8">
             <el-form-item :label="$t('m.Is_Disabled')">
               <el-switch
@@ -305,7 +305,6 @@
         }).catch(() => {
         })
       },
-      // 打开用户对话框
       openUserDialog (id) {
         this.showUserDialog = true
         api.getUser(id).then(res => {
@@ -314,7 +313,6 @@
           this.user.real_tfa = this.user.two_factor_auth
         })
       },
-      // 获取用户列表
       getUserList (page) {
         this.loadingTable = true
         api.getUserList((page - 1) * this.pageSize, this.pageSize, this.keyword).then(res => {
@@ -326,7 +324,7 @@
         })
       },
       deleteUsers (ids) {
-        this.$confirm('Sure to delete the user?', 'confirm', {
+        this.$confirm('Вы уверены, что хотите удалить рользователя?', 'Подтвердите', {
           type: 'warning'
         }).then(() => {
           api.deleteUsers(ids.join(',')).then(res => {
@@ -406,7 +404,7 @@
       'user.admin_type' () {
         if (this.user.admin_type === 'Super Admin') {
           this.user.problem_permission = 'All'
-        } else if (this.user.admin_type === 'Regular User') {
+        } else if (this.user.admin_type === 'Обычный пользователь') {
           this.user.problem_permission = 'None'
         }
       },

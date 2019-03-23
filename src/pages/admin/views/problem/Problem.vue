@@ -27,6 +27,7 @@
           <el-col :span="24">
             <el-form-item prop="input_description" :label="$t('m.Input_Description')" required>
               <Simditor v-model="problem.input_description"></Simditor>
+              <!--<SimditorTheSecond v-model="problem.input_description"></SimditorTheSecond>-->
             </el-form-item>
           </el-col>
           <el-col :span="24">
@@ -230,7 +231,7 @@
         <!--<el-form-item :label="$t('m.Source')">-->
           <!--<el-input :placeholder="$t('m.Source')" v-model="problem.source"></el-input>-->
         <!--</el-form-item>-->
-        <save @click.native="submit()">Save</save>
+        <save @click.native="submit()">Сохранить</save>
       </el-form>
     </Panel>
   </div>
@@ -238,6 +239,7 @@
 
 <script>
   import Simditor from '../../components/Simditor'
+  // import SimditorTheSecond from '../../components/SimditorTheSecond'
   import Accordion from '../../components/Accordion'
   import CodeMirror from '../../components/CodeMirror'
   import api from '../../api'
@@ -248,6 +250,7 @@
       Simditor,
       Accordion,
       CodeMirror
+      // SimditorTheSecond
     },
     data () {
       return {
@@ -447,7 +450,7 @@
         this.problem.test_case_id = response.data.id
       },
       uploadFailed () {
-        this.$error('Upload failed')
+        this.$error('Загрузка не удалась')
       },
       compileSPJ () {
         let data = {
@@ -538,7 +541,6 @@
           'create-contest-problem': 'createContestProblem',
           'edit-contest-problem': 'editContestProblem'
         }[this.routeName]
-        // edit contest problem 时, contest_id会被后来的请求覆盖掉
         if (funcName === 'editContestProblem') {
           this.problem.contest_id = this.contest.id
         }

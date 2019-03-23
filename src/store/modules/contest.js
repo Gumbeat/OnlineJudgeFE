@@ -80,16 +80,16 @@ const getters = {
       let duration = moment.duration(getters.contestStartTime.diff(state.now, 'seconds'), 'seconds')
       // time is too long
       if (duration.weeks() > 0) {
-        return 'Start At ' + duration.humanize()
+        return 'Начнётся в ' + duration.humanize()
       }
       let texts = [Math.floor(duration.asHours()), duration.minutes(), duration.seconds()]
-      return '-' + texts.join(':')
+      return texts.join(':')
     } else if (getters.contestStatus === CONTEST_STATUS.UNDERWAY) {
       let duration = moment.duration(getters.contestEndTime.diff(state.now, 'seconds'), 'seconds')
       let texts = [Math.floor(duration.asHours()), duration.minutes(), duration.seconds()]
-      return '-' + texts.join(':')
+      return texts.join(':')
     } else {
-      return 'Ended'
+      return 'Завершено'
     }
   }
 }

@@ -19,7 +19,44 @@ for (let lang of languages) {
 // load language packages
 export default new VueI18n({
   locale: 'ru-RU',
-  messages: messages
+  messages: messages,
+  datepicker: {
+    now: 'Сейчас',
+    today: 'Сегодня',
+    cancel: 'Отмена',
+    clear: 'Очистить',
+    confirm: 'Подтвердить',
+    selectDate: 'Выбрать дату',
+    selectTime: 'Выбрать время',
+    startTime: 'Время начала',
+    endTime: 'Время окончания',
+    year: 'Год',
+    month: 'Месяц',
+    week: 'Неделя',
+    weeks: {
+      sun: 'вс',
+      mon: 'пн',
+      tue: 'вт',
+      wed: 'ср',
+      thu: 'чт',
+      fri: 'пт',
+      sat: 'сб'
+    },
+    months: {
+      jan: 'янв',
+      feb: 'фев',
+      mar: 'март',
+      apr: 'апр',
+      may: 'май',
+      jun: 'июнь',
+      jul: 'июль',
+      aug: 'авг',
+      sep: 'сент',
+      oct: 'окт',
+      nov: 'нояб',
+      dec: 'дек'
+    }
+  }
 })
 
 export {languages}

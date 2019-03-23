@@ -97,7 +97,7 @@ export const RULE_TYPE = {
 
 export const CONTEST_TYPE = {
   PUBLIC: 'Публичное',
-  PRIVATE: 'Пароль защищён'
+  PRIVATE: 'Защищён паролем'
 }
 
 export const USER_TYPE = {
@@ -107,15 +107,15 @@ export const USER_TYPE = {
 }
 
 export const PROBLEM_PERMISSION = {
-  NONE: 'Отсутствуют',
-  OWN: 'Владелец',
-  ALL: 'Все'
+  NONE: 'None',
+  OWN: 'Own',
+  ALL: 'All'
 }
 
 export const STORAGE_KEY = {
   AUTHED: 'authed',
-  PROBLEM_CODE: 'код ошибки',
-  languages: 'языки'
+  PROBLEM_CODE: 'problemCode',
+  languages: 'languages'
 }
 
 export function buildProblemCodeKey (problemID, contestID = null) {

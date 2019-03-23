@@ -60,6 +60,13 @@
 
         <VerticalMenu-item v-if="OIContestRealTimePermission"
                            :disabled="contestMenuDisabled"
+                           :route="{name: 'contest-faq'}">
+          <Icon type="information-circled"></Icon>
+          {{$t('m.FAQ')}}
+        </VerticalMenu-item>
+
+        <VerticalMenu-item v-if="OIContestRealTimePermission"
+                           :disabled="contestMenuDisabled"
                            :route="{name: 'contest-rank', params: {contestID: contestID}}">
           <Icon type="stats-bars"></Icon>
           {{$t('m.Rankings')}}
@@ -95,13 +102,13 @@
         contestPassword: '',
         columns: [
           {
-            title: 'Начало в',
+            title: 'Начало',
             render: (h, params) => {
               return h('span', time.utcToLocal(params.row.start_time))
             }
           },
           {
-            title: 'Конец в',
+            title: 'Окончание',
             render: (h, params) => {
               return h('span', time.utcToLocal(params.row.end_time))
             }

@@ -53,6 +53,7 @@
       background: #f8f8f9;
       border-left: 2px solid #5cadff;
       color: #2d8cf0;
+      cursor: pointer;
     }
     & > .ivu-icon {
       font-size: 16px;
