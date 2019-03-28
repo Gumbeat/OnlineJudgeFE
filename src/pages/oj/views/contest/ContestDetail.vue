@@ -27,6 +27,7 @@
               </div>
             </Panel>
             <Table :columns="columns" :data="contest_table" disabled-hover style="margin-bottom: 40px;"></Table>
+            <FAQ></FAQ>
           </div>
         </template>
       </div>
@@ -89,10 +90,11 @@
   import { types } from '@/store'
   import { CONTEST_STATUS_REVERSE, CONTEST_STATUS } from '@/utils/constants'
   import time from '@/utils/time'
+  import FAQ from '@/pages/oj/views/help/FAQ.vue'
 
   export default {
     name: 'ContestDetail',
-    components: {},
+    components: { FAQ },
     data () {
       return {
         CONTEST_STATUS: CONTEST_STATUS,

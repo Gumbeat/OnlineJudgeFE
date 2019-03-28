@@ -120,53 +120,53 @@
       </template>
     </Panel>
 
-    <Panel :title="$t('m.Generate_User')">
-      <el-form :model="formGenerateUser" ref="formGenerateUser">
-        <el-row type="flex" justify="space-between">
-          <el-col :span="4">
-            <el-form-item label="Префикс" prop="prefix">
-              <el-input v-model="formGenerateUser.prefix" placeholder="Префикс"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="4">
-            <el-form-item label="Суффикс" prop="suffix">
-              <el-input v-model="formGenerateUser.suffix" placeholder="Суффикс"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="4">
-            <el-form-item label="Начальный номер" prop="number_from" required>
-              <el-input-number v-model="formGenerateUser.number_from" style="width: 100%"></el-input-number>
-            </el-form-item>
-          </el-col>
-          <el-col :span="4">
-            <el-form-item label="Конечный номер" prop="number_to" required>
-              <el-input-number v-model="formGenerateUser.number_to" style="width: 100%"></el-input-number>
-            </el-form-item>
-          </el-col>
-          <el-col :span="4">
-            <el-form-item label="Длина пароля" prop="password_length" required>
-              <el-input v-model="formGenerateUser.password_length"
-                        placeholder="Длина пароля"></el-input>
-            </el-form-item>
-          </el-col>
-        </el-row>
+    <!--<Panel :title="$t('m.Generate_User')">-->
+      <!--<el-form :model="formGenerateUser" ref="formGenerateUser">-->
+        <!--<el-row type="flex" justify="space-between">-->
+          <!--<el-col :span="4">-->
+            <!--<el-form-item label="Префикс" prop="prefix">-->
+              <!--<el-input v-model="formGenerateUser.prefix" placeholder="Префикс"></el-input>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
+          <!--<el-col :span="4">-->
+            <!--<el-form-item label="Суффикс" prop="suffix">-->
+              <!--<el-input v-model="formGenerateUser.suffix" placeholder="Суффикс"></el-input>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
+          <!--<el-col :span="4">-->
+            <!--<el-form-item label="Начальный номер" prop="number_from" required>-->
+              <!--<el-input-number v-model="formGenerateUser.number_from" style="width: 100%"></el-input-number>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
+          <!--<el-col :span="4">-->
+            <!--<el-form-item label="Конечный номер" prop="number_to" required>-->
+              <!--<el-input-number v-model="formGenerateUser.number_to" style="width: 100%"></el-input-number>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
+          <!--<el-col :span="4">-->
+            <!--<el-form-item label="Длина пароля" prop="password_length" required>-->
+              <!--<el-input v-model="formGenerateUser.password_length"-->
+                        <!--placeholder="Длина пароля"></el-input>-->
+            <!--</el-form-item>-->
+          <!--</el-col>-->
+        <!--</el-row>-->
 
-        <el-form-item>
-          <el-button type="primary" @click="generateUser" icon="el-icon-fa-users" :loading="loadingGenerate">Сгенерировать и скачать
-          </el-button>
-          <span class="userPreview" v-if="formGenerateUser.number_from && formGenerateUser.number_to &&
-                                          formGenerateUser.number_from <= formGenerateUser.number_to">
-            Этот логин будет таким: {{formGenerateUser.prefix + formGenerateUser.number_from + formGenerateUser.suffix}},
-            <span v-if="formGenerateUser.number_from + 1 < formGenerateUser.number_to">
-              {{formGenerateUser.prefix + (formGenerateUser.number_from + 1) + formGenerateUser.suffix + '...'}}
-            </span>
-            <span v-if="formGenerateUser.number_from + 1 <= formGenerateUser.number_to">
-              {{formGenerateUser.prefix + formGenerateUser.number_to + formGenerateUser.suffix}}
-            </span>
-          </span>
-        </el-form-item>
-      </el-form>
-    </Panel>
+        <!--<el-form-item>-->
+          <!--<el-button type="primary" @click="generateUser" icon="el-icon-fa-users" :loading="loadingGenerate">Сгенерировать и скачать-->
+          <!--</el-button>-->
+          <!--<span class="userPreview" v-if="formGenerateUser.number_from && formGenerateUser.number_to &&-->
+                                          <!--formGenerateUser.number_from <= formGenerateUser.number_to">-->
+            <!--Этот логин будет таким: {{formGenerateUser.prefix + formGenerateUser.number_from + formGenerateUser.suffix}},-->
+            <!--<span v-if="formGenerateUser.number_from + 1 < formGenerateUser.number_to">-->
+              <!--{{formGenerateUser.prefix + (formGenerateUser.number_from + 1) + formGenerateUser.suffix + '...'}}-->
+            <!--</span>-->
+            <!--<span v-if="formGenerateUser.number_from + 1 <= formGenerateUser.number_to">-->
+              <!--{{formGenerateUser.prefix + formGenerateUser.number_to + formGenerateUser.suffix}}-->
+            <!--</span>-->
+          <!--</span>-->
+        <!--</el-form-item>-->
+      <!--</el-form>-->
+    <!--</Panel>-->
     <!--对话框-->
     <el-dialog :title="$t('m.User_Info')" :visible.sync="showUserDialog" :close-on-click-modal="false">
       <el-form :model="user" label-width="120px" label-position="left">
@@ -324,7 +324,7 @@
         })
       },
       deleteUsers (ids) {
-        this.$confirm('Вы уверены, что хотите удалить рользователя?', 'Подтвердите', {
+        this.$confirm('Вы уверены, что хотите удалить пользователя?', 'Подтвердите', {
           type: 'warning'
         }).then(() => {
           api.deleteUsers(ids.join(',')).then(res => {
@@ -360,9 +360,10 @@
       },
       handleUsersCSV (file) {
         papa.parse(file, {
+          encoding: 'utf-8',
           complete: (results) => {
             let data = results.data.filter(user => {
-              return user[0] && user[1] && user[2]
+              return user[0] && user[1] && user[2]// && user[3] && user[4]
             })
             let delta = results.data.length - data.length
             if (delta > 0) {

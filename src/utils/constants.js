@@ -96,8 +96,8 @@ export const RULE_TYPE = {
 }
 
 export const CONTEST_TYPE = {
-  PUBLIC: 'Публичное',
-  PRIVATE: 'Защищён паролем'
+  PUBLIC: 'Public',
+  PRIVATE: 'Password Protected'
 }
 
 export const USER_TYPE = {

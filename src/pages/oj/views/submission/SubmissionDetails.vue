@@ -99,6 +99,10 @@
       problemId: {
         required: true,
         type: String
+      },
+      contestId: {
+        type: String,
+        default: null
       }
     },
     components: {
@@ -150,7 +154,11 @@
         })
       },
       routeToProblem () {
-        this.$router.push(`/problem/${this.problemId}`)
+        if (this.contestId) {
+          this.$router.push(`/contest/${this.contestId}/problem/${this.problemId}`)
+        } else {
+          this.$router.push(`/problem/${this.problemId}`)
+        }
       },
       shareSubmission (shared) {
         let data = {id: this.submission.id, shared: shared}

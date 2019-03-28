@@ -90,7 +90,7 @@
                 @select="addTag"
                 :fetch-suggestions="querySearch">
               </el-autocomplete>
-              <el-button class="button-new-tag" v-else size="small" @click="inputVisible = true">+ New Tag</el-button>
+              <el-button class="button-new-tag" v-else size="small" @click="inputVisible = true">+ Новый тег</el-button>
             </el-form-item>
           </el-col>
           <el-col :span="8">
@@ -511,7 +511,7 @@
           return
         }
         if (!this.testCaseUploaded) {
-          this.error.testCase = 'Тесты ещё не загружены'
+          this.error.testCase = 'Тесты не загружены'
           this.$error(this.error.testCase)
           return
         }

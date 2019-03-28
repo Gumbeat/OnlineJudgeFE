@@ -82,9 +82,7 @@
                   },
                   on: {
                     click: () => {
-                      this.$router.push({name: 'submission-details',
-                        params: {id: params.row.id,
-                          problemId: params.row.problem}})
+                      this.$router.push({name: 'submission-details', params: {id: params.row.id, problemId: params.row.problem, contestId: this.contestID}})
                     }
                   },
                   props: {

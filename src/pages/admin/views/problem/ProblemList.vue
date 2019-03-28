@@ -196,7 +196,7 @@
         })
       },
       deleteProblem (id) {
-        this.$confirm('Вы можете удалить только задачу без рещений, продолжить?', 'Удалить задачу', {
+        this.$confirm('Вместе с задачей удалятся все её решения, продолжить?', 'Удалить задачу', {
           type: 'warning'
         }).then(() => {
           let funcName = this.routeName === 'problem-list' ? 'deleteProblem' : 'deleteContestProblem'
@@ -208,7 +208,7 @@
         })
       },
       makeContestProblemPublic (problemID) {
-        this.$prompt('Пожалуйста, введите отображаемый Id для задачи', 'confirm').then(({value}) => {
+        this.$prompt('Пожалуйста, введите отображаемый Id для задачи', 'Подтвердите').then(({value}) => {
           api.makeContestProblemPublic({id: problemID, display_id: value}).catch()
         }, () => {
         })

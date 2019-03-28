@@ -82,7 +82,7 @@
         })
       },
       handleAddProblem (problemID) {
-        this.$prompt('Введите отображаемый ID для задачи', 'подтвердить').then(({value}) => {
+        this.$prompt('Введите отображаемый ID задачи в соревновании', 'подтвердить').then(({value}) => {
           let data = {
             problem_id: problemID,
             contest_id: this.contestID,

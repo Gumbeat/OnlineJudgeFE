@@ -90,7 +90,7 @@ export const m = {
   Contest_End_Time: 'Время окончания',
   Contest_Password: 'Пароль',
   Contest_Rule_Type: 'Режим соревнования',
-  Real_Time_Rank: 'Соревнование с открытыми решениями',
+  Real_Time_Rank: 'Показывать результаты во время соревнования',
   Contest_Status: 'Соревнование общедоступно',
   Allowed_IP_Ranges: 'Разрешённый диапазон IP',
   CIDR_Network: 'Сеть CIDR',

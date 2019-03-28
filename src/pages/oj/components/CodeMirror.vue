@@ -69,12 +69,14 @@
       languages: {
         type: Array,
         default: () => {
-          return ['C', 'C++', 'Java', 'Python2']
+          return []
         }
       },
       language: {
         type: String,
-        default: 'C++'
+        default: () => {
+          return localStorage.getItem('lang') || 'C++'
+        }
       },
       theme: {
         type: String,
@@ -117,24 +119,30 @@
         this.editor.setOption('mode', this.mode[this.language])
       })
       this.editor.focus()
+      this.changeRestriction(this.language)
     },
     methods: {
       onEditorCodeChange (newCode) {
         this.$emit('update:value', newCode)
       },
       onLangChange (newVal) {
+        this.changeRestriction(newVal)
+        this.editor.setOption('mode', this.mode[newVal])
+        localStorage.setItem('lang', newVal)
+        this.$emit('changeLang', newVal)
+      },
+      changeRestriction (lang) {
         const langRestrictions = {
-          'C++': 'Не использовать stdafx.h и тип данных Int64',
+          'C': 'Не использовать stdafx.h и conio.h. Функция int main() не должна содержать параметров',
+          'C++': 'Не использовать stdafx.h и conio.h и тип данных Int64. Функция int main() не должна содержать параметров',
           'C#': 'Не использовать namespace в коде',
           'Java': 'Не использовать public классы. Главный класс должен называться Main. Убрать package, если он есть.'
         }
-        if (newVal in langRestrictions) {
-          this.restriction = langRestrictions[newVal]
+        if (lang in langRestrictions) {
+          this.restriction = langRestrictions[lang]
         } else {
           this.restriction = ''
         }
-        this.editor.setOption('mode', this.mode[newVal])
-        this.$emit('changeLang', newVal)
       },
       onThemeChange (newTheme) {
         this.editor.setOption('theme', newTheme)
@@ -153,7 +161,11 @@
     watch: {
       'theme' (newVal, oldVal) {
         this.editor.setOption('theme', newVal)
-      }
+      },
+      language:
+        function (newVal, oldVal) {
+          this.onLangChange(newVal)
+        }
     }
   }
 </script>

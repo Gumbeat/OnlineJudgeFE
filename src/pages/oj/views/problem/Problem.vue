@@ -224,7 +224,7 @@
         problemID: '',
         submitting: false,
         code: '',
-        language: 'C++',
+        language: localStorage.getItem('lang') || 'C++',
         theme: 'solarized',
         submissionId: '',
         submitted: false,
@@ -290,7 +290,7 @@
             return
           }
           // try to load problem template
-          this.language = this.problem.languages[0]
+          this.language = localStorage.getItem('lang')
           let template = this.problem.template
           if (template && template[this.language]) {
             this.code = template[this.language]
@@ -335,7 +335,7 @@
         this.largePie.series[0].data = largePieData
       },
       routeToDetails (id) {
-        this.$router.push({name: 'submission-details', params: {id, problemId: this.problemID}})
+        this.$router.push({name: 'submission-details', params: { id, problemId: this.problemID, contestId: this.contestID }})
       },
       handleRoute (route) {
         this.$router.push(route)
@@ -363,9 +363,7 @@
         })
       },
       checkSubmissionStatus () {
-        // 使用setTimeout避免一些问题
         if (this.refreshStatus) {
-          // 如果之前的提交状态检查还没有停止,则停止,否则将会失去timeout的引用造成无限请求
           clearTimeout(this.refreshStatus)
         }
         const checkStatus = () => {
@@ -408,7 +406,6 @@
           this.statusVisible = true
           api.submitCode(data).then(res => {
             this.submissionId = res.data.data && res.data.data.submission_id
-            // 定时检查状态
             this.submitting = false
             this.submissionExists = true
             if (!detailsVisible) {

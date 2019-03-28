@@ -27,7 +27,7 @@ export const m = {
   Memory_Limit_Exceeded: 'Программа превысила ограничение по использованию памяти.',
   System_Error: 'Упс, что-то не так с системой. Свяжитесь с админинистратором.',
   // FAQ.vue
-  Frequently_Asked_Questions: 'Часто задаваемые вопросы',
+  Frequently_Asked_Questions: 'Правила олимпиады',
   // ContestDetail.vue
   Problems: 'Задачи',
   Announcements: 'Объявления',
