@@ -10,7 +10,7 @@
       </div>
       <el-table
         v-loading="loading"
-        element-loading-text="loading"
+        element-loading-text="Загрузка"
         ref="table"
         :data="contestList"
         style="width: 100%">

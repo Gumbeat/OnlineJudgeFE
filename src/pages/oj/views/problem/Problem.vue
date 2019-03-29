@@ -290,7 +290,7 @@
             return
           }
           // try to load problem template
-          this.language = localStorage.getItem('lang')
+          this.language = localStorage.getItem('lang') || this.problem.languages[0]
           let template = this.problem.template
           if (template && template[this.language]) {
             this.code = template[this.language]

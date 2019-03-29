@@ -24,9 +24,9 @@
               </span>
               <Dropdown-menu slot="list">
                 <Dropdown-item name="">Все</Dropdown-item>
-                <Dropdown-item name="0">Проходящие</Dropdown-item>
-                <Dropdown-item name="1">Не начавшиеся</Dropdown-item>
-                <Dropdown-item name="-1">Завершённые</Dropdown-item>
+                <Dropdown-item name="0">Сейчас идёт</Dropdown-item>
+                <Dropdown-item name="1">Ещё не началось</Dropdown-item>
+                <Dropdown-item name="-1">Завершено</Dropdown-item>
               </Dropdown-menu>
             </Dropdown>
           </li>
