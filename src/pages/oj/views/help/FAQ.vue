@@ -25,9 +25,8 @@
             <br>
             <p>Список стандартных библиотек для некоторых языков</p>
             <ul>
-              <li><a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D0%B0%D1%8F_%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D1%8F%D0%B7%D1%8B%D0%BA%D0%B0_%D0%A1%D0%B8" target="_blank">C</a></li>
-              <li><a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D0%B0%D1%8F_%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_%D1%8F%D0%B7%D1%8B%D0%BA%D0%B0_C%2B%2B" target="_blank">C++</a></li>
-              <li><a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D0%B0%D1%8F_%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0_Python" target="_blank">Python</a></li>
+              <li class="libs_el" @click="showLibs('C')">C</li>
+              <li class="libs_el" @click="showLibs('C++')">C++</li>
             </ul>
           </li>
           <li>Особенности использования C++
@@ -60,7 +59,7 @@
               Не использовать такие вещи, как <code>System.pause()</code>, <code> Console.Readline() </code> и т.д. в конце кода вашей программы.
             </p>
           </li>
-          <li>Что влияет на конечные позиции в олимпиаде
+          <li>Что влияет на конечные результаты в олимпиаде
             <p> В случае, если у двух или более человек одинаковое количество решённых задач, лучший из них будет выбираться по двум критериям:
               времени, потраченному, на решение задач и точности решения задач (отношению правильных решений к отправленным)
             </p>
@@ -90,6 +89,14 @@
         </ul>
       </div>
     </panel>
+    <Modal v-model="modalVisible">
+      <div slot="header" class="modal-title">Список допустимых библиотек {{ currentLang }}</div>
+      <ul class="libs_ul">
+        <li v-for="lib in libs[currentLang]">
+          {{ lib }}
+        </li>
+      </ul>
+    </Modal>
   </div>
 
 </template>
@@ -101,7 +108,105 @@
     name: 'FAQ',
     data () {
       return {
-        languages: []
+        languages: [],
+        currentLang: '',
+        libs: {
+          'C': [
+            'assert.h',
+            'complex.h (C99)',
+            'ctype.h',
+            'errno.h',
+            'fenv.h (C99)',
+            'float.h',
+            'inttypes.h (C99)',
+            'iso646.h',
+            'limits.h',
+            'locale.h',
+            'math.h',
+            'setjmp.h',
+            'signal.h',
+            'stdalign.h (C11)',
+            'stdarg.h',
+            'stdatomic.h (C11)',
+            'stdbool.h (C99)',
+            'stddef.h',
+            'stdint.h (C99)',
+            'stdio.h',
+            'stdlib.h',
+            'stdnoreturn.h (C11)',
+            'string.h',
+            'tgmath.h',
+            'threads.h (C11)',
+            'time.h',
+            'uchar.h (C11)',
+            'wchar.h',
+            'wctype.h'
+          ],
+          'C++': [
+            'fstream',
+            'iomanip',
+            'ios',
+            'iosfwd',
+            'iostream (ostream, istream)',
+            'sstream',
+            'streambuf',
+            'atomic (C++11)',
+            'condition_variable (C++11)',
+            'future (C++11)',
+            'mutex (C++11)',
+            'shared_mutex (C++14)',
+            'thread (C++11)',
+            'algorithm',
+            'bitset',
+            'chrono (C++11)',
+            'codecvt (C++11)',
+            'complex',
+            'exception',
+            'functional',
+            'initializer_list (C++11)',
+            'iterator',
+            'limits',
+            'locale',
+            'memory',
+            'new',
+            'numeric',
+            'random (C++11)',
+            'ratio (C++11)',
+            'regex (C++11)',
+            'stdexcept',
+            'string',
+            'system_error (C++11)',
+            'tuple (C++11)',
+            'typeindex (C++11)',
+            'typeinfo',
+            'type_traits (C++11)',
+            'utility',
+            'valarray',
+            'array (C++11)',
+            'deque',
+            'forward_list (C++11)',
+            'list',
+            'vector',
+            'map',
+            'set',
+            'multimap',
+            'multiset',
+            'unordered_map (C++11)',
+            'unordered_set (C++11)',
+            'unordered_multimap (C++11)',
+            'unordered_multiset (C++11)',
+            'stack',
+            'priority_queue',
+            'queue'
+          ]
+        },
+        modalVisible: false
+      }
+    },
+    methods: {
+      showLibs (lang) {
+        this.currentLang = lang
+        this.modalVisible = true // !this.modalVisible
       }
     },
     beforeRouteEnter (to, from, next) {
@@ -115,6 +220,28 @@
 </script>
 
 <style lang="less" scoped>
+
+  .modal {
+    &-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  .libs_ul {
+    padding: 35px;
+  }
+
+  .libs_el {
+    color: #09f;
+    max-width: fit-content;
+
+   &:hover {
+     text-decoration: underline;
+     cursor: pointer;
+   }
+  }
+
   .content {
     font-size: 16px;
     margin: 0 50px 40px 50px;

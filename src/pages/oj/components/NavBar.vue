@@ -54,10 +54,10 @@
       </template>
     </Menu>
     <Modal v-model="modalVisible" :width="400">
-      <div slot="header" class="modal-title">Добро пожаловать на Олимпиаду!</div>
-      <component :is="modalStatus.mode" v-if="modalVisible"></component>
-      <div slot="footer" style="display: none"></div>
-    </Modal>
+    <div slot="header" class="modal-title">Добро пожаловать на Олимпиаду!</div>
+    <component :is="modalStatus.mode" v-if="modalVisible"></component>
+    <div slot="footer" style="display: none"></div>
+  </Modal>
   </div>
 </template>
 

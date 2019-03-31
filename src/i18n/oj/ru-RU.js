@@ -32,7 +32,7 @@ export const m = {
   Problems: 'Задачи',
   Announcements: 'Объявления',
   Submissions: 'Решения',
-  Rankings: 'Позиции',
+  Rankings: 'Результаты',
   Overview: 'Информация об олимпиаде',
   Admin_Helper: 'Помощник администратора',
   // ContestProblemList

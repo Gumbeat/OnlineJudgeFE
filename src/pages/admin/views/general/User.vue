@@ -70,8 +70,7 @@
     <Panel>
       <span slot="title">{{$t('m.Import_User')}}
         <el-popover placement="right" trigger="hover">
-          <p>Поддерживает только csv файлы без заголовков <a
-            href="http://docs.onlinejudge.me/#/onlinejudge/guide/import_users">ссылка</a> для подробностей</p>
+          <p>Поддерживает только csv файлы без заголовков </p>
           <i slot="reference" class="el-icon-fa-question-circle import-user-icon"></i>
         </el-popover>
       </span>
@@ -97,6 +96,16 @@
           <el-table-column label="Email">
             <template slot-scope="{row}">
               {{row[2]}}
+            </template>
+          </el-table-column>
+          <el-table-column label="Имя">
+            <template slot-scope="{row}">
+              {{row[3]}}
+            </template>
+          </el-table-column>
+          <el-table-column label="Уч. заведение">
+            <template slot-scope="{row}">
+              {{row[4]}}
             </template>
           </el-table-column>
         </el-table>
@@ -363,11 +372,11 @@
           encoding: 'utf-8',
           complete: (results) => {
             let data = results.data.filter(user => {
-              return user[0] && user[1] && user[2]// && user[3] && user[4]
+              return user[0] && user[1] && user[2] && user[3] && user[4] // логин, пароль, почта, имя, учебное заведение
             })
             let delta = results.data.length - data.length
             if (delta > 0) {
-              this.$warning(delta + ' users have been filtered due to empty value')
+              this.$warning(delta + ' пользователей было убрано из-за пустых строк')
             }
             this.uploadUsersCurrentPage = 1
             this.uploadUsers = data

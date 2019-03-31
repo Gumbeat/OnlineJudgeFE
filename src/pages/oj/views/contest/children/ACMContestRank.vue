@@ -1,48 +1,57 @@
 <template>
   <Panel shadow>
-    <div slot="title">{{ contest.title }}</div>
-    <div slot="extra">
-      <screen-full :height="18" :width="18" class="screen-full"></screen-full>
-      <Poptip trigger="hover" placement="left-start">
-        <Icon type="android-settings" size="20"></Icon>
-        <div slot="content" id="switches">
-          <p>
-            <span>Меню</span>
-            <i-switch v-model="showMenu"></i-switch>
-            <span>График</span>
-            <i-switch v-model="showChart"></i-switch>
-          </p>
-          <p>
-            <span>Автообновление(10с)</span>
-            <i-switch :disabled="refreshDisabled" @on-change="handleAutoRefresh"></i-switch>
-          </p>
-          <template v-if="isContestAdmin">
+    <div class="contest-header" slot="title">{{ contest.title }}
+      <download-excel v-if="isContestAdmin"
+                      :data = "excelData">
+        <Button type="primary" size="small">Скачать Excel</Button>
+      </download-excel>
+    </div>
+    <!--<div slot="extra">-->
+      <!--<screen-full :height="18" :width="18" class="screen-full"></screen-full>-->
+      <!--<Poptip trigger="hover" placement="left-start">-->
+        <!--<Icon type="android-settings" size="20"></Icon>-->
+        <!--<div slot="content" id="switches">-->
+          <!--<p>-->
+            <!--<span>Меню</span>-->
+            <!--<i-switch v-model="showMenu"></i-switch>-->
+            <!--<span>График</span>-->
+            <!--<i-switch v-model="showChart"></i-switch>-->
+          <!--</p>-->
+          <!--<p>-->
+            <!--<span>Автообновление(10с)</span>-->
+            <!--<i-switch :disabled="refreshDisabled" @on-change="handleAutoRefresh"></i-switch>-->
+          <!--</p>-->
+          <!--<template v-if="isContestAdmin">-->
+            <!--&lt;!&ndash;<p>&ndash;&gt;-->
+              <!--&lt;!&ndash;<span>Настоящее Имя</span>&ndash;&gt;-->
+              <!--&lt;!&ndash;<i-switch v-model="showRealName"></i-switch>&ndash;&gt;-->
+            <!--&lt;!&ndash;</p>&ndash;&gt;-->
             <!--<p>-->
-              <!--<span>Настоящее Имя</span>-->
-              <!--<i-switch v-model="showRealName"></i-switch>-->
+              <!--<span>Принудительное обновление</span>-->
+              <!--<i-switch :disabled="refreshDisabled" v-model="forceUpdate"></i-switch>-->
             <!--</p>-->
-            <p>
-              <span>Принудительное обновление</span>
-              <i-switch :disabled="refreshDisabled" v-model="forceUpdate"></i-switch>
-            </p>
-          </template>
-          <template>
-            <Button type="primary" size="small" @click="downloadRankCSV">скачать csv</Button>
-          </template>
-        </div>
-      </Poptip>
-    </div>
-    <div v-show="showChart" class="echarts">
-      <ECharts :options="options" ref="chart" auto-resize></ECharts>
-    </div>
+          <!--</template>-->
+          <!--<template>-->
+           <!---->
+          <!--</template>-->
+        <!--</div>-->
+      <!--</Poptip>-->
+    <!--</div>-->
+    <!--<div v-show="showChart" class="echarts">-->
+      <!--<ECharts :options="options" ref="chart" auto-resize></ECharts>-->
+    <!--</div>-->
     <Table ref="tableRank" class="auto-resize" :columns="columns" :data="dataRank" disabled-hover></Table>
+
     <Pagination :total="total"
                 :page-size.sync="limit"
                 :current.sync="page"
                 @on-change="getContestRankData"
                 @on-page-size-change="getContestRankData(1)"
                 show-sizer></Pagination>
+
   </Panel>
+
+
 </template>
 <script>
   import moment from 'moment'
@@ -130,6 +139,7 @@
           }
         ],
         dataRank: [],
+        excellDataRank: [],
         options: {
           title: {
             text: 'Топ 10',
@@ -205,6 +215,20 @@
         this.addChartCategory(this.contestProblems)
       }
     },
+    computed: {
+      excelData () {
+        let data = []
+        this.excellDataRank.forEach(user => {
+          data.push({
+            'Позиция': user.id,
+            'Имя': user.user.real_name,
+            'Учебное заведение': user.user.mood,
+            'Решено задач': user.accepted_number
+          })
+        })
+        return data
+      }
+    },
     methods: {
       ...mapActions(['getContestProblems']),
       addChartCategory (contestProblems) {
@@ -247,10 +271,8 @@
         this.options.series = seriesData
       },
       applyToTable (data) {
-        // deepcopy
+        this.excellDataRank = JSON.parse(JSON.stringify(data))
         let dataRank = JSON.parse(JSON.stringify(data))
-        // 从submission_info中取出相应的problem_id 放入到父object中,这么做主要是为了适应iview table的data格式
-        // 见https://www.iviewui.com/components/table
         dataRank.forEach((rank, i) => {
           let info = rank.submission_info
           let cellClass = {}
@@ -314,12 +336,18 @@
         return [Math.floor(m.asHours()), m.minutes(), m.seconds()].join(':')
       },
       downloadRankCSV () {
-        utils.downloadFile(`contest_rank?download_csv=1&contest_id=${this.$route.params.contestID}&force_refrash=${this.forceUpdate ? '1' : '0'}`)
+        utils.downloadFile(`contest_rank?download_csv=1&contest_id=${this.$route.params.contestID}&force_refresh=${this.forceUpdate ? '1' : '0'}`)
       }
     }
   }
 </script>
 <style scoped lang="less">
+
+  .contest-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .echarts {
     margin: 20px auto;
     height: 400px;

@@ -17,7 +17,7 @@
             <i-switch :disabled="refreshDisabled" @on-change="handleAutoRefresh"></i-switch>
           </p>
           <p v-if="isContestAdmin">
-            <span>Настоящее имя</span>
+            <span>Имя</span>
             <i-switch v-model="showRealName"></i-switch>
           </p>
           <p>

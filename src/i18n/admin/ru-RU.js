@@ -16,15 +16,15 @@ export const m = {
   Create_Contest: 'Создать соревнование',
   // User.vue
   User_User: 'Пользователь',
-  Import_User: 'Импорт пользователя',
+  Import_User: 'Импорт пользователей',
   Generate_User: 'Создать пользователя',
   // User.vue-dialog
   User_Info: 'Пользователь',
   User_Username: 'Имя пользователя',
-  User_Real_Name: 'Настоящее имя',
+  User_Real_Name: 'Имя',
   User_Email: 'Email',
   User_New_Password: 'Новый пароль',
-  User_Type: 'Категория пользователя',
+  User_Type: 'Тип пользователя',
   Problem_Permission: 'Разрешение задачи',
   Two_Factor_Auth: 'Двухфакторная аутентификация',
   Is_Disabled: 'Выключен',

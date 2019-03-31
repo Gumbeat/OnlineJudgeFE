@@ -5,7 +5,7 @@ import store from '@/store'
 import i18n from '@/i18n'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import locale from 'element-ui/lib/locale/lang/en'
+import locale from 'element-ui/lib/locale/lang/ru-RU'
 
 import filters from '@/utils/filters'
 import router from './router'

@@ -15,7 +15,7 @@ const state = {
   contestProblems: [],
   itemVisible: {
     menu: true,
-    chart: true,
+    chart: false,
     realName: false
   }
 }

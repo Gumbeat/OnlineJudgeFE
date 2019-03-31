@@ -1,58 +1,58 @@
 <template>
   <div class="setting-main">
-    <div class="section-title">{{$t('m.Avatar_Setting')}}</div>
-    <template v-if="!avatarOption.imgSrc">
-      <Upload type="drag"
-              class="mini-container"
-              accept=".jpg,.jpeg,.png,.bmp,.gif"
-              action=""
-              :before-upload="handleSelectFile">
-        <div style="padding: 30px 0">
-          <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-          <p>Перетащите файл, или нажмите для выбора вручную</p>
-        </div>
-      </Upload>
-    </template>
+    <!--<div class="section-title">{{$t('m.Avatar_Setting')}}</div>-->
+    <!--<template v-if="!avatarOption.imgSrc">-->
+      <!--<Upload type="drag"-->
+              <!--class="mini-container"-->
+              <!--accept=".jpg,.jpeg,.png,.bmp,.gif"-->
+              <!--action=""-->
+              <!--:before-upload="handleSelectFile">-->
+        <!--<div style="padding: 30px 0">-->
+          <!--<Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>-->
+          <!--<p>Перетащите файл, или нажмите для выбора вручную</p>-->
+        <!--</div>-->
+      <!--</Upload>-->
+    <!--</template>-->
 
-    <template v-else>
-      <div class="flex-container">
-        <div class="cropper-main inline">
-          <vueCropper
-            ref="cropper"
-            autoCrop
-            fixed
-            :autoCropWidth="200"
-            :autoCropHeight="200"
-            :img="avatarOption.imgSrc"
-            :outputSize="avatarOption.size"
-            :outputType="avatarOption.outputType"
-            :info="true"
-            @realTime="realTime">
-          </vueCropper>
-        </div>
-        <ButtonGroup vertical class="cropper-btn">
-          <Button @click="rotate('left')">
-            <Icon type="arrow-return-left" size="20"></Icon>
-          </Button>
-          <Button @click="rotate('right')">
-            <Icon type="arrow-return-right" size="20"></Icon>
-          </Button>
-          <Button @click="reselect">
-            <Icon type="refresh" size="20"></Icon>
-          </Button>
-          <Button @click="finishCrop">
-            <Icon type="checkmark-round" size="20"></Icon>
-          </Button>
-        </ButtonGroup>
-        <div class="cropper-preview" :style="previewStyle">
-          <div :style=" preview.div">
-            <img :src="avatarOption.imgSrc" :style="preview.img">
-          </div>
-        </div>
-      </div>
-    </template>
+    <!--<template v-else>-->
+      <!--<div class="flex-container">-->
+        <!--<div class="cropper-main inline">-->
+          <!--<vueCropper-->
+            <!--ref="cropper"-->
+            <!--autoCrop-->
+            <!--fixed-->
+            <!--:autoCropWidth="200"-->
+            <!--:autoCropHeight="200"-->
+            <!--:img="avatarOption.imgSrc"-->
+            <!--:outputSize="avatarOption.size"-->
+            <!--:outputType="avatarOption.outputType"-->
+            <!--:info="true"-->
+            <!--@realTime="realTime">-->
+          <!--</vueCropper>-->
+        <!--</div>-->
+        <!--<ButtonGroup vertical class="cropper-btn">-->
+          <!--<Button @click="rotate('left')">-->
+            <!--<Icon type="arrow-return-left" size="20"></Icon>-->
+          <!--</Button>-->
+          <!--<Button @click="rotate('right')">-->
+            <!--<Icon type="arrow-return-right" size="20"></Icon>-->
+          <!--</Button>-->
+          <!--<Button @click="reselect">-->
+            <!--<Icon type="refresh" size="20"></Icon>-->
+          <!--</Button>-->
+          <!--<Button @click="finishCrop">-->
+            <!--<Icon type="checkmark-round" size="20"></Icon>-->
+          <!--</Button>-->
+        <!--</ButtonGroup>-->
+        <!--<div class="cropper-preview" :style="previewStyle">-->
+          <!--<div :style=" preview.div">-->
+            <!--<img :src="avatarOption.imgSrc" :style="preview.img">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</template>-->
     <Modal v-model="uploadModalVisible"
-           title="Загрузить фотография">
+           title="Загрузить фотографию">
       <div class="upload-modal">
         <p class="notice">Ваш аватар станет таким:</p>
         <img :src="uploadImgSrc"/>
@@ -66,7 +66,7 @@
     <Form ref="formProfile" :model="formProfile">
       <Row type="flex" :gutter="30" justify="space-around">
         <Col :span="11">
-          <FormItem label="Настоящее имя">
+          <FormItem label="Имя">
             <Input v-model="formProfile.real_name"/>
           </FormItem>
           <!--<Form-item label="Школа">-->

@@ -84,7 +84,7 @@
             }
           },
           {
-            title: 'Настоящее имя',
+            title: 'Имя',
             align: 'center',
             render: (h, {row}) => {
               return h('span', {

@@ -4,7 +4,7 @@
           :page-size="pageSize"
           @on-change="onChange"
           @on-page-size-change="onPageSizeChange"
-          :show-sizer="showSizer"
+          :show-sizer="false"
           :page-size-opts="[10, 30, 50, 100, 200]"
           :current="current">
     </Page>

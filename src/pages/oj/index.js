@@ -9,7 +9,7 @@ import VueAnalytics from 'vue-analytics'
 import { GOOGLE_ANALYTICS_ID } from '@/utils/constants'
 
 import iView from 'iview'
-import locale from 'iview/dist/locale/en-US'
+import locale from 'iview/dist/locale/ru-RU'
 import 'iview/dist/styles/iview.css'
 
 import Panel from '@oj/components/Panel.vue'
@@ -33,6 +33,8 @@ import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/toolbox'
 import 'echarts/lib/component/markPoint'
 
+import JsonExcel from 'vue-json-excel'
+
 // register global utility filters.
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
@@ -40,6 +42,8 @@ Object.keys(filters).forEach(key => {
 
 Vue.config.productionTip = false
 Vue.use(iView, {locale})
+
+Vue.component('downloadExcel', JsonExcel)
 
 VueClipboard.config.autoSetContainer = true
 Vue.use(VueClipboard)
