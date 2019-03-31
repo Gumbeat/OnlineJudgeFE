@@ -95,7 +95,7 @@
     <el-dialog title="Скачать успешные решения"
                width="30%"
                :visible.sync="downloadDialogVisible">
-      <el-switch v-model="excludeAdmin" active-text="Exclude admin submissions"></el-switch>
+      <el-switch v-model="excludeAdmin" active-text="Не включать решения админа"></el-switch>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="downloadSubmissions">Скачать</el-button>
       </span>
