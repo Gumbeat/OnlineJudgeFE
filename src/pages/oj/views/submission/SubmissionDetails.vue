@@ -78,20 +78,20 @@
     align: 'center',
     key: 'score'
   }]
-  const adminColumn = [
-    {
-      title: 'Реальное время',
-      align: 'center',
-      render: (h, params) => {
-        return h('span', utils.submissionTimeFormat(params.row.real_time))
-      }
-    },
-    {
-      title: 'Сигнал',
-      align: 'center',
-      key: 'signal'
-    }
-  ]
+  // const adminColumn = [
+  //   {
+  //     title: 'Реальное время',
+  //     align: 'center',
+  //     render: (h, params) => {
+  //       return h('span', utils.submissionTimeFormat(params.row.real_time))
+  //     }
+  //   },
+  //   {
+  //     title: 'Сигнал',
+  //     align: 'center',
+  //     key: 'signal'
+  //   }
+  //  ]
 
   export default {
     name: 'submissionDetails',
@@ -142,10 +142,10 @@
               this.isConcat = true
               columns = columns.concat(scoreColumn)
             }
-            if (this.isAdminRole) {
-              this.isConcat = true
-              columns = columns.concat(adminColumn)
-            }
+            // if (this.isAdminRole) {
+            //   this.isConcat = true
+            //   columns = columns.concat(adminColumn)
+            // }
             this.columns = columns
           }
           this.submission = data

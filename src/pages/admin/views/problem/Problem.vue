@@ -142,18 +142,18 @@
         <el-form-item style="margin-top: 20px" :label="$t('m.Hint')">
           <Simditor v-model="problem.hint" placeholder=""></Simditor>
         </el-form-item>
-        <el-form-item :label="$t('m.Code_Template')">
-          <el-row>
-            <el-col :span="24" v-for="(v, k) in template" :key="'template'+k">
-              <el-form-item>
-                <el-checkbox v-model="v.checked">{{ k }}</el-checkbox>
-                <div v-if="v.checked">
-                  <code-mirror v-model="v.code" :mode="v.mode"></code-mirror>
-                </div>
-              </el-form-item>
-            </el-col>
-          </el-row>
-        </el-form-item>
+        <!--<el-form-item :label="$t('m.Code_Template')">-->
+          <!--<el-row>-->
+            <!--<el-col :span="24" v-for="(v, k) in template" :key="'template'+k">-->
+              <!--<el-form-item>-->
+                <!--<el-checkbox v-model="v.checked">{{ k }}</el-checkbox>-->
+                <!--<div v-if="v.checked">-->
+                  <!--<code-mirror v-model="v.code" :mode="v.mode"></code-mirror>-->
+                <!--</div>-->
+              <!--</el-form-item>-->
+            <!--</el-col>-->
+          <!--</el-row>-->
+        <!--</el-form-item>-->
         <!--<el-form-item :label="$t('m.Special_Judge')" :error="error.spj">-->
           <!--<el-col :span="24">-->
             <!--<el-checkbox v-model="problem.spj" @click.native.prevent="switchSpj()">{{$t('m.Use_Special_Judge')}}</el-checkbox>-->
